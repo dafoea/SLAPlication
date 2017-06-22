@@ -30,15 +30,22 @@ namespace PrinterTestForms
         List<string> _materialDirectories = new List<string>() { null, null, null, null, };
         List<int> _layersRemainingForMaterial = new List<int>() { 0, 0, 0, 0, };
         List<int> _finalLayerForMaterial = new List<int>() { 0, 0, 0, 0 };
-        List<List<string>> _fileNames = new List<List<string>>() { new List<string>(), new List<string>(), new List<string>(), new List<string>() };
+        List<bool> _thisLayerHasMaterial = new List<bool>() { false, false, false, false };
+        /// <summary>
+        /// Tuple(layer,material)
+        /// </summary>
+        Queue<Tuple<int, int>> _printSequence = new Queue<Tuple<int, int>>();
+        List<Queue<string>> _fileNames = new List<Queue<string>>() { new Queue<string>(), new Queue<string>(), new Queue<string>(), new Queue<string>() };
         String comPort = string.Empty;
         int baud = 250000;
         Queue<String> commands = new Queue<string>();
         String lastMessageSent = string.Empty;
+
+        /// <summary>
+        /// Indicates whether the Arduino is ready to receive further commands (Last string recieved from Arduino == "ok"
+        /// </summary>
         bool _readyToReceive = true;
-        private double defaultXspeed = 1000;
-        private double defaultYspeed = 1000;
-        private double defaultZspeed = 1000;
+
         const char x = 'X';
         const char y = 'Y';
         const char z = 'Z';
@@ -88,8 +95,10 @@ namespace PrinterTestForms
 
 
         // --------------------------Algorithm Operations ----------------------------------------
+
         /// <summary>
-        /// Assigns the _currentMaterial field to the next material to be printed
+        /// Assigns the _currentMaterial field to the next material to be printed. Optimized based on _thisLayerHasMaterial
+        /// Further optimization: sequence should be picked to match materials between layers
         /// </summary>
         public void nextMaterial()
         {
@@ -97,16 +106,24 @@ namespace PrinterTestForms
             switch (_currentMaterial)
             {
                 case material.m1:
-                    nextMaterial = material.m2;
+                    if (_thisLayerHasMaterial[(int)material.m2]) nextMaterial = material.m2;
+                    else if(_thisLayerHasMaterial[(int)material.m3]) nextMaterial = material.m3;
+                    else nextMaterial = material.m4;
                     break;
                 case material.m2:
-                    nextMaterial = material.m3;
+                    if (_thisLayerHasMaterial[(int)material.m1]) nextMaterial = material.m1;
+                    else if (_thisLayerHasMaterial[(int)material.m3]) nextMaterial = material.m3;
+                    else nextMaterial = material.m4;
                     break;
                 case material.m3:
-                    nextMaterial = material.m4;
+                    if (_thisLayerHasMaterial[(int)material.m4]) nextMaterial = material.m4;
+                    else if (_thisLayerHasMaterial[(int)material.m2]) nextMaterial = material.m2;
+                    else nextMaterial = material.m1;
                     break;
                 case material.m4:
-                    nextMaterial = material.m1;
+                    if (_thisLayerHasMaterial[(int)material.m3]) nextMaterial = material.m3;
+                    else if (_thisLayerHasMaterial[(int)material.m2]) nextMaterial = material.m2;
+                    else nextMaterial = material.m1;
                     break;
             }
             _currentMaterial = nextMaterial;
@@ -133,6 +150,20 @@ namespace PrinterTestForms
             }
             else serialBox.AppendText("<<ERROR>> " + "No Printer Detected" + System.Environment.NewLine);
         }
+
+        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            while (serialPort1.BytesToRead > 0)
+            {
+                string returnMessage = serialPort1.ReadTo("\n");
+                serialBox.AppendText(">>RX<< " + returnMessage + System.Environment.NewLine);
+                if (returnMessage == "ok")
+                {
+                    _readyToReceive = true;
+                }
+            }
+        }
+
 
         // ---------------------------Printer Operations------------------------------------------
         private void PRINT()
@@ -217,27 +248,21 @@ namespace PrinterTestForms
 
 
         //-------------------------------GUI Methods ----------------------------------------
-        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
-        {
-            while (serialPort1.BytesToRead > 0)
-            {
-                string returnMessage = serialPort1.ReadTo("\n");
-                serialBox.AppendText(">>RX<< " + returnMessage + System.Environment.NewLine);
-                if (returnMessage == "ok")
-                {
-                    _readyToReceive = true;
-                }
-            }
-        }
         private void PreviewBar_Scroll(object sender, ScrollEventArgs e)
         {
             layerText.Text = (PreviewBar.Value + 1).ToString();
             foreach (material mat in _activeMaterials)
             {
-                if (_finalLayerForMaterial[(int)mat] > 0) updatePreviewImage(mat, PreviewBar.Value);
+                if (_finalLayerForMaterial[(int)mat] > PreviewBar.Value) updatePreviewImage(mat, PreviewBar.Value);
+                else updatePreviewImage(mat);
             }
         }
-        private void updatePreviewImage(material mat, int fileNumber)
+        /// <summary>
+        /// Updates the preview box with the specified image. If no file number is specified, then the image will be black
+        /// </summary>
+        /// <param name="mat">the material preview to be updated</param>
+        /// <param name="fileNumber">the file number of the material to preview</param>
+        private void updatePreviewImage(material mat, int fileNumber = -1)
         {
             PictureBox pic = new PictureBox();
             switch (mat)
@@ -255,7 +280,8 @@ namespace PrinterTestForms
                     pic = previewPic4;
                     break;
             }
-            pic.Image = Image.FromFile(_fileNames[(int)mat][fileNumber]);
+            if (fileNumber == -1) pic.Image = null;
+            else pic.Image = Image.FromFile(_fileNames[(int)mat].ElementAt(fileNumber));
 
         }
 
@@ -333,8 +359,7 @@ namespace PrinterTestForms
                 {
                     _materialDirectories[(int)mat] = d.SelectedPath;
                     _layersRemainingForMaterial[(int)mat] = Directory.GetFiles(d.SelectedPath).Length;
-                    List<string> temp = new List<string>();
-                    temp.AddRange(Directory.GetFiles(d.SelectedPath));
+                    Queue<string> temp = new Queue<string>(Directory.GetFiles(d.SelectedPath));
                     _fileNames.RemoveAt((int)mat);
                     _fileNames.Insert((int)mat, temp);
                 }
@@ -352,7 +377,6 @@ namespace PrinterTestForms
                 finalFile = finalFile.Substring(finalFile.Length - 8, 4);
                 _finalLayerForMaterial[(int)mat] = Convert.ToInt32(finalFile);
                 updatePreviewImage(mat, PreviewBar.Value);
-
                 _activeMaterials.Add(mat);
             }
             else
@@ -362,7 +386,7 @@ namespace PrinterTestForms
                 previewTab.Text = "---";
                 _materialDirectories[(int)mat] = null;
                 _layersRemainingForMaterial[(int)mat] = 0;
-                _fileNames[(int)mat] = new List<string>();
+                _fileNames[(int)mat] = new Queue<string>();
                 _finalLayerForMaterial[(int)mat] = 0;
                 previewPic.Image = null;
                 _activeMaterials.Remove(mat);
@@ -449,6 +473,13 @@ namespace PrinterTestForms
             t.Join();
 
         }
+        private void homeXYButton_Click(object sender, EventArgs e)
+        {
+            home(x, y);
+            Thread t = new Thread(() => processCommands());
+            t.Start();
+            t.Join();
+        }
 
         //handles the cases where the message box content is sent via the return key
         private void messageBox_KeyDown(object sender, KeyEventArgs e)
@@ -497,7 +528,6 @@ namespace PrinterTestForms
             }
             return success;
         }
-
 
 
     }

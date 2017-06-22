@@ -70,6 +70,7 @@
             this.homeZButton = new System.Windows.Forms.Button();
             this.homeYButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
+            this.homeXYButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -479,7 +480,7 @@
             // 
             // homeXButton
             // 
-            this.homeXButton.Location = new System.Drawing.Point(23, 71);
+            this.homeXButton.Location = new System.Drawing.Point(23, 205);
             this.homeXButton.Name = "homeXButton";
             this.homeXButton.Size = new System.Drawing.Size(95, 34);
             this.homeXButton.TabIndex = 37;
@@ -489,7 +490,7 @@
             // 
             // homeZButton
             // 
-            this.homeZButton.Location = new System.Drawing.Point(241, 71);
+            this.homeZButton.Location = new System.Drawing.Point(241, 205);
             this.homeZButton.Name = "homeZButton";
             this.homeZButton.Size = new System.Drawing.Size(95, 34);
             this.homeZButton.TabIndex = 38;
@@ -499,7 +500,7 @@
             // 
             // homeYButton
             // 
-            this.homeYButton.Location = new System.Drawing.Point(132, 71);
+            this.homeYButton.Location = new System.Drawing.Point(132, 205);
             this.homeYButton.Name = "homeYButton";
             this.homeYButton.Size = new System.Drawing.Size(95, 34);
             this.homeYButton.TabIndex = 39;
@@ -517,11 +518,22 @@
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
+            // homeXYButton
+            // 
+            this.homeXYButton.Location = new System.Drawing.Point(79, 244);
+            this.homeXYButton.Name = "homeXYButton";
+            this.homeXYButton.Size = new System.Drawing.Size(91, 34);
+            this.homeXYButton.TabIndex = 41;
+            this.homeXYButton.Text = "Home XY";
+            this.homeXYButton.UseVisualStyleBackColor = true;
+            this.homeXYButton.Click += new System.EventHandler(this.homeXYButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1258, 794);
+            this.Controls.Add(this.homeXYButton);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.homeYButton);
             this.Controls.Add(this.homeZButton);
@@ -611,6 +623,7 @@
         private System.Windows.Forms.Button homeZButton;
         private System.Windows.Forms.Button homeYButton;
         private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.Button homeXYButton;
     }
 }
 
