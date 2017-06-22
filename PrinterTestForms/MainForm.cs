@@ -25,6 +25,15 @@ namespace PrinterTestForms
         private int _numberOfLayers = 0;
         private double _totalHeight = 0;
         private int _currentImage = 0;
+        private bool? absoluteMode = null;
+        private double X_putAwayPosition = 322;
+        private double X_takeOutPosition = 42;
+        private double X_toClipPosition = 318;
+        private double X_cleaningPosition = 298;
+        List<double> Y_towerPositionsHookPush = new List<double>() { 357, 505, 636, 758 };
+        List<double> Y_towerPositionsHookDisengaged = new List<double>() { 332, 480, 611, 733 };
+        List<double> Y_towerPositionsHookPull = new List<double>() { 362, 507, 638, 760 };
+        private int Z_heightToRaiseBed = 100;
         private material _currentMaterial = material.m1;
         List<material> _activeMaterials = new List<material>();
         List<string> _materialDirectories = new List<string>() { null, null, null, null, };
@@ -188,7 +197,24 @@ namespace PrinterTestForms
         /// </summary>
         private void putAwayMaterial()
         {
-            //Insert G-code to put away material
+            setRelativeCoordinates();
+            move(z, Z_heightToRaiseBed);
+            setAbsoluteCoordinates();
+            move(x, X_putAwayPosition);
+            move(y, Y_towerPositionsHookDisengaged[(int)_currentMaterial]);
+            move(x, X_cleaningPosition);
+        }
+
+        private void setRelativeCoordinates()
+        {
+            commands.Enqueue("G91");
+            absoluteMode = true;
+        }
+        private void setAbsoluteCoordinates()
+        {
+            commands.Enqueue("G90");
+            absoluteMode = false;
+
         }
 
         /// <summary>
@@ -197,7 +223,8 @@ namespace PrinterTestForms
         /// <param name="mat">The desired material</param>
         private void queueMaterial(material mat)
         {
-            //Insert G-code to switch to next material
+            setAbsoluteCoordinates();
+            move(y, Y_towerPositionsHookDisengaged[(int)mat]);
         }
 
         /// <summary>
@@ -205,7 +232,11 @@ namespace PrinterTestForms
         /// </summary>
         private void takeOutMaterial()
         {
-            //Insert G-code to take out next material
+            setAbsoluteCoordinates();
+            move(x, X_toClipPosition);
+            move(y, Y_towerPositionsHookPull[(int)_currentMaterial]);
+            move(x, X_takeOutPosition);
+            // move(z, )
         }
 
         /// <summary>
@@ -222,6 +253,10 @@ namespace PrinterTestForms
         private void clean()
         {
             //Insert G-code to clean material
+        }
+        private void move(char axis, double value)
+        {
+            commands.Enqueue("G1 " + axis + value.ToString());
         }
 
         /// <summary>
