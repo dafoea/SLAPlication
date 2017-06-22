@@ -13,27 +13,56 @@ using System.Threading;
 
 namespace PrinterTestForms
 {
+    public static class TupleListExtensions
+    {
+        public static void Add<T1, T2>(this IList<Tuple<T1, T2>> list,
+                T1 item1, T2 item2)
+        {
+            list.Add(Tuple.Create(item1, item2));
+        }
+    }
+
     public partial class Form1 : Form
     {
+
         private FSpicturebox n;
-        private enum material
+        public enum material
         {
             m1 = 0,
             m2, m3, m4
         };
+        const char x = 'X';
+        const char y = 'Y';
+        const char z = 'Z';
+
         private double _layerHeight = .1; //Expressed in millimeters
         private int _numberOfLayers = 0;
         private double _totalHeight = 0;
         private int _currentImage = 0;
         private bool? absoluteMode = null;
-        private double X_putAwayPosition = 322;
-        private double X_takeOutPosition = 42;
-        private double X_toClipPosition = 318;
-        private double X_cleaningPosition = 298;
-        List<double> Y_towerPositionsHookPush = new List<double>() { 357, 505, 636, 758 };
-        List<double> Y_towerPositionsHookDisengaged = new List<double>() { 332, 480, 611, 733 };
-        List<double> Y_towerPositionsHookPull = new List<double>() { 362, 507, 638, 760 };
-        private int Z_heightToRaiseBed = 100;
+        private Tuple<char, double> X_putAwayPosition = new Tuple<char, double>(x, 322);
+        private Tuple<char, double> X_takeOutPosition = new Tuple<char, double>(x, 42);
+        private Tuple<char, double> X_toClipPosition = new Tuple<char, double>(x, 318);
+        private Tuple<char, double> X_cleaningPosition = new Tuple<char, double>(x, 298);
+        List<Tuple<char, double>> Y_towerPositionsHookPush = new List<Tuple<char, double>>() {
+            { y, 357 },
+            { y, 505 },
+            { y, 636 },
+            { y, 758 }
+        };
+        List<Tuple<char, double>> Y_towerPositionsHookDisengaged = new List<Tuple<char, double>>() {
+            { y, 332 },
+            { y, 480 },
+            { y, 611 },
+            { y, 733 }
+        };
+        List<Tuple<char, double>> Y_towerPositionsHookPull = new List<Tuple<char, double>>() {
+            { y, 362 },
+            { y, 507 },
+            { y, 638 },
+            { y, 760 }
+        };
+        private Tuple<char, double> Z_heightToRaiseBed = new Tuple<char, double>(z, 100);
         private material _currentMaterial = material.m1;
         List<material> _activeMaterials = new List<material>();
         List<string> _materialDirectories = new List<string>() { null, null, null, null, };
@@ -55,9 +84,6 @@ namespace PrinterTestForms
         /// </summary>
         bool _readyToReceive = true;
 
-        const char x = 'X';
-        const char y = 'Y';
-        const char z = 'Z';
 
         public Form1()
         {
@@ -109,14 +135,14 @@ namespace PrinterTestForms
         /// Assigns the _currentMaterial field to the next material to be printed. Optimized based on _thisLayerHasMaterial
         /// Further optimization: sequence should be picked to match materials between layers
         /// </summary>
-        public void nextMaterial()
+        public material nextMaterial()
         {
             material nextMaterial = new material();
             switch (_currentMaterial)
             {
                 case material.m1:
                     if (_thisLayerHasMaterial[(int)material.m2]) nextMaterial = material.m2;
-                    else if(_thisLayerHasMaterial[(int)material.m3]) nextMaterial = material.m3;
+                    else if (_thisLayerHasMaterial[(int)material.m3]) nextMaterial = material.m3;
                     else nextMaterial = material.m4;
                     break;
                 case material.m2:
@@ -135,7 +161,7 @@ namespace PrinterTestForms
                     else nextMaterial = material.m1;
                     break;
             }
-            _currentMaterial = nextMaterial;
+            return nextMaterial;
         }
 
         public bool checkImage()
@@ -180,6 +206,17 @@ namespace PrinterTestForms
 
         }
 
+        private void setRelativeCoordinates()
+        {
+            commands.Enqueue("G91");
+            absoluteMode = true;
+        }
+        private void setAbsoluteCoordinates()
+        {
+            commands.Enqueue("G90");
+            absoluteMode = false;
+
+        }
         /// <summary>
         /// Performs the sequence of movements required to change from the _currentMaterial to "mat"
         /// </summary>
@@ -198,23 +235,11 @@ namespace PrinterTestForms
         private void putAwayMaterial()
         {
             setRelativeCoordinates();
-            move(z, Z_heightToRaiseBed);
+            move(Z_heightToRaiseBed);
             setAbsoluteCoordinates();
-            move(x, X_putAwayPosition);
-            move(y, Y_towerPositionsHookDisengaged[(int)_currentMaterial]);
-            move(x, X_cleaningPosition);
-        }
-
-        private void setRelativeCoordinates()
-        {
-            commands.Enqueue("G91");
-            absoluteMode = true;
-        }
-        private void setAbsoluteCoordinates()
-        {
-            commands.Enqueue("G90");
-            absoluteMode = false;
-
+            move(X_putAwayPosition);
+            move(Y_towerPositionsHookDisengaged[(int)_currentMaterial]);
+            move(X_cleaningPosition);
         }
 
         /// <summary>
@@ -224,7 +249,7 @@ namespace PrinterTestForms
         private void queueMaterial(material mat)
         {
             setAbsoluteCoordinates();
-            move(y, Y_towerPositionsHookDisengaged[(int)mat]);
+            move(Y_towerPositionsHookDisengaged[(int)mat]);
         }
 
         /// <summary>
@@ -233,9 +258,9 @@ namespace PrinterTestForms
         private void takeOutMaterial()
         {
             setAbsoluteCoordinates();
-            move(x, X_toClipPosition);
-            move(y, Y_towerPositionsHookPull[(int)_currentMaterial]);
-            move(x, X_takeOutPosition);
+            move(X_toClipPosition);
+            move(Y_towerPositionsHookPull[(int)_currentMaterial]);
+            move(X_takeOutPosition);
             // move(z, )
         }
 
@@ -254,9 +279,9 @@ namespace PrinterTestForms
         {
             //Insert G-code to clean material
         }
-        private void move(char axis, double value)
+        private void move(Tuple<char,double> movement)
         {
-            commands.Enqueue("G1 " + axis + value.ToString());
+            commands.Enqueue("G1 " + movement.Item1.ToString().ToUpper() + movement.Item2.ToString());
         }
 
         /// <summary>
