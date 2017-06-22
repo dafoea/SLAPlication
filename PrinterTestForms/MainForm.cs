@@ -1,0 +1,506 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO.Ports;
+using System.IO;
+using System.Threading;
+
+namespace PrinterTestForms
+{
+    public partial class Form1 : Form
+    {
+        private FSpicturebox n;
+        private enum material
+        {
+            m1 = 0,
+            m2, m3, m4
+        };
+        private double _layerHeight = .1; //Expressed in millimeters
+        private int _numberOfLayers = 0;
+        private double _totalHeight = 0;
+        private int _currentImage = 0;
+        private material _currentMaterial = material.m1;
+        List<material> _activeMaterials = new List<material>();
+        List<string> _materialDirectories = new List<string>() { null, null, null, null, };
+        List<int> _layersRemainingForMaterial = new List<int>() { 0, 0, 0, 0, };
+        List<int> _finalLayerForMaterial = new List<int>() { 0, 0, 0, 0 };
+        List<List<string>> _fileNames = new List<List<string>>() { new List<string>(), new List<string>(), new List<string>(), new List<string>() };
+        String comPort = string.Empty;
+        int baud = 250000;
+        Queue<String> commands = new Queue<string>();
+        String lastMessageSent = string.Empty;
+        bool _readyToReceive = true;
+        private double defaultXspeed = 1000;
+        private double defaultYspeed = 1000;
+        private double defaultZspeed = 1000;
+        const char x = 'X';
+        const char y = 'Y';
+        const char z = 'Z';
+
+        public Form1()
+        {
+            InitializeComponent();
+            //Initializes new instance of the projected picture and sets the image to full screen.
+            n = new FSpicturebox();
+            n.StartPosition = FormStartPosition.Manual;
+            n.Bounds = Screen.AllScreens.Last().Bounds;
+            n.BackColor = Color.Black;
+            n.FormBorderStyle = FormBorderStyle.None;
+            n.Show();
+            n.WindowState = FormWindowState.Maximized;
+            n.fitPictureToFrame();
+
+            //Format the listboxes and preview images within the material image display tabs;
+            mat1list.Bounds = tabPage1.Bounds;
+            mat2list.Bounds = tabPage2.Bounds;
+            mat3list.Bounds = tabPage3.Bounds;
+            mat4list.Bounds = tabPage4.Bounds;
+            previewPic1.Bounds = tabpreview1.Bounds;
+            previewPic1.BackColor = Color.Black;
+            previewPic2.Bounds = tabpreview2.Bounds;
+            previewPic2.BackColor = Color.Black;
+            previewPic3.Bounds = tabpreview3.Bounds;
+            previewPic3.BackColor = Color.Black;
+            previewPic4.Bounds = tabpreview4.Bounds;
+            previewPic4.BackColor = Color.Black;
+            PreviewBar.Maximum = 0;
+
+            //Populates the combobox with a list of available COM ports and sets the comPort field to the first value.
+            string[] ports = SerialPort.GetPortNames();
+            comboBox1.DataSource = ports;
+            if (ports.Length > 0)
+            {
+                comPort = ports[0];
+                serialPort1 = new SerialPort(comPort, baud);
+                statusText.Text = comPort + " selected";
+                serialPort1.DataReceived += new SerialDataReceivedEventHandler(serialPort1_DataReceived);
+                serialPort1.Open();
+                serialPort1.DtrEnable = true;
+            }
+            else statusText.Text = "Arduino not connected.";
+        }
+
+
+        // --------------------------Algorithm Operations ----------------------------------------
+        /// <summary>
+        /// Assigns the _currentMaterial field to the next material to be printed
+        /// </summary>
+        public void nextMaterial()
+        {
+            material nextMaterial = new material();
+            switch (_currentMaterial)
+            {
+                case material.m1:
+                    nextMaterial = material.m2;
+                    break;
+                case material.m2:
+                    nextMaterial = material.m3;
+                    break;
+                case material.m3:
+                    nextMaterial = material.m4;
+                    break;
+                case material.m4:
+                    nextMaterial = material.m1;
+                    break;
+            }
+            _currentMaterial = nextMaterial;
+        }
+
+        public bool checkImage()
+        {
+            //if image has white pixels, then
+            return true;
+        }
+
+        /// <summary>
+        /// Sends the strings contained in the commands queue to the printer
+        /// </summary>
+        public void processCommands()
+        {
+            if (serialPort1.IsOpen)
+            {
+                while (commands.Count > 0)
+                {
+                    string command = commands.Dequeue();
+                    while (!sendMessage(command)) ;
+                }
+            }
+            else serialBox.AppendText("<<ERROR>> " + "No Printer Detected" + System.Environment.NewLine);
+        }
+
+        // ---------------------------Printer Operations------------------------------------------
+        private void PRINT()
+        {
+
+        }
+
+        /// <summary>
+        /// Performs the sequence of movements required to change from the _currentMaterial to "mat"
+        /// </summary>
+        /// <param name="mat">The material that will be available once the operation is finished</param>
+        private void changeToMaterial(material mat)
+        {
+            putAwayMaterial();
+            queueMaterial(mat);
+            takeOutMaterial();
+            _currentMaterial = mat;
+        }
+
+        /// <summary>
+        /// Puts away the _currentMaterial
+        /// </summary>
+        private void putAwayMaterial()
+        {
+            //Insert G-code to put away material
+        }
+
+        /// <summary>
+        /// Changes the position of the material tower to the "mat" position
+        /// </summary>
+        /// <param name="mat">The desired material</param>
+        private void queueMaterial(material mat)
+        {
+            //Insert G-code to switch to next material
+        }
+
+        /// <summary>
+        /// Takes out _currentMaterial
+        /// </summary>
+        private void takeOutMaterial()
+        {
+            //Insert G-code to take out next material
+        }
+
+        /// <summary>
+        /// Performs a shear operation to release the part from the print window
+        /// </summary>
+        private void shear()
+        {
+            //Insert G-code to shear layer
+        }
+
+        /// <summary>
+        /// Performs a cleaning operation on the part to prepare it for material change
+        /// </summary>
+        private void clean()
+        {
+            //Insert G-code to clean material
+        }
+
+        /// <summary>
+        /// Sends the specified axes to the home position
+        /// </summary>
+        /// <param name="axes">optional: specify the axi(e)s to home. Passing no arguments will home all axes.</param>
+        private void home(params char[] axes)
+        {
+            String message = "G28 ";
+            foreach (char axis in axes)
+            {
+                string ax = axis.ToString();
+                if (ax.ToUpper().Equals("X") || ax.ToUpper().Equals("Y") || ax.ToUpper().Equals("Z"))
+                {
+                    message += ax.ToUpper() + " ";
+                }
+            }
+            commands.Enqueue(message);
+        }
+
+
+
+
+
+
+        //-------------------------------GUI Methods ----------------------------------------
+        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            while (serialPort1.BytesToRead > 0)
+            {
+                string returnMessage = serialPort1.ReadTo("\n");
+                serialBox.AppendText(">>RX<< " + returnMessage + System.Environment.NewLine);
+                if (returnMessage == "ok")
+                {
+                    _readyToReceive = true;
+                }
+            }
+        }
+        private void PreviewBar_Scroll(object sender, ScrollEventArgs e)
+        {
+            layerText.Text = (PreviewBar.Value + 1).ToString();
+            foreach (material mat in _activeMaterials)
+            {
+                if (_finalLayerForMaterial[(int)mat] > 0) updatePreviewImage(mat, PreviewBar.Value);
+            }
+        }
+        private void updatePreviewImage(material mat, int fileNumber)
+        {
+            PictureBox pic = new PictureBox();
+            switch (mat)
+            {
+                case material.m1:
+                    pic = previewPic1;
+                    break;
+                case material.m2:
+                    pic = previewPic2;
+                    break;
+                case material.m3:
+                    pic = previewPic3;
+                    break;
+                case material.m4:
+                    pic = previewPic4;
+                    break;
+            }
+            pic.Image = Image.FromFile(_fileNames[(int)mat][fileNumber]);
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            _layerHeight = (double)numericUpDown1.Value;
+        }
+
+        private void numericUpDown1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void showPreviewButton_Click(object sender, EventArgs e)
+        {
+            PictureBox image = new PictureBox();
+            switch (previewTabs.SelectedIndex)
+            {
+                case 0:
+                    image = previewPic1;
+                    break;
+                case 1:
+                    image = previewPic2;
+                    break;
+                case 2:
+                    image = previewPic3;
+                    break;
+                case 3:
+                    image = previewPic4;
+                    break;
+            }
+            n.changePicture(image);
+        }
+
+        private void showBlankButton_Click(object sender, EventArgs e)
+        {
+            n.clearPicture();
+        }
+        //Material checkboxes that update the image directories and display the image lists
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            try { populateMaterialFields(material.m1, tabPage1, mat1list, checkBox1, previewPic1, tabpreview1); }
+            catch { }
+        }
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            try { populateMaterialFields(material.m2, tabPage2, mat2list, checkBox2, previewPic2, tabpreview2); }
+            catch { }
+
+        }
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            try { populateMaterialFields(material.m3, tabPage3, mat3list, checkBox3, previewPic3, tabpreview3); }
+            catch { }
+        }
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            try { populateMaterialFields(material.m4, tabPage4, mat4list, checkBox4, previewPic4, tabpreview4); }
+            catch { }
+        }
+
+        //This method encapsulates the actions taken when a material checkbox is toggled, which includes
+        //updating directory, image count, and file name fields
+        private void populateMaterialFields(material mat, TabPage filesTab, ListBox list, CheckBox box, PictureBox previewPic, TabPage previewTab)
+        {
+            if (box.Checked)
+            {
+                FolderBrowserDialog d = new FolderBrowserDialog();
+                d.Description = "Select Material " + ((int)mat + 1).ToString();
+                if (d.ShowDialog() == DialogResult.OK)
+                {
+                    _materialDirectories[(int)mat] = d.SelectedPath;
+                    _layersRemainingForMaterial[(int)mat] = Directory.GetFiles(d.SelectedPath).Length;
+                    List<string> temp = new List<string>();
+                    temp.AddRange(Directory.GetFiles(d.SelectedPath));
+                    _fileNames.RemoveAt((int)mat);
+                    _fileNames.Insert((int)mat, temp);
+                }
+                list.Items.Clear();
+                foreach (string item in Directory.GetFiles(d.SelectedPath).Select(Path.GetFileName))
+                {
+                    list.Items.Add(item);
+                }
+                filesTab.Controls.Add(list);
+                list.Size = filesTab.Size;
+                filesTab.Text = "Material " + ((int)mat + 1).ToString();
+                previewTab.Text = filesTab.Text;
+                tabControl1.SelectedTab = filesTab;
+                string finalFile = _fileNames[(int)mat].Last();
+                finalFile = finalFile.Substring(finalFile.Length - 8, 4);
+                _finalLayerForMaterial[(int)mat] = Convert.ToInt32(finalFile);
+                updatePreviewImage(mat, PreviewBar.Value);
+
+                _activeMaterials.Add(mat);
+            }
+            else
+            {
+                filesTab.Controls.Clear();
+                filesTab.Text = "---";
+                previewTab.Text = "---";
+                _materialDirectories[(int)mat] = null;
+                _layersRemainingForMaterial[(int)mat] = 0;
+                _fileNames[(int)mat] = new List<string>();
+                _finalLayerForMaterial[(int)mat] = 0;
+                previewPic.Image = null;
+                _activeMaterials.Remove(mat);
+            }
+            _numberOfLayers = findTotalLayers();
+        }
+
+
+        //Handles the selection of the COM port.
+        private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            serialBox.Clear();
+            serialPort1.Close();
+            comPort = comboBox1.SelectedItem.ToString();
+            serialPort1 = new SerialPort(comPort, baud);
+            serialPort1.DataReceived += new SerialDataReceivedEventHandler(serialPort1_DataReceived);
+            statusText.Text = comPort + " selected";
+            serialPort1.Open();
+            serialPort1.DtrEnable = true;
+            _readyToReceive = true;
+
+        }
+        private void comboBox1_DropDown(object sender, EventArgs e)
+        {
+            string[] ports = SerialPort.GetPortNames();
+            comboBox1.DataSource = ports;
+        }
+
+        private int findTotalLayers()
+        {
+            int max = 0;
+            foreach (int layers in _finalLayerForMaterial)
+            {
+                if (layers > max) max = layers;
+            }
+            PreviewBar.Maximum = max + 8;
+            return max;
+        }
+
+        //Handles cases where the message box content is sent when the send button is pressed
+        private void sendButton_Click(object sender, EventArgs e)
+        {
+            sendMessageInTextBox();
+        }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                serialBox.Clear();
+                serialPort1.Close();
+                comPort = comboBox1.SelectedItem.ToString();
+                serialPort1 = new SerialPort(comPort, baud);
+                serialPort1.DataReceived += new SerialDataReceivedEventHandler(serialPort1_DataReceived);
+                statusText.Text = comPort + " Reset";
+                serialPort1.Open();
+                serialPort1.DtrEnable = true;
+                _readyToReceive = true;
+            }
+
+        }
+
+        private void homeXButton_Click(object sender, EventArgs e)
+        {
+            home(x);
+            Thread t = new Thread(() => processCommands());
+            t.Start();
+            t.Join();
+
+        }
+        private void homeYButton_Click(object sender, EventArgs e)
+        {
+            home(y);
+            Thread t = new Thread(() => processCommands());
+            t.Start();
+            t.Join();
+
+        }
+        private void homeZButton_Click(object sender, EventArgs e)
+        {
+            home(z);
+            Thread t = new Thread(() => processCommands());
+            t.Start();
+            t.Join();
+
+        }
+
+        //handles the cases where the message box content is sent via the return key
+        private void messageBox_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.Enter && messageBox.Text != string.Empty)
+            {
+                sendMessageInTextBox();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                messageBox.Text = lastMessageSent;
+            }
+
+
+        }
+        private void sendMessageInTextBox()
+        {
+            String message = messageBox.Text;
+            messageBox.Clear();
+            serialBox.AppendText("<<TX>> " + message + System.Environment.NewLine);
+            if (serialPort1.IsOpen)
+            {
+                sendMessage(message);
+            }
+            else serialBox.AppendText("<<ERROR>> " + "No Printer Detected" + System.Environment.NewLine);
+            statusText.Text = "Manual command sent to Arduino.";
+            lastMessageSent = message;
+        }
+        private bool sendMessage(string msg)
+        {
+            bool success = false;
+            if (_readyToReceive == true)
+            {
+                _readyToReceive = false;
+                serialPort1.WriteLine(msg);
+                success = true;
+            }
+            return success;
+        }
+
+
+
+    }
+
+}
+
