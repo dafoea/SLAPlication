@@ -13,14 +13,7 @@ using System.Threading;
 
 namespace PrinterTestForms
 {
-    public static class TupleListExtensions
-    {
-        public static void Add<T1, T2>(this IList<Tuple<T1, T2>> list,
-                T1 item1, T2 item2)
-        {
-            list.Add(Tuple.Create(item1, item2));
-        }
-    }
+
 
     public partial class Form1 : Form
     {
@@ -34,45 +27,46 @@ namespace PrinterTestForms
         const char x = 'X';
         const char y = 'Y';
         const char z = 'Z';
-
+        public enum axis
+        {
+            x='X',
+            y='Y',
+            z='Z'
+        }
         private double _layerHeight = .1; //Expressed in millimeters
         private int _numberOfLayers = 0;
         private double _totalHeight = 0;
         private int _currentImage = 0;
         private bool? absoluteMode = null;
-        private Tuple<char, double> X_putAwayPosition = new Tuple<char, double>(x, 322);
-        private Tuple<char, double> X_takeOutPosition = new Tuple<char, double>(x, 42);
-        private Tuple<char, double> X_toClipPosition = new Tuple<char, double>(x, 318);
-        private Tuple<char, double> X_cleaningPosition = new Tuple<char, double>(x, 298);
-        List<Tuple<char, double>> Y_towerPositionsHookPush = new List<Tuple<char, double>>() {
-            { y, 357 },
-            { y, 505 },
-            { y, 636 },
-            { y, 758 }
+        private Tuple<axis, double> X_putAwayPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_putAwayPosition);
+        private Tuple<axis, double> X_takeOutPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_takeOutPosition);
+        private Tuple<axis, double> X_toClipPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_takeOutPosition);
+        private Tuple<axis, double> X_cleaningPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_takeOutPosition);
+        List<Tuple<axis, double>> Y_towerPositionsHookPush = new List<Tuple<axis, double>>() {
+            { axis.y, 357 },
+            { axis.y, 505 },
+            { axis.y, 636 },
+            { axis.y, 758 }
         };
-        List<Tuple<char, double>> Y_towerPositionsHookDisengaged = new List<Tuple<char, double>>() {
-            { y, 332 },
-            { y, 480 },
-            { y, 611 },
-            { y, 733 }
+        List<Tuple<axis, double>> Y_towerPositionsHookDisengaged = new List<Tuple<axis, double>>() {
+            { axis.y, 332 },
+            { axis.y, 480 },
+            { axis.y, 611 },
+            { axis.y, 733 }
         };
-        List<Tuple<char, double>> Y_towerPositionsHookPull = new List<Tuple<char, double>>() {
-            { y, 362 },
-            { y, 507 },
-            { y, 638 },
-            { y, 760 }
+        List<Tuple<axis, double>> Y_towerPositionsHookPull = new List<Tuple<axis, double>>() {
+            { axis.y, 362 },
+            { axis.y, 507 },
+            { axis.y, 638 },
+            { axis.y, 760 }
         };
-        private Tuple<char, double> Z_heightToRaiseBed = new Tuple<char, double>(z, 100);
+        private Tuple<axis, double> Z_heightToRaiseBed = new Tuple<axis, double>(axis.z, 100);
         private material _currentMaterial = material.m1;
         List<material> _activeMaterials = new List<material>();
         List<string> _materialDirectories = new List<string>() { null, null, null, null, };
         List<int> _layersRemainingForMaterial = new List<int>() { 0, 0, 0, 0, };
         List<int> _finalLayerForMaterial = new List<int>() { 0, 0, 0, 0 };
         List<bool> _thisLayerHasMaterial = new List<bool>() { false, false, false, false };
-        /// <summary>
-        /// Tuple(layer,material)
-        /// </summary>
-        Queue<Tuple<int, int>> _printSequence = new Queue<Tuple<int, int>>();
         List<Queue<string>> _fileNames = new List<Queue<string>>() { new Queue<string>(), new Queue<string>(), new Queue<string>(), new Queue<string>() };
         String comPort = string.Empty;
         int baud = 250000;
@@ -261,7 +255,7 @@ namespace PrinterTestForms
             move(X_toClipPosition);
             move(Y_towerPositionsHookPull[(int)_currentMaterial]);
             move(X_takeOutPosition);
-            // move(z, )
+            //move(z, )
         }
 
         /// <summary>
@@ -279,9 +273,9 @@ namespace PrinterTestForms
         {
             //Insert G-code to clean material
         }
-        private void move(Tuple<char,double> movement)
+        private void move(Tuple<axis,double> movement)
         {
-            commands.Enqueue("G1 " + movement.Item1.ToString().ToUpper() + movement.Item2.ToString());
+            commands.Enqueue("G1 " + movement.Item1.ToString() + movement.Item2.ToString());
         }
 
         /// <summary>
@@ -590,6 +584,14 @@ namespace PrinterTestForms
         }
 
 
+    }
+    public static class TupleListExtensions
+    {
+        public static void Add<T1, T2>(this IList<Tuple<T1, T2>> list,
+                T1 item1, T2 item2)
+        {
+            list.Add(Tuple.Create(item1, item2));
+        }
     }
 
 }

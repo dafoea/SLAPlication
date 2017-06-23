@@ -22,5 +22,53 @@ namespace PrinterTestForms.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("322")]
+        public double X_putAwayPosition {
+            get {
+                return ((double)(this["X_putAwayPosition"]));
+            }
+            set {
+                this["X_putAwayPosition"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("42")]
+        public double X_takeOutPosition {
+            get {
+                return ((double)(this["X_takeOutPosition"]));
+            }
+            set {
+                this["X_takeOutPosition"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("318")]
+        public double X_toClipPosition {
+            get {
+                return ((double)(this["X_toClipPosition"]));
+            }
+            set {
+                this["X_toClipPosition"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("298")]
+        public double X_cleaningPosition {
+            get {
+                return ((double)(this["X_cleaningPosition"]));
+            }
+            set {
+                this["X_cleaningPosition"] = value;
+            }
+        }
     }
 }

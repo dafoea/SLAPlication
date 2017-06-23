@@ -1,7 +1,18 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PrinterTestForms.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="X_putAwayPosition" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">322</Value>
+    </Setting>
+    <Setting Name="X_takeOutPosition" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">42</Value>
+    </Setting>
+    <Setting Name="X_toClipPosition" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">318</Value>
+    </Setting>
+    <Setting Name="X_cleaningPosition" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">298</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

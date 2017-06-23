@@ -11,4 +11,4 @@ C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTes
 C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Release\PrinterTestForms.application
 C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Release\PrinterTestForms.exe
 C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Release\PrinterTestForms.pdb
-C:\Users\a_daf\Documents\Visual Studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Release\PrinterTestForms.TupleListExtensions.resources
+C:\Users\a_daf\Documents\Visual Studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Release\PrinterTestForms.Form1.resources
