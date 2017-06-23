@@ -24,43 +24,40 @@ namespace PrinterTestForms
             m1 = 0,
             m2, m3, m4
         };
-        const char x = 'X';
-        const char y = 'Y';
-        const char z = 'Z';
         public enum axis
         {
             x='X',
             y='Y',
             z='Z'
         }
-        private double _layerHeight = .1; //Expressed in millimeters
+        private double _layerHeight = Properties.Settings.Default.Z_layerHeight; //Expressed in millimeters
         private int _numberOfLayers = 0;
         private double _totalHeight = 0;
         private int _currentImage = 0;
         private bool? absoluteMode = null;
         private Tuple<axis, double> X_putAwayPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_putAwayPosition);
         private Tuple<axis, double> X_takeOutPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_takeOutPosition);
-        private Tuple<axis, double> X_toClipPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_takeOutPosition);
-        private Tuple<axis, double> X_cleaningPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_takeOutPosition);
+        private Tuple<axis, double> X_toClipPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_toClipPosition);
+        private Tuple<axis, double> X_cleaningPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_cleaningPosition);
         List<Tuple<axis, double>> Y_towerPositionsHookPush = new List<Tuple<axis, double>>() {
-            { axis.y, 357 },
-            { axis.y, 505 },
-            { axis.y, 636 },
-            { axis.y, 758 }
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookPush1 },
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookPush2 },
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookPush3 },
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookPush4 }
         };
         List<Tuple<axis, double>> Y_towerPositionsHookDisengaged = new List<Tuple<axis, double>>() {
-            { axis.y, 332 },
-            { axis.y, 480 },
-            { axis.y, 611 },
-            { axis.y, 733 }
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookDisengaged1 },
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookDisengaged2 },
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookDisengaged3 },
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookDisengaged4 }
         };
         List<Tuple<axis, double>> Y_towerPositionsHookPull = new List<Tuple<axis, double>>() {
-            { axis.y, 362 },
-            { axis.y, 507 },
-            { axis.y, 638 },
-            { axis.y, 760 }
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull1 },
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull2 },
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull3 },
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull4 }
         };
-        private Tuple<axis, double> Z_heightToRaiseBed = new Tuple<axis, double>(axis.z, 100);
+        private Tuple<axis, double> Z_heightToRaiseBed = new Tuple<axis, double>(axis.z, Properties.Settings.Default.Z_heightToRaiseBed);
         private material _currentMaterial = material.m1;
         List<material> _activeMaterials = new List<material>();
         List<string> _materialDirectories = new List<string>() { null, null, null, null, };
@@ -69,7 +66,7 @@ namespace PrinterTestForms
         List<bool> _thisLayerHasMaterial = new List<bool>() { false, false, false, false };
         List<Queue<string>> _fileNames = new List<Queue<string>>() { new Queue<string>(), new Queue<string>(), new Queue<string>(), new Queue<string>() };
         String comPort = string.Empty;
-        int baud = 250000;
+        int baud = Properties.Settings.Default.printerBaudRate;
         Queue<String> commands = new Queue<string>();
         String lastMessageSent = string.Empty;
 
@@ -174,6 +171,7 @@ namespace PrinterTestForms
                 while (commands.Count > 0)
                 {
                     string command = commands.Dequeue();
+                    serialBox.AppendText("<<TX>> " + command + System.Environment.NewLine);
                     while (!sendMessage(command)) ;
                 }
             }
@@ -275,7 +273,7 @@ namespace PrinterTestForms
         }
         private void move(Tuple<axis,double> movement)
         {
-            commands.Enqueue("G1 " + movement.Item1.ToString() + movement.Item2.ToString());
+            commands.Enqueue("G1 " + movement.Item1.ToString().ToUpper() + movement.Item2.ToString());
         }
 
         /// <summary>
@@ -529,7 +527,8 @@ namespace PrinterTestForms
         }
         private void homeXYButton_Click(object sender, EventArgs e)
         {
-            home(x, y);
+            //home(x, y);
+            changeToMaterial(material.m2);
             Thread t = new Thread(() => processCommands());
             t.Start();
             t.Join();

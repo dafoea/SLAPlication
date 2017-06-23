@@ -42,24 +42,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrinterTestForms.exe" size="65000">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrinterTestForms.exe" size="68072">
       <assemblyIdentity name="PrinterTestForms" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>LSJUqW2EF1MuaO5m6Wnh7vUnsNJXXuQnB+jSuTCuR60=</dsig:DigestValue>
+        <dsig:DigestValue>mH4TWMBWGcS8vhaES/mM26TeGehzRovMCfE3VAsnKb0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="PrinterTestForms.exe.config" size="1338">
+  <file name="PrinterTestForms.exe.config" size="3136">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>bDsSRKz2Pkvxd0umpGc5+NPwYludAbA1m525Ri3p1eU=</dsig:DigestValue>
+      <dsig:DigestValue>Jud5b702qjldDEu/Dva6Ndnf7EZZS/noc2AlLtmJHH4=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

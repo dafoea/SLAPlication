@@ -70,5 +70,185 @@ namespace PrinterTestForms.Properties {
                 this["X_cleaningPosition"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("357")]
+        public double Y_towerPositionsHookPush1 {
+            get {
+                return ((double)(this["Y_towerPositionsHookPush1"]));
+            }
+            set {
+                this["Y_towerPositionsHookPush1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("505")]
+        public double Y_towerPositionsHookPush2 {
+            get {
+                return ((double)(this["Y_towerPositionsHookPush2"]));
+            }
+            set {
+                this["Y_towerPositionsHookPush2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("636")]
+        public double Y_towerPositionsHookPush3 {
+            get {
+                return ((double)(this["Y_towerPositionsHookPush3"]));
+            }
+            set {
+                this["Y_towerPositionsHookPush3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("758")]
+        public double Y_towerPositionsHookPush4 {
+            get {
+                return ((double)(this["Y_towerPositionsHookPush4"]));
+            }
+            set {
+                this["Y_towerPositionsHookPush4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("332")]
+        public double Y_towerPositionsHookDisengaged1 {
+            get {
+                return ((double)(this["Y_towerPositionsHookDisengaged1"]));
+            }
+            set {
+                this["Y_towerPositionsHookDisengaged1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("480")]
+        public double Y_towerPositionsHookDisengaged2 {
+            get {
+                return ((double)(this["Y_towerPositionsHookDisengaged2"]));
+            }
+            set {
+                this["Y_towerPositionsHookDisengaged2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("611")]
+        public double Y_towerPositionsHookDisengaged3 {
+            get {
+                return ((double)(this["Y_towerPositionsHookDisengaged3"]));
+            }
+            set {
+                this["Y_towerPositionsHookDisengaged3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("733")]
+        public double Y_towerPositionsHookDisengaged4 {
+            get {
+                return ((double)(this["Y_towerPositionsHookDisengaged4"]));
+            }
+            set {
+                this["Y_towerPositionsHookDisengaged4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("362")]
+        public double Y_towerPositionsHookPull1 {
+            get {
+                return ((double)(this["Y_towerPositionsHookPull1"]));
+            }
+            set {
+                this["Y_towerPositionsHookPull1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("507")]
+        public double Y_towerPositionsHookPull2 {
+            get {
+                return ((double)(this["Y_towerPositionsHookPull2"]));
+            }
+            set {
+                this["Y_towerPositionsHookPull2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("638")]
+        public double Y_towerPositionsHookPull3 {
+            get {
+                return ((double)(this["Y_towerPositionsHookPull3"]));
+            }
+            set {
+                this["Y_towerPositionsHookPull3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("760")]
+        public double Y_towerPositionsHookPull4 {
+            get {
+                return ((double)(this["Y_towerPositionsHookPull4"]));
+            }
+            set {
+                this["Y_towerPositionsHookPull4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public double Z_heightToRaiseBed {
+            get {
+                return ((double)(this["Z_heightToRaiseBed"]));
+            }
+            set {
+                this["Z_heightToRaiseBed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("250000")]
+        public int printerBaudRate {
+            get {
+                return ((int)(this["printerBaudRate"]));
+            }
+            set {
+                this["printerBaudRate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.1")]
+        public double Z_layerHeight {
+            get {
+                return ((double)(this["Z_layerHeight"]));
+            }
+            set {
+                this["Z_layerHeight"] = value;
+            }
+        }
     }
 }
