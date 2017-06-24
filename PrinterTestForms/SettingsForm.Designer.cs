@@ -165,7 +165,7 @@
             0,
             0,
             65536});
-            this.numericUpDown3.Location = new System.Drawing.Point(343, 577);
+            this.numericUpDown3.Location = new System.Drawing.Point(343, 483);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -184,7 +184,7 @@
             0,
             0,
             65536});
-            this.numericUpDown4.Location = new System.Drawing.Point(343, 545);
+            this.numericUpDown4.Location = new System.Drawing.Point(343, 515);
             this.numericUpDown4.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -203,7 +203,7 @@
             0,
             0,
             65536});
-            this.numericUpDown5.Location = new System.Drawing.Point(343, 513);
+            this.numericUpDown5.Location = new System.Drawing.Point(343, 547);
             this.numericUpDown5.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -222,7 +222,7 @@
             0,
             0,
             65536});
-            this.numericUpDown6.Location = new System.Drawing.Point(343, 481);
+            this.numericUpDown6.Location = new System.Drawing.Point(343, 579);
             this.numericUpDown6.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -241,7 +241,7 @@
             0,
             0,
             65536});
-            this.numericUpDown7.Location = new System.Drawing.Point(343, 421);
+            this.numericUpDown7.Location = new System.Drawing.Point(343, 323);
             this.numericUpDown7.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -260,7 +260,7 @@
             0,
             0,
             65536});
-            this.numericUpDown8.Location = new System.Drawing.Point(343, 389);
+            this.numericUpDown8.Location = new System.Drawing.Point(343, 355);
             this.numericUpDown8.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -279,7 +279,7 @@
             0,
             0,
             65536});
-            this.numericUpDown9.Location = new System.Drawing.Point(343, 357);
+            this.numericUpDown9.Location = new System.Drawing.Point(343, 387);
             this.numericUpDown9.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -298,7 +298,7 @@
             0,
             0,
             65536});
-            this.numericUpDown10.Location = new System.Drawing.Point(343, 325);
+            this.numericUpDown10.Location = new System.Drawing.Point(343, 419);
             this.numericUpDown10.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -317,7 +317,7 @@
             0,
             0,
             65536});
-            this.numericUpDown11.Location = new System.Drawing.Point(343, 268);
+            this.numericUpDown11.Location = new System.Drawing.Point(343, 170);
             this.numericUpDown11.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -336,7 +336,7 @@
             0,
             0,
             65536});
-            this.numericUpDown12.Location = new System.Drawing.Point(343, 236);
+            this.numericUpDown12.Location = new System.Drawing.Point(343, 202);
             this.numericUpDown12.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -355,7 +355,7 @@
             0,
             0,
             65536});
-            this.numericUpDown13.Location = new System.Drawing.Point(343, 204);
+            this.numericUpDown13.Location = new System.Drawing.Point(343, 234);
             this.numericUpDown13.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -374,7 +374,7 @@
             0,
             0,
             65536});
-            this.numericUpDown14.Location = new System.Drawing.Point(343, 172);
+            this.numericUpDown14.Location = new System.Drawing.Point(343, 266);
             this.numericUpDown14.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -453,7 +453,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(31, 580);
+            this.label5.Location = new System.Drawing.Point(31, 486);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(220, 20);
             this.label5.TabIndex = 22;
@@ -462,7 +462,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 548);
+            this.label6.Location = new System.Drawing.Point(31, 518);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(220, 20);
             this.label6.TabIndex = 23;
@@ -471,7 +471,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(31, 516);
+            this.label7.Location = new System.Drawing.Point(31, 550);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(220, 20);
             this.label7.TabIndex = 24;
@@ -480,7 +480,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(31, 484);
+            this.label8.Location = new System.Drawing.Point(31, 582);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(220, 20);
             this.label8.TabIndex = 25;
@@ -489,7 +489,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(31, 424);
+            this.label9.Location = new System.Drawing.Point(31, 326);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(239, 20);
             this.label9.TabIndex = 26;
@@ -498,7 +498,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(31, 392);
+            this.label10.Location = new System.Drawing.Point(31, 358);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(239, 20);
             this.label10.TabIndex = 27;
@@ -507,7 +507,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(31, 360);
+            this.label11.Location = new System.Drawing.Point(31, 390);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(239, 20);
             this.label11.TabIndex = 28;
@@ -516,7 +516,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(31, 328);
+            this.label12.Location = new System.Drawing.Point(31, 422);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(239, 20);
             this.label12.TabIndex = 29;
@@ -525,7 +525,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(31, 271);
+            this.label13.Location = new System.Drawing.Point(31, 173);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(232, 20);
             this.label13.TabIndex = 30;
@@ -534,7 +534,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(31, 239);
+            this.label14.Location = new System.Drawing.Point(31, 205);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(232, 20);
             this.label14.TabIndex = 31;
@@ -543,7 +543,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(31, 207);
+            this.label15.Location = new System.Drawing.Point(31, 237);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(232, 20);
             this.label15.TabIndex = 32;
@@ -552,7 +552,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(31, 175);
+            this.label16.Location = new System.Drawing.Point(31, 269);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(232, 20);
             this.label16.TabIndex = 33;
@@ -657,7 +657,7 @@
             // 
             this.button8.AutoSize = true;
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button8.Location = new System.Drawing.Point(450, 172);
+            this.button8.Location = new System.Drawing.Point(450, 266);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(58, 27);
             this.button8.TabIndex = 43;
@@ -669,7 +669,7 @@
             // 
             this.button9.AutoSize = true;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button9.Location = new System.Drawing.Point(450, 204);
+            this.button9.Location = new System.Drawing.Point(450, 234);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(58, 27);
             this.button9.TabIndex = 44;
@@ -681,7 +681,7 @@
             // 
             this.button10.AutoSize = true;
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button10.Location = new System.Drawing.Point(450, 236);
+            this.button10.Location = new System.Drawing.Point(450, 202);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(58, 27);
             this.button10.TabIndex = 45;
@@ -693,7 +693,7 @@
             // 
             this.button11.AutoSize = true;
             this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button11.Location = new System.Drawing.Point(450, 268);
+            this.button11.Location = new System.Drawing.Point(450, 170);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(58, 27);
             this.button11.TabIndex = 46;
@@ -705,7 +705,7 @@
             // 
             this.button12.AutoSize = true;
             this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button12.Location = new System.Drawing.Point(450, 325);
+            this.button12.Location = new System.Drawing.Point(450, 419);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(58, 27);
             this.button12.TabIndex = 47;
@@ -717,7 +717,7 @@
             // 
             this.button13.AutoSize = true;
             this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button13.Location = new System.Drawing.Point(450, 357);
+            this.button13.Location = new System.Drawing.Point(450, 387);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(58, 27);
             this.button13.TabIndex = 48;
@@ -729,7 +729,7 @@
             // 
             this.button14.AutoSize = true;
             this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button14.Location = new System.Drawing.Point(450, 389);
+            this.button14.Location = new System.Drawing.Point(450, 355);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(58, 27);
             this.button14.TabIndex = 49;
@@ -741,7 +741,7 @@
             // 
             this.button15.AutoSize = true;
             this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button15.Location = new System.Drawing.Point(450, 421);
+            this.button15.Location = new System.Drawing.Point(450, 323);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(58, 27);
             this.button15.TabIndex = 50;
@@ -753,7 +753,7 @@
             // 
             this.button16.AutoSize = true;
             this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button16.Location = new System.Drawing.Point(450, 481);
+            this.button16.Location = new System.Drawing.Point(450, 579);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(58, 27);
             this.button16.TabIndex = 51;
@@ -765,7 +765,7 @@
             // 
             this.button17.AutoSize = true;
             this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button17.Location = new System.Drawing.Point(450, 513);
+            this.button17.Location = new System.Drawing.Point(450, 547);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(58, 27);
             this.button17.TabIndex = 52;
@@ -777,7 +777,7 @@
             // 
             this.button18.AutoSize = true;
             this.button18.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button18.Location = new System.Drawing.Point(450, 545);
+            this.button18.Location = new System.Drawing.Point(450, 515);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(58, 27);
             this.button18.TabIndex = 53;
@@ -789,7 +789,7 @@
             // 
             this.button19.AutoSize = true;
             this.button19.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button19.Location = new System.Drawing.Point(450, 577);
+            this.button19.Location = new System.Drawing.Point(450, 483);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(58, 27);
             this.button19.TabIndex = 54;
