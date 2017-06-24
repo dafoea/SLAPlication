@@ -47,7 +47,6 @@
             this.numericUpDown15 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown16 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -65,7 +64,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.numericUpDown17 = new System.Windows.Forms.NumericUpDown();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -108,7 +106,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(578, 205);
+            this.button1.Location = new System.Drawing.Point(578, 127);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(183, 40);
             this.button1.TabIndex = 0;
@@ -118,7 +116,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(576, 159);
+            this.button2.Location = new System.Drawing.Point(576, 81);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(186, 40);
             this.button2.TabIndex = 1;
@@ -434,15 +432,6 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "X - Put away position";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(554, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 20);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Baud Rate";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -605,14 +594,6 @@
             this.label18.Size = new System.Drawing.Size(209, 20);
             this.label18.TabIndex = 36;
             this.label18.Text = "X - Material Change Position";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(668, 48);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 26);
-            this.textBox1.TabIndex = 37;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button3
             // 
@@ -831,7 +812,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(554, 103);
+            this.label19.Location = new System.Drawing.Point(554, 25);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(99, 20);
             this.label19.TabIndex = 56;
@@ -846,7 +827,7 @@
             0,
             0,
             196608});
-            this.numericUpDown18.Location = new System.Drawing.Point(668, 101);
+            this.numericUpDown18.Location = new System.Drawing.Point(668, 23);
             this.numericUpDown18.Maximum = new decimal(new int[] {
             5,
             0,
@@ -892,7 +873,6 @@
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.numericUpDown17);
             this.Controls.Add(this.label17);
@@ -910,7 +890,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numericUpDown16);
             this.Controls.Add(this.numericUpDown15);
@@ -978,7 +957,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDown15;
         private System.Windows.Forms.NumericUpDown numericUpDown16;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -996,7 +974,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.NumericUpDown numericUpDown17;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;

@@ -143,16 +143,10 @@ namespace PrinterTestForms
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.printerBaudRate = Convert.ToInt32(textBox1.Text);
-            Properties.Settings.Default.Save();
 
-        }
 
         private void SettingsForm_Load(object sender, EventArgs e)
         {
-            textBox1.Text = Properties.Settings.Default.printerBaudRate.ToString();
             numericUpDown1.Value = (decimal)Properties.Settings.Default.X_putAwayPosition;
             numericUpDown2.Value = (decimal)Properties.Settings.Default.Z_heightToRaiseBed;
             numericUpDown3.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookPull4;
@@ -171,7 +165,6 @@ namespace PrinterTestForms
             numericUpDown16.Value = (decimal)Properties.Settings.Default.X_printingPosition;
             numericUpDown17.Value = (decimal)Properties.Settings.Default.X_materialChangePosition;
             numericUpDown18.Value = (decimal)Properties.Settings.Default.Z_layerHeight;
-
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -383,7 +376,7 @@ namespace PrinterTestForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string[] values = { Properties.Settings.Default.printerBaudRate.ToString(),
+            string[] values = {
                 Properties.Settings.Default.X_putAwayPosition.ToString(),
                 Properties.Settings.Default.Z_heightToRaiseBed.ToString(),
                 Properties.Settings.Default.Y_towerPositionsHookPull4.ToString(),
@@ -417,7 +410,6 @@ namespace PrinterTestForms
             if (file.ShowDialog() == DialogResult.OK)
             {
                 System.IO.StreamReader line = new StreamReader(file.FileName);
-                textBox1.Text = line.ReadLine();
                 numericUpDown1.Value = Convert.ToDecimal(line.ReadLine());
                 numericUpDown2.Value = Convert.ToDecimal(line.ReadLine());
                 numericUpDown3.Value = Convert.ToDecimal(line.ReadLine());
