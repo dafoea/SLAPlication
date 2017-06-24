@@ -57,6 +57,7 @@ namespace PrinterTestForms
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull3 },
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull4 }
         };
+        public int baud = Properties.Settings.Default.printerBaudRate;
         public Tuple<axis, double> Z_heightToRaiseBed = new Tuple<axis, double>(axis.z, Properties.Settings.Default.Z_heightToRaiseBed);
         private material _currentMaterial = material.m1;
         List<material> _activeMaterials = new List<material>();
@@ -66,7 +67,6 @@ namespace PrinterTestForms
         List<bool> _thisLayerHasMaterial = new List<bool>() { false, false, false, false };
         List<Queue<string>> _fileNames = new List<Queue<string>>() { new Queue<string>(), new Queue<string>(), new Queue<string>(), new Queue<string>() };
         String comPort = string.Empty;
-        public int baud = Properties.Settings.Default.printerBaudRate;
         Queue<String> commands = new Queue<string>();
         String lastMessageSent = string.Empty;
         SettingsForm set = new SettingsForm();
@@ -104,6 +104,7 @@ namespace PrinterTestForms
             previewPic4.Bounds = tabpreview4.Bounds;
             previewPic4.BackColor = Color.Black;
             PreviewBar.Maximum = 0;
+            baudBox.Text = baud.ToString();
 
             //Populates the combobox with a list of available COM ports and sets the comPort field to the first value.
             string[] ports = SerialPort.GetPortNames();
@@ -586,6 +587,40 @@ namespace PrinterTestForms
                 set.setSerialPort(serialPort1);
                 set.Show();
             }
+        }
+        public void reinitializeSettings()
+        {
+        X_putAwayPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_putAwayPosition);
+        X_takeOutPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_printingPosition);
+        X_toClipPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_toClipPosition);
+        X_cleaningPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_materialChangePosition);
+        Y_towerPositionsHookPush = new List<Tuple<axis, double>>() {
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookPush1 },
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookPush2 },
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookPush3 },
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookPush4 }
+        };
+        Y_towerPositionsHookDisengaged = new List<Tuple<axis, double>>() {
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookDisengaged1 },
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookDisengaged2 },
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookDisengaged3 },
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookDisengaged4 }
+        };
+        Y_towerPositionsHookPull = new List<Tuple<axis, double>>() {
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull1 },
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull2 },
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull3 },
+            { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull4 }
+        };
+        Z_heightToRaiseBed = new Tuple<axis, double>(axis.z, Properties.Settings.Default.Z_heightToRaiseBed);
+
+    }
+
+        private void baudBox_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.printerBaudRate = Convert.ToInt32(baudBox.Text);
+            Properties.Settings.Default.Save();
+            baud= Convert.ToInt32(baudBox.Text);
         }
     }
     public static class TupleListExtensions

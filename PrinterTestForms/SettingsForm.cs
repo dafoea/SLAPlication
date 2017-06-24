@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
-
+using System.IO;
 
 namespace PrinterTestForms
 {
@@ -378,6 +378,64 @@ namespace PrinterTestForms
                 port.WriteLine("G91");
                 Task.Delay(100);
                 port.WriteLine("G1 Z" + numericUpDown2.Value.ToString());
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string[] values = { Properties.Settings.Default.printerBaudRate.ToString(),
+                Properties.Settings.Default.X_putAwayPosition.ToString(),
+                Properties.Settings.Default.Z_heightToRaiseBed.ToString(),
+                Properties.Settings.Default.Y_towerPositionsHookPull4.ToString(),
+                Properties.Settings.Default.Y_towerPositionsHookPull3.ToString(),
+                Properties.Settings.Default.Y_towerPositionsHookPull2.ToString(),
+                Properties.Settings.Default.Y_towerPositionsHookPull1.ToString(),
+                Properties.Settings.Default.Y_towerPositionsHookDisengaged4.ToString(),
+                Properties.Settings.Default.Y_towerPositionsHookDisengaged3.ToString(),
+                Properties.Settings.Default.Y_towerPositionsHookDisengaged2.ToString(),
+                Properties.Settings.Default.Y_towerPositionsHookDisengaged1.ToString(),
+                Properties.Settings.Default.Y_towerPositionsHookPush4.ToString(),
+                Properties.Settings.Default.Y_towerPositionsHookPush3.ToString(),
+                Properties.Settings.Default.Y_towerPositionsHookPush2.ToString(),
+                Properties.Settings.Default.Y_towerPositionsHookPush1.ToString(),
+                Properties.Settings.Default.X_toClipPosition.ToString(),
+                Properties.Settings.Default.X_printingPosition.ToString(),
+                Properties.Settings.Default.X_materialChangePosition.ToString(),
+                Properties.Settings.Default.Z_layerHeight.ToString()
+        };
+            SaveFileDialog file = new SaveFileDialog();
+            file.CheckFileExists = false;
+            if (file.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.File.WriteAllLines(file.FileName, values);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog file = new OpenFileDialog();
+            if (file.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.StreamReader line = new StreamReader(file.FileName);
+                textBox1.Text = line.ReadLine();
+                numericUpDown1.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown2.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown3.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown4.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown5.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown6.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown7.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown8.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown9.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown10.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown11.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown12.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown13.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown14.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown15.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown16.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown17.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown18.Value = Convert.ToDecimal(line.ReadLine());
             }
         }
     }

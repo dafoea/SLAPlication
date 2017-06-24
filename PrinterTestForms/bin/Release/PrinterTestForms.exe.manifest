@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrinterTestForms.exe" size="87528">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrinterTestForms.exe" size="89576">
       <assemblyIdentity name="PrinterTestForms" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>5UdyAsHTuFg7uWc0EpJhjHR+TX17f3Azbu8QvE9FBdY=</dsig:DigestValue>
+        <dsig:DigestValue>FrppUyr8NbJQXAwT4wYCcLcKJPwzwFegSTb1v5fUowI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

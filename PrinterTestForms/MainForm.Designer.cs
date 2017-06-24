@@ -70,6 +70,8 @@
             this.resetButton = new System.Windows.Forms.Button();
             this.homeXYButton = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
+            this.baudBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -496,11 +498,30 @@
             this.settingsButton.UseVisualStyleBackColor = true;
             this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
+            // baudBox
+            // 
+            this.baudBox.Location = new System.Drawing.Point(517, 7);
+            this.baudBox.Name = "baudBox";
+            this.baudBox.Size = new System.Drawing.Size(100, 26);
+            this.baudBox.TabIndex = 43;
+            this.baudBox.TextChanged += new System.EventHandler(this.baudBox_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(421, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 20);
+            this.label1.TabIndex = 44;
+            this.label1.Text = "Baud Rate: ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1258, 794);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.baudBox);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.homeXYButton);
             this.Controls.Add(this.resetButton);
@@ -589,6 +610,8 @@
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Button homeXYButton;
         private System.Windows.Forms.Button settingsButton;
+        private System.Windows.Forms.TextBox baudBox;
+        private System.Windows.Forms.Label label1;
     }
 }
 
