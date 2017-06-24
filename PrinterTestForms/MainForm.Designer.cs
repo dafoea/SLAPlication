@@ -60,10 +60,8 @@
             this.PreviewBar = new System.Windows.Forms.VScrollBar();
             this.staticLayerText = new System.Windows.Forms.Label();
             this.layerText = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.showPreviewButton = new System.Windows.Forms.Button();
             this.showBlankButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.homeXButton = new System.Windows.Forms.Button();
@@ -71,6 +69,7 @@
             this.homeYButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
             this.homeXYButton = new System.Windows.Forms.Button();
+            this.settingsButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -85,7 +84,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.previewPic3)).BeginInit();
             this.tabpreview4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.previewPic4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -405,37 +403,6 @@
             this.layerText.Size = new System.Drawing.Size(0, 20);
             this.layerText.TabIndex = 31;
             // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.numericUpDown1.DecimalPlaces = 3;
-            this.numericUpDown1.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.numericUpDown1.Location = new System.Drawing.Point(564, 8);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 26);
-            this.numericUpDown1.TabIndex = 32;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
-            this.numericUpDown1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown1_KeyDown);
-            // 
             // showPreviewButton
             // 
             this.showPreviewButton.Location = new System.Drawing.Point(251, 698);
@@ -455,15 +422,6 @@
             this.showBlankButton.Text = "Project Blank";
             this.showBlankButton.UseVisualStyleBackColor = true;
             this.showBlankButton.Click += new System.EventHandler(this.showBlankButton_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(455, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 20);
-            this.label1.TabIndex = 35;
-            this.label1.Text = "Layer Height:";
             // 
             // label2
             // 
@@ -528,21 +486,30 @@
             this.homeXYButton.UseVisualStyleBackColor = true;
             this.homeXYButton.Click += new System.EventHandler(this.homeXYButton_Click);
             // 
+            // settingsButton
+            // 
+            this.settingsButton.Location = new System.Drawing.Point(16, 57);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(102, 32);
+            this.settingsButton.TabIndex = 42;
+            this.settingsButton.Text = "Settings";
+            this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1258, 794);
+            this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.homeXYButton);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.homeYButton);
             this.Controls.Add(this.homeZButton);
             this.Controls.Add(this.homeXButton);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.showBlankButton);
             this.Controls.Add(this.showPreviewButton);
-            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.layerText);
             this.Controls.Add(this.staticLayerText);
             this.Controls.Add(this.PreviewBar);
@@ -575,7 +542,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.previewPic3)).EndInit();
             this.tabpreview4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.previewPic4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -613,10 +579,8 @@
         private System.Windows.Forms.PictureBox previewPic4;
         private System.Windows.Forms.Label staticLayerText;
         private System.Windows.Forms.Label layerText;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Button showPreviewButton;
         private System.Windows.Forms.Button showBlankButton;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.Button homeXButton;
@@ -624,6 +588,7 @@
         private System.Windows.Forms.Button homeYButton;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Button homeXYButton;
+        private System.Windows.Forms.Button settingsButton;
     }
 }
 

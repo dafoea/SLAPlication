@@ -38,12 +38,12 @@ namespace PrinterTestForms.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("42")]
-        public double X_takeOutPosition {
+        public double X_printingPosition {
             get {
-                return ((double)(this["X_takeOutPosition"]));
+                return ((double)(this["X_printingPosition"]));
             }
             set {
-                this["X_takeOutPosition"] = value;
+                this["X_printingPosition"] = value;
             }
         }
         
@@ -62,12 +62,12 @@ namespace PrinterTestForms.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("298")]
-        public double X_cleaningPosition {
+        public double X_materialChangePosition {
             get {
-                return ((double)(this["X_cleaningPosition"]));
+                return ((double)(this["X_materialChangePosition"]));
             }
             set {
-                this["X_cleaningPosition"] = value;
+                this["X_materialChangePosition"] = value;
             }
         }
         

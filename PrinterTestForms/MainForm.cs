@@ -26,38 +26,38 @@ namespace PrinterTestForms
         };
         public enum axis
         {
-            x='X',
-            y='Y',
-            z='Z'
+            x = 'X',
+            y = 'Y',
+            z = 'Z'
         }
         private double _layerHeight = Properties.Settings.Default.Z_layerHeight; //Expressed in millimeters
         private int _numberOfLayers = 0;
         private double _totalHeight = 0;
         private int _currentImage = 0;
         private bool? absoluteMode = null;
-        private Tuple<axis, double> X_putAwayPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_putAwayPosition);
-        private Tuple<axis, double> X_takeOutPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_takeOutPosition);
-        private Tuple<axis, double> X_toClipPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_toClipPosition);
-        private Tuple<axis, double> X_cleaningPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_cleaningPosition);
-        List<Tuple<axis, double>> Y_towerPositionsHookPush = new List<Tuple<axis, double>>() {
+        public Tuple<axis, double> X_putAwayPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_putAwayPosition);
+        public Tuple<axis, double> X_takeOutPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_printingPosition);
+        public Tuple<axis, double> X_toClipPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_toClipPosition);
+        public Tuple<axis, double> X_cleaningPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_materialChangePosition);
+        public List<Tuple<axis, double>> Y_towerPositionsHookPush = new List<Tuple<axis, double>>() {
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPush1 },
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPush2 },
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPush3 },
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPush4 }
         };
-        List<Tuple<axis, double>> Y_towerPositionsHookDisengaged = new List<Tuple<axis, double>>() {
+        public List<Tuple<axis, double>> Y_towerPositionsHookDisengaged = new List<Tuple<axis, double>>() {
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookDisengaged1 },
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookDisengaged2 },
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookDisengaged3 },
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookDisengaged4 }
         };
-        List<Tuple<axis, double>> Y_towerPositionsHookPull = new List<Tuple<axis, double>>() {
+        public List<Tuple<axis, double>> Y_towerPositionsHookPull = new List<Tuple<axis, double>>() {
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull1 },
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull2 },
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull3 },
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull4 }
         };
-        private Tuple<axis, double> Z_heightToRaiseBed = new Tuple<axis, double>(axis.z, Properties.Settings.Default.Z_heightToRaiseBed);
+        public Tuple<axis, double> Z_heightToRaiseBed = new Tuple<axis, double>(axis.z, Properties.Settings.Default.Z_heightToRaiseBed);
         private material _currentMaterial = material.m1;
         List<material> _activeMaterials = new List<material>();
         List<string> _materialDirectories = new List<string>() { null, null, null, null, };
@@ -66,9 +66,10 @@ namespace PrinterTestForms
         List<bool> _thisLayerHasMaterial = new List<bool>() { false, false, false, false };
         List<Queue<string>> _fileNames = new List<Queue<string>>() { new Queue<string>(), new Queue<string>(), new Queue<string>(), new Queue<string>() };
         String comPort = string.Empty;
-        int baud = Properties.Settings.Default.printerBaudRate;
+        public int baud = Properties.Settings.Default.printerBaudRate;
         Queue<String> commands = new Queue<string>();
         String lastMessageSent = string.Empty;
+        SettingsForm set = new SettingsForm();
 
         /// <summary>
         /// Indicates whether the Arduino is ready to receive further commands (Last string recieved from Arduino == "ok"
@@ -271,7 +272,7 @@ namespace PrinterTestForms
         {
             //Insert G-code to clean material
         }
-        private void move(Tuple<axis,double> movement)
+        private void move(Tuple<axis, double> movement)
         {
             commands.Enqueue("G1 " + movement.Item1.ToString().ToUpper() + movement.Item2.ToString());
         }
@@ -280,10 +281,10 @@ namespace PrinterTestForms
         /// Sends the specified axes to the home position
         /// </summary>
         /// <param name="axes">optional: specify the axi(e)s to home. Passing no arguments will home all axes.</param>
-        private void home(params char[] axes)
+        private void home(params axis[] axes)
         {
             String message = "G28 ";
-            foreach (char axis in axes)
+            foreach (axis axis in axes)
             {
                 string ax = axis.ToString();
                 if (ax.ToUpper().Equals("X") || ax.ToUpper().Equals("Y") || ax.ToUpper().Equals("Z"))
@@ -337,10 +338,7 @@ namespace PrinterTestForms
 
         }
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-            _layerHeight = (double)numericUpDown1.Value;
-        }
+
 
         private void numericUpDown1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -503,7 +501,7 @@ namespace PrinterTestForms
 
         private void homeXButton_Click(object sender, EventArgs e)
         {
-            home(x);
+            home(axis.x);
             Thread t = new Thread(() => processCommands());
             t.Start();
             t.Join();
@@ -511,7 +509,7 @@ namespace PrinterTestForms
         }
         private void homeYButton_Click(object sender, EventArgs e)
         {
-            home(y);
+            home(axis.y);
             Thread t = new Thread(() => processCommands());
             t.Start();
             t.Join();
@@ -519,7 +517,7 @@ namespace PrinterTestForms
         }
         private void homeZButton_Click(object sender, EventArgs e)
         {
-            home(z);
+            home(axis.z);
             Thread t = new Thread(() => processCommands());
             t.Start();
             t.Join();
@@ -527,8 +525,7 @@ namespace PrinterTestForms
         }
         private void homeXYButton_Click(object sender, EventArgs e)
         {
-            //home(x, y);
-            changeToMaterial(material.m2);
+            home(axis.x, axis.y);
             Thread t = new Thread(() => processCommands());
             t.Start();
             t.Join();
@@ -582,7 +579,10 @@ namespace PrinterTestForms
             return success;
         }
 
-
+        private void settingsButton_Click(object sender, EventArgs e)
+        {
+            if(!set.Visible)set.Show();
+        }
     }
     public static class TupleListExtensions
     {

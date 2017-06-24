@@ -5,13 +5,13 @@
     <Setting Name="X_putAwayPosition" Type="System.Double" Scope="User">
       <Value Profile="(Default)">322</Value>
     </Setting>
-    <Setting Name="X_takeOutPosition" Type="System.Double" Scope="User">
+    <Setting Name="X_printingPosition" Type="System.Double" Scope="User">
       <Value Profile="(Default)">42</Value>
     </Setting>
     <Setting Name="X_toClipPosition" Type="System.Double" Scope="User">
       <Value Profile="(Default)">318</Value>
     </Setting>
-    <Setting Name="X_cleaningPosition" Type="System.Double" Scope="User">
+    <Setting Name="X_materialChangePosition" Type="System.Double" Scope="User">
       <Value Profile="(Default)">298</Value>
     </Setting>
     <Setting Name="Y_towerPositionsHookPush1" Type="System.Double" Scope="User">
