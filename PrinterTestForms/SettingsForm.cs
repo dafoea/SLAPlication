@@ -165,6 +165,10 @@ namespace PrinterTestForms
             numericUpDown16.Value = (decimal)Properties.Settings.Default.X_printingPosition;
             numericUpDown17.Value = (decimal)Properties.Settings.Default.X_materialChangePosition;
             numericUpDown18.Value = (decimal)Properties.Settings.Default.Z_layerHeight;
+            numericUpDown19.Value = (decimal)Properties.Settings.Default.cureTime;
+            numericUpDown20.Value = (decimal)Properties.Settings.Default.startingLayersCureTime;
+            numericUpDown21.Value = (decimal)Properties.Settings.Default.numberOfStartingLayers;
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -370,7 +374,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G91");
                 Task.Delay(100);
-                port.WriteLine("G1 Z" + numericUpDown2.Value.ToString());
+                port.WriteLine("G1 Z-" + numericUpDown2.Value.ToString());
             }
         }
 
@@ -394,13 +398,24 @@ namespace PrinterTestForms
                 Properties.Settings.Default.X_toClipPosition.ToString(),
                 Properties.Settings.Default.X_printingPosition.ToString(),
                 Properties.Settings.Default.X_materialChangePosition.ToString(),
-                Properties.Settings.Default.Z_layerHeight.ToString()
+                Properties.Settings.Default.Z_layerHeight.ToString(),
+                Properties.Settings.Default.cureTime.ToString(),
+                Properties.Settings.Default.startingLayersCureTime.ToString(),
+                Properties.Settings.Default.numberOfStartingLayers.ToString()
         };
             SaveFileDialog file = new SaveFileDialog();
-            file.CheckFileExists = false;
+            file.OverwritePrompt = false;
             if (file.ShowDialog() == DialogResult.OK)
             {
+                if (File.Exists(file.FileName))
+                {
+                    FileInfo finfo1 = new FileInfo(file.FileName);
+                    finfo1.IsReadOnly = false;
+                }
+
                 System.IO.File.WriteAllLines(file.FileName, values);
+                FileInfo finfo2 = new FileInfo(file.FileName);
+                finfo2.IsReadOnly = true;
             }
         }
 
@@ -428,7 +443,28 @@ namespace PrinterTestForms
                 numericUpDown16.Value = Convert.ToDecimal(line.ReadLine());
                 numericUpDown17.Value = Convert.ToDecimal(line.ReadLine());
                 numericUpDown18.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown19.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown20.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown21.Value = Convert.ToDecimal(line.ReadLine());
             }
+        }
+
+        private void numericUpDown19_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.cureTime = (double)numericUpDown19.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void numericUpDown20_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.startingLayersCureTime = (double)numericUpDown20.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void numericUpDown21_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.numberOfStartingLayers = (int)numericUpDown21.Value;
+            Properties.Settings.Default.Save();
         }
     }
 }

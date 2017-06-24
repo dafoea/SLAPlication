@@ -250,5 +250,41 @@ namespace PrinterTestForms.Properties {
                 this["Z_layerHeight"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public double cureTime {
+            get {
+                return ((double)(this["cureTime"]));
+            }
+            set {
+                this["cureTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        public double startingLayersCureTime {
+            get {
+                return ((double)(this["startingLayersCureTime"]));
+            }
+            set {
+                this["startingLayersCureTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int numberOfStartingLayers {
+            get {
+                return ((int)(this["numberOfStartingLayers"]));
+            }
+            set {
+                this["numberOfStartingLayers"] = value;
+            }
+        }
     }
 }

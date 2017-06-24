@@ -31,10 +31,12 @@ namespace PrinterTestForms
             z = 'Z'
         }
         private double _layerHeight = Properties.Settings.Default.Z_layerHeight; //Expressed in millimeters
+        private double _cureTime = Properties.Settings.Default.cureTime;
+        private double _intiialCureTime = Properties.Settings.Default.startingLayersCureTime;
+        private int _initialLayers = Properties.Settings.Default.numberOfStartingLayers;
         private int _numberOfLayers = 0;
         private double _totalHeight = 0;
         private int _currentImage = 0;
-        private bool? absoluteMode = null;
         public Tuple<axis, double> X_putAwayPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_putAwayPosition);
         public Tuple<axis, double> X_takeOutPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_printingPosition);
         public Tuple<axis, double> X_toClipPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_toClipPosition);
@@ -66,9 +68,9 @@ namespace PrinterTestForms
         List<int> _finalLayerForMaterial = new List<int>() { 0, 0, 0, 0 };
         List<bool> _thisLayerHasMaterial = new List<bool>() { false, false, false, false };
         List<Queue<string>> _fileNames = new List<Queue<string>>() { new Queue<string>(), new Queue<string>(), new Queue<string>(), new Queue<string>() };
-        String comPort = string.Empty;
-        Queue<String> commands = new Queue<string>();
-        String lastMessageSent = string.Empty;
+        string comPort = string.Empty;
+        Queue<string> commands = new Queue<string>();
+        string lastMessageSent = string.Empty;
         SettingsForm set = new SettingsForm();
 
         /// <summary>
@@ -203,12 +205,10 @@ namespace PrinterTestForms
         private void setRelativeCoordinates()
         {
             commands.Enqueue("G91");
-            absoluteMode = true;
         }
         private void setAbsoluteCoordinates()
         {
             commands.Enqueue("G90");
-            absoluteMode = false;
 
         }
         /// <summary>
@@ -590,37 +590,47 @@ namespace PrinterTestForms
         }
         public void reinitializeSettings()
         {
-        X_putAwayPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_putAwayPosition);
-        X_takeOutPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_printingPosition);
-        X_toClipPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_toClipPosition);
-        X_cleaningPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_materialChangePosition);
-        Y_towerPositionsHookPush = new List<Tuple<axis, double>>() {
+            X_putAwayPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_putAwayPosition);
+            X_takeOutPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_printingPosition);
+            X_toClipPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_toClipPosition);
+            X_cleaningPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_materialChangePosition);
+            Y_towerPositionsHookPush = new List<Tuple<axis, double>>() {
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPush1 },
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPush2 },
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPush3 },
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPush4 }
         };
-        Y_towerPositionsHookDisengaged = new List<Tuple<axis, double>>() {
+            Y_towerPositionsHookDisengaged = new List<Tuple<axis, double>>() {
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookDisengaged1 },
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookDisengaged2 },
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookDisengaged3 },
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookDisengaged4 }
         };
-        Y_towerPositionsHookPull = new List<Tuple<axis, double>>() {
+            Y_towerPositionsHookPull = new List<Tuple<axis, double>>() {
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull1 },
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull2 },
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull3 },
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull4 }
         };
-        Z_heightToRaiseBed = new Tuple<axis, double>(axis.z, Properties.Settings.Default.Z_heightToRaiseBed);
+            Z_heightToRaiseBed = new Tuple<axis, double>(axis.z, Properties.Settings.Default.Z_heightToRaiseBed);
+            _layerHeight = Properties.Settings.Default.Z_layerHeight;
+            _cureTime = Properties.Settings.Default.cureTime;
+            _intiialCureTime = Properties.Settings.Default.startingLayersCureTime;
+            _initialLayers = Properties.Settings.Default.numberOfStartingLayers;
 
-    }
+
+        }
 
         private void baudBox_TextChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.printerBaudRate = Convert.ToInt32(baudBox.Text);
             Properties.Settings.Default.Save();
-            baud= Convert.ToInt32(baudBox.Text);
+            baud = Convert.ToInt32(baudBox.Text);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (serialPort1.IsOpen) serialPort1.WriteLine("M112");
         }
     }
     public static class TupleListExtensions

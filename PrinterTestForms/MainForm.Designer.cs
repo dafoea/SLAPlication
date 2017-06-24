@@ -72,6 +72,7 @@
             this.settingsButton = new System.Windows.Forms.Button();
             this.baudBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -515,11 +516,23 @@
             this.label1.TabIndex = 44;
             this.label1.Text = "Baud Rate: ";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.Location = new System.Drawing.Point(359, 200);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(147, 44);
+            this.button1.TabIndex = 45;
+            this.button1.Text = "Emergency Stop";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1258, 794);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.baudBox);
             this.Controls.Add(this.settingsButton);
@@ -612,6 +625,7 @@
         private System.Windows.Forms.Button settingsButton;
         private System.Windows.Forms.TextBox baudBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }
 
