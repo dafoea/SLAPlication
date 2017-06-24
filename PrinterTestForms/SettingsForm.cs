@@ -7,12 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO.Ports;
 
 
 namespace PrinterTestForms
 {
     public partial class SettingsForm : Form
     {
+        SerialPort port;
+
+        public void setSerialPort(SerialPort p)
+        {
+            port = p;
+        }
+
         public SettingsForm()
         {
             InitializeComponent();
@@ -163,7 +171,7 @@ namespace PrinterTestForms
             numericUpDown16.Value = (decimal)Properties.Settings.Default.X_printingPosition;
             numericUpDown17.Value = (decimal)Properties.Settings.Default.X_materialChangePosition;
             numericUpDown18.Value = (decimal)Properties.Settings.Default.Z_layerHeight;
-            
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -183,6 +191,193 @@ namespace PrinterTestForms
             {
                 e.Cancel = true;
                 Hide();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G90");
+                Task.Delay(100);
+                port.WriteLine("G1 X" + numericUpDown1.Value.ToString());
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G90");
+                Task.Delay(100);
+                port.WriteLine("G1 X" + numericUpDown16.Value.ToString());
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G90");
+                Task.Delay(100);
+                port.WriteLine("G1 X" + numericUpDown15.Value.ToString());
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G90");
+                Task.Delay(100);
+                port.WriteLine("G1 X" + numericUpDown17.Value.ToString());
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G90");
+                Task.Delay(100);
+                port.WriteLine("G1 Y" + numericUpDown14.Value.ToString());
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G90");
+                Task.Delay(100);
+                port.WriteLine("G1 Y" + numericUpDown13.Value.ToString());
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G90");
+                Task.Delay(100);
+                port.WriteLine("G1 Y" + numericUpDown12.Value.ToString());
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G90");
+                Task.Delay(100);
+                port.WriteLine("G1 Y" + numericUpDown11.Value.ToString());
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G90");
+                Task.Delay(100);
+                port.WriteLine("G1 Y" + numericUpDown10.Value.ToString());
+            }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G90");
+                Task.Delay(100);
+                port.WriteLine("G1 Y" + numericUpDown9.Value.ToString());
+            }
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G90");
+                Task.Delay(100);
+                port.WriteLine("G1 Y" + numericUpDown8.Value.ToString());
+            }
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G90");
+                Task.Delay(100);
+                port.WriteLine("G1 Y" + numericUpDown7.Value.ToString());
+            }
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G90");
+                Task.Delay(100);
+                port.WriteLine("G1 Y" + numericUpDown6.Value.ToString());
+            }
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G90");
+                Task.Delay(100);
+                port.WriteLine("G1 Y" + numericUpDown5.Value.ToString());
+            }
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G90");
+                Task.Delay(100);
+                port.WriteLine("G1 Y" + numericUpDown4.Value.ToString());
+            }
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G90");
+                Task.Delay(100);
+                port.WriteLine("G1 Y" + numericUpDown3.Value.ToString());
+            }
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G91");
+                Task.Delay(100);
+                port.WriteLine("G1 Z" + numericUpDown2.Value.ToString());
             }
         }
     }

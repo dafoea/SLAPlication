@@ -581,7 +581,11 @@ namespace PrinterTestForms
 
         private void settingsButton_Click(object sender, EventArgs e)
         {
-            if(!set.Visible)set.Show();
+            if (!set.Visible)
+            {
+                set.setSerialPort(serialPort1);
+                set.Show();
+            }
         }
     }
     public static class TupleListExtensions
