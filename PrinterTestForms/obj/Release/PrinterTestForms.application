@@ -7,14 +7,14 @@
     <framework targetVersion="4.5.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="PrinterTestForms.exe.manifest" size="3507">
+    <dependentAssembly dependencyType="install" codebase="PrinterTestForms.exe.manifest" size="3508">
       <assemblyIdentity name="PrinterTestForms.exe" version="1.0.0.4" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>EMLi8m5uUfyawN3Qy96+QPUt5q+TCuPpdVL8U9/OZAo=</dsig:DigestValue>
+        <dsig:DigestValue>VWfN+HBxT/PY/xDoPcWAeA0En7c1g6cQwFUOXp8d4aQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

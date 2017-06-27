@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.IO;
 using System.Threading;
+using System.Security.Cryptography;
+using System.Drawing.Imaging;
 
 namespace PrinterTestForms
 {
@@ -380,6 +382,27 @@ namespace PrinterTestForms
         {
             try { populateMaterialFields(material.m1, tabPage1, mat1list, checkBox1, previewPic1, tabpreview1); }
             catch { }
+            Thread th = new Thread(() => threadcheck(_fileNames[0]));
+            th.Start();
+            th.Join();
+        }
+        private void threadcheck(Queue<string> pictures)
+        {
+            foreach (string picture in pictures)
+            {
+                if (checkIfAllBlack(picture))
+                {
+                    serialBox.AppendText(picture + "\n");
+                    serialBox.AppendText("all black\n");
+
+                }
+                else
+                {
+                    serialBox.AppendText(picture + "\n");
+                    serialBox.AppendText("not all black\n");
+                }
+
+            }
         }
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
@@ -631,6 +654,33 @@ namespace PrinterTestForms
         private void button1_Click(object sender, EventArgs e)
         {
             if (serialPort1.IsOpen) serialPort1.WriteLine("M112");
+        }
+
+        private bool checkIfAllBlack(string filepath)
+        {
+            Bitmap im1 = Properties.Resources.AllBlackImage;
+            Bitmap im2 = new Bitmap(filepath);
+            return (HashImage(im1).SequenceEqual(HashImage(im2)) ? true : false);
+        }
+
+        public byte[] HashImage(Bitmap image)
+        {
+            var sha256 = SHA256.Create();
+
+            var rect = new Rectangle(0, 0, image.Width, image.Height);
+            var data = image.LockBits(rect, ImageLockMode.ReadOnly, image.PixelFormat);
+
+            var dataPtr = data.Scan0;
+
+            var totalBytes = (int)Math.Abs(data.Stride) * data.Height;
+            var rawData = new byte[totalBytes];
+            System.Runtime.InteropServices.Marshal.Copy(dataPtr, rawData, 0, totalBytes);
+
+            image.UnlockBits(data);
+            var result = sha256.ComputeHash(rawData);
+            sha256.Dispose();
+
+            return result;
         }
     }
     public static class TupleListExtensions
