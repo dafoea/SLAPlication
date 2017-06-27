@@ -34,11 +34,11 @@ namespace PrinterTestForms
         }
         private double _layerHeight = Properties.Settings.Default.Z_layerHeight; //Expressed in millimeters
         private double _cureTime = Properties.Settings.Default.cureTime;
-        private double _intiialCureTime = Properties.Settings.Default.startingLayersCureTime;
+        private double _intitialCureTime = Properties.Settings.Default.startingLayersCureTime;
         private int _initialLayers = Properties.Settings.Default.numberOfStartingLayers;
-        private int _numberOfLayers = 0;
+        private int _totalNumberOfLayers = 0;
         private double _totalHeight = 0;
-        private int _currentImage = 0;
+        private int _currentLayer = 0;
         public Tuple<axis, double> X_putAwayPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_putAwayPosition);
         public Tuple<axis, double> X_takeOutPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_printingPosition);
         public Tuple<axis, double> X_toClipPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_toClipPosition);
@@ -69,7 +69,7 @@ namespace PrinterTestForms
         List<int> _layersRemainingForMaterial = new List<int>() { 0, 0, 0, 0, };
         List<int> _finalLayerForMaterial = new List<int>() { 0, 0, 0, 0 };
         List<bool> _thisLayerHasMaterial = new List<bool>() { false, false, false, false };
-        List<Queue<string>> _fileNames = new List<Queue<string>>() { new Queue<string>(), new Queue<string>(), new Queue<string>(), new Queue<string>() };
+        List<List<string>> _fileNames = new List<List<string>>() { new List<string>(), new List<string>(), new List<string>(), new List<string>() };
         string comPort = string.Empty;
         Queue<string> commands = new Queue<string>();
         string lastMessageSent = string.Empty;
@@ -132,39 +132,41 @@ namespace PrinterTestForms
         /// Assigns the _currentMaterial field to the next material to be printed. Optimized based on _thisLayerHasMaterial
         /// Further optimization: sequence should be picked to match materials between layers
         /// </summary>
-        public material nextMaterial()
+        public void nextMaterial()
         {
             material nextMaterial = new material();
-            switch (_currentMaterial)
-            {
-                case material.m1:
-                    if (_thisLayerHasMaterial[(int)material.m2]) nextMaterial = material.m2;
-                    else if (_thisLayerHasMaterial[(int)material.m3]) nextMaterial = material.m3;
-                    else nextMaterial = material.m4;
-                    break;
-                case material.m2:
-                    if (_thisLayerHasMaterial[(int)material.m1]) nextMaterial = material.m1;
-                    else if (_thisLayerHasMaterial[(int)material.m3]) nextMaterial = material.m3;
-                    else nextMaterial = material.m4;
-                    break;
-                case material.m3:
-                    if (_thisLayerHasMaterial[(int)material.m4]) nextMaterial = material.m4;
-                    else if (_thisLayerHasMaterial[(int)material.m2]) nextMaterial = material.m2;
-                    else nextMaterial = material.m1;
-                    break;
-                case material.m4:
-                    if (_thisLayerHasMaterial[(int)material.m3]) nextMaterial = material.m3;
-                    else if (_thisLayerHasMaterial[(int)material.m2]) nextMaterial = material.m2;
-                    else nextMaterial = material.m1;
-                    break;
-            }
-            return nextMaterial;
-        }
 
-        public bool checkImage()
-        {
-            //if image has white pixels, then
-            return true;
+            if (_thisLayerHasMaterial[(int)_currentMaterial])
+            {
+                nextMaterial = _currentMaterial;
+            }
+            else
+            {
+                switch (_currentMaterial)
+                {
+                    case material.m1:
+                        if (_thisLayerHasMaterial[(int)material.m2]) nextMaterial = material.m2;
+                        else if (_thisLayerHasMaterial[(int)material.m3]) nextMaterial = material.m3;
+                        else if (_thisLayerHasMaterial[(int)material.m4]) nextMaterial = material.m4;
+                        break;
+                    case material.m2:
+                        if (_thisLayerHasMaterial[(int)material.m1]) nextMaterial = material.m1;
+                        else if (_thisLayerHasMaterial[(int)material.m3]) nextMaterial = material.m3;
+                        else if (_thisLayerHasMaterial[(int)material.m4]) nextMaterial = material.m4;
+                        break;
+                    case material.m3:
+                        if (_thisLayerHasMaterial[(int)material.m4]) nextMaterial = material.m4;
+                        else if (_thisLayerHasMaterial[(int)material.m2]) nextMaterial = material.m2;
+                        else if (_thisLayerHasMaterial[(int)material.m1]) nextMaterial = material.m1;
+                        break;
+                    case material.m4:
+                        if (_thisLayerHasMaterial[(int)material.m3]) nextMaterial = material.m3;
+                        else if (_thisLayerHasMaterial[(int)material.m2]) nextMaterial = material.m2;
+                        else if (_thisLayerHasMaterial[(int)material.m1]) nextMaterial = material.m1;
+                        break;
+                }
+            }
+            _currentMaterial = nextMaterial;
         }
 
         /// <summary>
@@ -201,6 +203,47 @@ namespace PrinterTestForms
         // ---------------------------Printer Operations------------------------------------------
         private void PRINT()
         {
+            home(axis.z);
+            home(axis.x);
+            home(axis.y);
+
+            Thread t = new Thread(() => processCommands());
+            t.Start(); // begin threading commands to the printer
+            reinitializeSettings();
+
+            for (int layer = 0; layer < _totalNumberOfLayers; layer++)
+            {
+                //populate the boolian list _thisLayerHasMaterial for the current layer
+                int materialCheck = 0;
+                foreach (List<string> files in _fileNames)
+                {
+                    if (layer < _finalLayerForMaterial[materialCheck])
+                    {
+                        _thisLayerHasMaterial[materialCheck] = checkIfImageHasContent(files[layer]);
+                    }
+                    else
+                    {
+                        _thisLayerHasMaterial[materialCheck] = false;
+                    }
+                    materialCheck++;
+                }
+                t.Join(); //wait until the current thread of commands have finished.
+
+                nextMaterial();
+
+                while (_thisLayerHasMaterial[(int)_currentMaterial])
+                {
+
+                    //Commands to print the material go here//
+
+
+                    nextMaterial();
+                }
+
+
+            }
+
+
 
         }
 
@@ -219,10 +262,13 @@ namespace PrinterTestForms
         /// <param name="mat">The material that will be available once the operation is finished</param>
         private void changeToMaterial(material mat)
         {
-            putAwayMaterial();
-            queueMaterial(mat);
-            takeOutMaterial();
-            _currentMaterial = mat;
+            if (_currentMaterial != mat)
+            {
+                putAwayMaterial();
+                queueMaterial(mat);
+                takeOutMaterial();
+                _currentMaterial = mat;
+            }
         }
 
         /// <summary>
@@ -281,7 +327,7 @@ namespace PrinterTestForms
         }
 
         /// <summary>
-        /// Sends the specified axes to the home position
+        /// Adds the specified home command to the command queue.
         /// </summary>
         /// <param name="axes">optional: specify the axi(e)s to home. Passing no arguments will home all axes.</param>
         private void home(params axis[] axes)
@@ -342,16 +388,7 @@ namespace PrinterTestForms
         }
 
 
-
-        private void numericUpDown1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                e.Handled = true;
-                e.SuppressKeyPress = true;
-            }
-        }
-
+        //sends the current image in the preview window to the projector
         private void showPreviewButton_Click(object sender, EventArgs e)
         {
             PictureBox image = new PictureBox();
@@ -373,10 +410,12 @@ namespace PrinterTestForms
             n.changePicture(image);
         }
 
+        //Clears the image that is currently being projected
         private void showBlankButton_Click(object sender, EventArgs e)
         {
             n.clearPicture();
         }
+
         //Material checkboxes that update the image directories and display the image lists
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -384,22 +423,21 @@ namespace PrinterTestForms
             catch { }
             Thread th = new Thread(() => threadcheck(_fileNames[0]));
             th.Start();
-            th.Join();
         }
-        private void threadcheck(Queue<string> pictures)
+        private void threadcheck(List<string> pictures)
         {
             foreach (string picture in pictures)
             {
-                if (checkIfAllBlack(picture))
+                if (checkIfImageHasContent(picture))
                 {
                     serialBox.AppendText(picture + "\n");
-                    serialBox.AppendText("all black\n");
+                    serialBox.AppendText("not all black\n");
 
                 }
                 else
                 {
                     serialBox.AppendText(picture + "\n");
-                    serialBox.AppendText("not all black\n");
+                    serialBox.AppendText("all black\n");
                 }
 
             }
@@ -433,7 +471,7 @@ namespace PrinterTestForms
                 {
                     _materialDirectories[(int)mat] = d.SelectedPath;
                     _layersRemainingForMaterial[(int)mat] = Directory.GetFiles(d.SelectedPath).Length;
-                    Queue<string> temp = new Queue<string>(Directory.GetFiles(d.SelectedPath));
+                    List<string> temp = new List<string>(Directory.GetFiles(d.SelectedPath));
                     _fileNames.RemoveAt((int)mat);
                     _fileNames.Insert((int)mat, temp);
                 }
@@ -460,12 +498,12 @@ namespace PrinterTestForms
                 previewTab.Text = "---";
                 _materialDirectories[(int)mat] = null;
                 _layersRemainingForMaterial[(int)mat] = 0;
-                _fileNames[(int)mat] = new Queue<string>();
+                _fileNames[(int)mat] = new List<string>();
                 _finalLayerForMaterial[(int)mat] = 0;
                 previewPic.Image = null;
                 _activeMaterials.Remove(mat);
             }
-            _numberOfLayers = findTotalLayers();
+            _totalNumberOfLayers = findTotalLayers();
         }
 
 
@@ -489,6 +527,10 @@ namespace PrinterTestForms
             comboBox1.DataSource = ports;
         }
 
+        /// <summary>
+        /// Finds the total number of layers to print based on the material with the largest total number of files
+        /// </summary>
+        /// <returns>The total number of layers to print</returns>
         private int findTotalLayers()
         {
             int max = 0;
@@ -506,6 +548,7 @@ namespace PrinterTestForms
             sendMessageInTextBox();
         }
 
+        //resets the arduino.
         private void resetButton_Click(object sender, EventArgs e)
         {
             if (serialPort1.IsOpen)
@@ -523,6 +566,7 @@ namespace PrinterTestForms
 
         }
 
+        //Controls the behavior of the home buttons located on the main form
         private void homeXButton_Click(object sender, EventArgs e)
         {
             home(axis.x);
@@ -578,6 +622,7 @@ namespace PrinterTestForms
 
 
         }
+
         private void sendMessageInTextBox()
         {
             String message = messageBox.Text;
@@ -591,6 +636,12 @@ namespace PrinterTestForms
             statusText.Text = "Manual command sent to Arduino.";
             lastMessageSent = message;
         }
+
+        /// <summary>
+        /// Send message to the arduino.  
+        /// </summary>
+        /// <param name="msg">The message to be sent</param>
+        /// <returns>Returns false if the arduino was not ready to receive. True if the message was sent successfully</returns>
         private bool sendMessage(string msg)
         {
             bool success = false;
@@ -603,6 +654,7 @@ namespace PrinterTestForms
             return success;
         }
 
+        //Opens the settings form where user can specify and test position settings for the printer
         private void settingsButton_Click(object sender, EventArgs e)
         {
             if (!set.Visible)
@@ -611,6 +663,11 @@ namespace PrinterTestForms
                 set.Show();
             }
         }
+
+        /// <summary>
+        /// Updates the settings to the current values indicated in the settings window. This function must be called 
+        /// before the print sequence begins to ensure that the most recent settings are used.
+        /// </summary>
         public void reinitializeSettings()
         {
             X_putAwayPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_putAwayPosition);
@@ -638,12 +695,18 @@ namespace PrinterTestForms
             Z_heightToRaiseBed = new Tuple<axis, double>(axis.z, Properties.Settings.Default.Z_heightToRaiseBed);
             _layerHeight = Properties.Settings.Default.Z_layerHeight;
             _cureTime = Properties.Settings.Default.cureTime;
-            _intiialCureTime = Properties.Settings.Default.startingLayersCureTime;
+            _intitialCureTime = Properties.Settings.Default.startingLayersCureTime;
             _initialLayers = Properties.Settings.Default.numberOfStartingLayers;
+
+            _currentLayer = 1;
+            _currentMaterial = material.m1;
+            _totalHeight = _totalNumberOfLayers * _layerHeight;
+
 
 
         }
 
+        //updates the default baud rate if the content of the baud box changes
         private void baudBox_TextChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.printerBaudRate = Convert.ToInt32(baudBox.Text);
@@ -651,18 +714,30 @@ namespace PrinterTestForms
             baud = Convert.ToInt32(baudBox.Text);
         }
 
+        //Emergency stop button
         private void button1_Click(object sender, EventArgs e)
         {
             if (serialPort1.IsOpen) serialPort1.WriteLine("M112");
         }
 
-        private bool checkIfAllBlack(string filepath)
+        /// <summary>
+        /// Returns true if the image located at the specified filepath has pixels that are not black. Returns null if an unsupported
+        /// filetype is passed
+        /// </summary>
+        /// <param name="filepath"></param>
+        /// <returns></returns>
+        private bool checkIfImageHasContent(string filepath)
         {
             Bitmap im1 = Properties.Resources.AllBlackImage;
             Bitmap im2 = new Bitmap(filepath);
-            return (HashImage(im1).SequenceEqual(HashImage(im2)) ? true : false);
+            return (HashImage(im1).SequenceEqual(HashImage(im2)) ? false : true);
         }
 
+        /// <summary>
+        /// Creates a hash sequence of the image parameter. Used as comparison tool to see if images are identical
+        /// </summary>
+        /// <param name="image"> the Bitmap image to be converted to hash sequence</param>
+        /// <returns></returns>
         public byte[] HashImage(Bitmap image)
         {
             var sha256 = SHA256.Create();
@@ -677,10 +752,7 @@ namespace PrinterTestForms
             System.Runtime.InteropServices.Marshal.Copy(dataPtr, rawData, 0, totalBytes);
 
             image.UnlockBits(data);
-            var result = sha256.ComputeHash(rawData);
-            sha256.Dispose();
-
-            return result;
+            return sha256.ComputeHash(rawData);
         }
     }
     public static class TupleListExtensions
