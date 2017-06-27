@@ -76,6 +76,7 @@ namespace PrinterTestForms
         Queue<string> commands = new Queue<string>();
         string lastMessageSent = string.Empty;
         SettingsForm set = new SettingsForm();
+        bool _readyToProject = false;
 
         /// <summary>
         /// Indicates whether the Arduino is ready to receive further commands (Last string recieved from Arduino == "ok"
@@ -195,6 +196,10 @@ namespace PrinterTestForms
                 {
                     _readyToReceive = true;
                 }
+                if (returnMessage.StartsWith("X"))
+                {
+                    _readyToProject = true;
+                }
             }
         }
 
@@ -254,10 +259,10 @@ namespace PrinterTestForms
                 while (_thisLayerHasMaterial[(int)_currentMaterial])
                 {
                     changeToMaterial(_currentMaterial);
+                    askToProject();
                     t = new Thread(() => processCommands());
                     t.Start();
                     t.Join();
-                    statusText.Text = "Projecting...";
                     Thread t2 = new Thread(() => projectImage());
                     t2.Start();
                     t2.Join();
@@ -272,15 +277,21 @@ namespace PrinterTestForms
 
 
         }
-
+        private void askToProject()
+        {
+            commands.Enqueue("M400");
+            commands.Enqueue("M114");
+        }
         private void projectImage()
         {
-
+            while (!_readyToProject) ;
+            statusText.Text = "Projecting...";
             double duration = (_currentLayer > _initialLayers) ? _cureTime : _intitialCureTime;
             n.changePicture(_fileNames[(int)_currentMaterial][(int)_currentLayer]);
             Thread.Sleep(Convert.ToInt32(Math.Round(duration * 1000)));
             n.clearPicture();
             _thisLayerHasMaterial[(int)_currentMaterial] = false;
+            _readyToProject = false;
         }
 
         private void setRelativeCoordinates()
@@ -725,7 +736,7 @@ namespace PrinterTestForms
             _intitialCureTime = Properties.Settings.Default.startingLayersCureTime;
             _initialLayers = Properties.Settings.Default.numberOfStartingLayers;
 
-            _currentLayer = 1;
+            _currentLayer = 0;
             _currentMaterial = material.m1;
             _totalHeight = _totalNumberOfLayers * _layerHeight;
 
@@ -786,7 +797,8 @@ namespace PrinterTestForms
         {
             if (!serialPort1.IsOpen)
             {
-                PRINT();
+                Thread mainThread = new Thread(() => PRINT());
+                mainThread.Start();
             }
         }
     }
