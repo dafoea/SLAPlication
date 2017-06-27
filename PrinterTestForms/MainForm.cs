@@ -38,7 +38,7 @@ namespace PrinterTestForms
         private int _initialLayers = Properties.Settings.Default.numberOfStartingLayers;
         private int _totalNumberOfLayers = 0;
         private double _totalHeight = 0;
-        private int _currentLayer = 0;
+        private int _currentLayer = 1;
         public Tuple<axis, double> X_putAwayPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_putAwayPosition);
         public Tuple<axis, double> X_takeOutPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_printingPosition);
         public Tuple<axis, double> X_toClipPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_toClipPosition);
@@ -64,6 +64,7 @@ namespace PrinterTestForms
         public int baud = Properties.Settings.Default.printerBaudRate;
         public Tuple<axis, double> Z_heightToRaiseBed = new Tuple<axis, double>(axis.z, Properties.Settings.Default.Z_heightToRaiseBed);
         private material _currentMaterial = material.m1;
+        private material _nextMaterial = material.m1;
         List<material> _activeMaterials = new List<material>();
         List<string> _materialDirectories = new List<string>() { null, null, null, null, };
         List<int> _layersRemainingForMaterial = new List<int>() { 0, 0, 0, 0, };
@@ -71,6 +72,7 @@ namespace PrinterTestForms
         List<bool> _thisLayerHasMaterial = new List<bool>() { false, false, false, false };
         List<List<string>> _fileNames = new List<List<string>>() { new List<string>(), new List<string>(), new List<string>(), new List<string>() };
         string comPort = string.Empty;
+        bool firstMaterialOfLayer = false;
         Queue<string> commands = new Queue<string>();
         string lastMessageSent = string.Empty;
         SettingsForm set = new SettingsForm();
@@ -132,41 +134,38 @@ namespace PrinterTestForms
         /// Assigns the _currentMaterial field to the next material to be printed. Optimized based on _thisLayerHasMaterial
         /// Further optimization: sequence should be picked to match materials between layers
         /// </summary>
-        public void nextMaterial()
+        public void findNextMaterial()
         {
-            material nextMaterial = new material();
-
             if (_thisLayerHasMaterial[(int)_currentMaterial])
             {
-                nextMaterial = _currentMaterial;
+                _nextMaterial = _currentMaterial;
             }
             else
             {
                 switch (_currentMaterial)
                 {
                     case material.m1:
-                        if (_thisLayerHasMaterial[(int)material.m2]) nextMaterial = material.m2;
-                        else if (_thisLayerHasMaterial[(int)material.m3]) nextMaterial = material.m3;
-                        else if (_thisLayerHasMaterial[(int)material.m4]) nextMaterial = material.m4;
+                        if (_thisLayerHasMaterial[(int)material.m2]) _nextMaterial = material.m2;
+                        else if (_thisLayerHasMaterial[(int)material.m3]) _nextMaterial = material.m3;
+                        else if (_thisLayerHasMaterial[(int)material.m4]) _nextMaterial = material.m4;
                         break;
                     case material.m2:
-                        if (_thisLayerHasMaterial[(int)material.m1]) nextMaterial = material.m1;
-                        else if (_thisLayerHasMaterial[(int)material.m3]) nextMaterial = material.m3;
-                        else if (_thisLayerHasMaterial[(int)material.m4]) nextMaterial = material.m4;
+                        if (_thisLayerHasMaterial[(int)material.m1]) _nextMaterial = material.m1;
+                        else if (_thisLayerHasMaterial[(int)material.m3]) _nextMaterial = material.m3;
+                        else if (_thisLayerHasMaterial[(int)material.m4]) _nextMaterial = material.m4;
                         break;
                     case material.m3:
-                        if (_thisLayerHasMaterial[(int)material.m4]) nextMaterial = material.m4;
-                        else if (_thisLayerHasMaterial[(int)material.m2]) nextMaterial = material.m2;
-                        else if (_thisLayerHasMaterial[(int)material.m1]) nextMaterial = material.m1;
+                        if (_thisLayerHasMaterial[(int)material.m4]) _nextMaterial = material.m4;
+                        else if (_thisLayerHasMaterial[(int)material.m2]) _nextMaterial = material.m2;
+                        else if (_thisLayerHasMaterial[(int)material.m1]) _nextMaterial = material.m1;
                         break;
                     case material.m4:
-                        if (_thisLayerHasMaterial[(int)material.m3]) nextMaterial = material.m3;
-                        else if (_thisLayerHasMaterial[(int)material.m2]) nextMaterial = material.m2;
-                        else if (_thisLayerHasMaterial[(int)material.m1]) nextMaterial = material.m1;
+                        if (_thisLayerHasMaterial[(int)material.m3]) _nextMaterial = material.m3;
+                        else if (_thisLayerHasMaterial[(int)material.m2]) _nextMaterial = material.m2;
+                        else if (_thisLayerHasMaterial[(int)material.m1]) _nextMaterial = material.m1;
                         break;
                 }
             }
-            _currentMaterial = nextMaterial;
         }
 
         /// <summary>
@@ -211,40 +210,77 @@ namespace PrinterTestForms
             t.Start(); // begin threading commands to the printer
             reinitializeSettings();
 
-            for (int layer = 0; layer < _totalNumberOfLayers; layer++)
+            //First layer
+            for (int material = 0; material < _fileNames.Capacity; material++)
+            {
+                if (_finalLayerForMaterial[material] > 0)
+                {
+                    _thisLayerHasMaterial[material] = checkIfImageHasContent(_fileNames[material][0]);
+                }
+                else
+                {
+                    _thisLayerHasMaterial[material] = false;
+                }
+            }
+            findNextMaterial();
+            move(X_cleaningPosition);
+            queueMaterial(_nextMaterial);
+            takeOutMaterial();
+            _currentMaterial = _nextMaterial;
+            t.Join();
+            t = new Thread(() => processCommands());
+            t.Start();
+
+
+            for (_currentLayer = 0; _currentLayer < _totalNumberOfLayers; _currentLayer++)
             {
                 //populate the boolian list _thisLayerHasMaterial for the current layer
-                int materialCheck = 0;
-                foreach (List<string> files in _fileNames)
+                for (int material = 0; material < _fileNames.Capacity; material++)
                 {
-                    if (layer < _finalLayerForMaterial[materialCheck])
+                    if (_currentLayer < _finalLayerForMaterial[material])
                     {
-                        _thisLayerHasMaterial[materialCheck] = checkIfImageHasContent(files[layer]);
+                        _thisLayerHasMaterial[material] = checkIfImageHasContent(_fileNames[material][_currentLayer]);
                     }
                     else
                     {
-                        _thisLayerHasMaterial[materialCheck] = false;
+                        _thisLayerHasMaterial[material] = false;
                     }
-                    materialCheck++;
                 }
                 t.Join(); //wait until the current thread of commands have finished.
+                findNextMaterial();
+                _currentMaterial = _nextMaterial;
 
-                nextMaterial();
 
                 while (_thisLayerHasMaterial[(int)_currentMaterial])
                 {
-
-                    //Commands to print the material go here//
-
-
-                    nextMaterial();
+                    changeToMaterial(_currentMaterial);
+                    t = new Thread(() => processCommands());
+                    t.Start();
+                    t.Join();
+                    statusText.Text = "Projecting...";
+                    Thread t2 = new Thread(() => projectImage());
+                    t2.Start();
+                    t2.Join();
+                    statusText.Text = "Done Projecting";
+                    findNextMaterial();
+                    _currentMaterial = _nextMaterial;
                 }
 
-
+                firstMaterialOfLayer = true;
             }
 
 
 
+        }
+
+        private void projectImage()
+        {
+
+            double duration = (_currentLayer > _initialLayers) ? _cureTime : _intitialCureTime;
+            n.changePicture(_fileNames[(int)_currentMaterial][(int)_currentLayer]);
+            Thread.Sleep(Convert.ToInt32(Math.Round(duration * 1000)));
+            n.clearPicture();
+            _thisLayerHasMaterial[(int)_currentMaterial] = false;
         }
 
         private void setRelativeCoordinates()
@@ -267,8 +303,8 @@ namespace PrinterTestForms
                 putAwayMaterial();
                 queueMaterial(mat);
                 takeOutMaterial();
-                _currentMaterial = mat;
             }
+
         }
 
         /// <summary>
@@ -290,8 +326,10 @@ namespace PrinterTestForms
         /// <param name="mat">The desired material</param>
         private void queueMaterial(material mat)
         {
+
             setAbsoluteCoordinates();
             move(Y_towerPositionsHookDisengaged[(int)mat]);
+
         }
 
         /// <summary>
@@ -299,11 +337,20 @@ namespace PrinterTestForms
         /// </summary>
         private void takeOutMaterial()
         {
+
             setAbsoluteCoordinates();
             move(X_toClipPosition);
             move(Y_towerPositionsHookPull[(int)_currentMaterial]);
             move(X_takeOutPosition);
-            //move(z, )
+            if (firstMaterialOfLayer)
+            {
+                move(new Tuple<axis, double>(axis.z, -1 * Z_heightToRaiseBed.Item2 + _layerHeight));
+                firstMaterialOfLayer = false;
+            }
+            else
+            {
+                move(new Tuple<axis, double>(axis.z, -1 * Z_heightToRaiseBed.Item2));
+            }
         }
 
         /// <summary>
@@ -421,26 +468,6 @@ namespace PrinterTestForms
         {
             try { populateMaterialFields(material.m1, tabPage1, mat1list, checkBox1, previewPic1, tabpreview1); }
             catch { }
-            Thread th = new Thread(() => threadcheck(_fileNames[0]));
-            th.Start();
-        }
-        private void threadcheck(List<string> pictures)
-        {
-            foreach (string picture in pictures)
-            {
-                if (checkIfImageHasContent(picture))
-                {
-                    serialBox.AppendText(picture + "\n");
-                    serialBox.AppendText("not all black\n");
-
-                }
-                else
-                {
-                    serialBox.AppendText(picture + "\n");
-                    serialBox.AppendText("all black\n");
-                }
-
-            }
         }
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
@@ -753,6 +780,14 @@ namespace PrinterTestForms
 
             image.UnlockBits(data);
             return sha256.ComputeHash(rawData);
+        }
+
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            if (!serialPort1.IsOpen)
+            {
+                PRINT();
+            }
         }
     }
     public static class TupleListExtensions
