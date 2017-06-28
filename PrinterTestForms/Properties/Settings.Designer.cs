@@ -253,19 +253,19 @@ namespace PrinterTestForms.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("30")]
-        public double cureTime {
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public double cureTime1 {
             get {
-                return ((double)(this["cureTime"]));
+                return ((double)(this["cureTime1"]));
             }
             set {
-                this["cureTime"] = value;
+                this["cureTime1"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
         public double startingLayersCureTime {
             get {
                 return ((double)(this["startingLayersCureTime"]));
@@ -320,6 +320,42 @@ namespace PrinterTestForms.Properties {
             }
             set {
                 this["Z_feedrate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public double cureTime2 {
+            get {
+                return ((double)(this["cureTime2"]));
+            }
+            set {
+                this["cureTime2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public double cureTime3 {
+            get {
+                return ((double)(this["cureTime3"]));
+            }
+            set {
+                this["cureTime3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public double cureTime4 {
+            get {
+                return ((double)(this["cureTime4"]));
+            }
+            set {
+                this["cureTime4"] = value;
             }
         }
     }

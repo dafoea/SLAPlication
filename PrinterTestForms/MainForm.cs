@@ -33,7 +33,7 @@ namespace PrinterTestForms
             z = 'Z'
         }
         private double _layerHeight = Properties.Settings.Default.Z_layerHeight; //Expressed in millimeters
-        private double _cureTime = Properties.Settings.Default.cureTime;
+        private double _cureTime = Properties.Settings.Default.cureTime1;
         private double _intitialCureTime = Properties.Settings.Default.startingLayersCureTime;
         private int _initialLayers = Properties.Settings.Default.numberOfStartingLayers;
         private int _totalNumberOfLayers = 0;
@@ -744,7 +744,7 @@ namespace PrinterTestForms
         };
             Z_heightToRaiseBed = new Tuple<axis, double>(axis.z, Properties.Settings.Default.Z_heightToRaiseBed);
             _layerHeight = Properties.Settings.Default.Z_layerHeight;
-            _cureTime = Properties.Settings.Default.cureTime;
+            _cureTime = Properties.Settings.Default.cureTime1;
             _intitialCureTime = Properties.Settings.Default.startingLayersCureTime;
             _initialLayers = Properties.Settings.Default.numberOfStartingLayers;
 

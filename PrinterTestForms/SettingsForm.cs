@@ -16,6 +16,10 @@ namespace PrinterTestForms
     {
         SerialPort port;
 
+        /// <summary>
+        /// Passes the serial port handler to the settings window so the test buttons will work
+        /// </summary>
+        /// <param name="p"> the serial port handler from the main form</param>
         public void setSerialPort(SerialPort p)
         {
             port = p;
@@ -26,164 +30,35 @@ namespace PrinterTestForms
             InitializeComponent();
         }
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.X_putAwayPosition = (double)numericUpDown1.Value;
-            Properties.Settings.Default.Save();
-        }
-
-        private void numericUpDown16_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.X_printingPosition = (double)numericUpDown16.Value;
-            Properties.Settings.Default.Save();
-
-        }
-
-        private void numericUpDown15_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.X_toClipPosition = (double)numericUpDown15.Value;
-            Properties.Settings.Default.Save();
-
-        }
-
-        private void numericUpDown17_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.X_materialChangePosition = (double)numericUpDown17.Value;
-            Properties.Settings.Default.Save();
-
-        }
-
-        private void numericUpDown14_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Y_towerPositionsHookPush1 = (double)numericUpDown14.Value;
-            Properties.Settings.Default.Save();
-
-        }
-
-        private void numericUpDown13_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Y_towerPositionsHookPush2 = (double)numericUpDown13.Value;
-            Properties.Settings.Default.Save();
-
-        }
-
-        private void numericUpDown12_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Y_towerPositionsHookPush3 = (double)numericUpDown12.Value;
-            Properties.Settings.Default.Save();
-
-        }
-
-        private void numericUpDown11_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Y_towerPositionsHookPush4 = (double)numericUpDown11.Value;
-            Properties.Settings.Default.Save();
-
-        }
-
-        private void numericUpDown10_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Y_towerPositionsHookDisengaged1 = (double)numericUpDown10.Value;
-            Properties.Settings.Default.Save();
-
-        }
-
-        private void numericUpDown9_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Y_towerPositionsHookDisengaged2 = (double)numericUpDown9.Value;
-            Properties.Settings.Default.Save();
-
-        }
-
-        private void numericUpDown8_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Y_towerPositionsHookDisengaged3 = (double)numericUpDown8.Value;
-            Properties.Settings.Default.Save();
-
-        }
-
-        private void numericUpDown7_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Y_towerPositionsHookDisengaged4 = (double)numericUpDown7.Value;
-            Properties.Settings.Default.Save();
-
-        }
-
-        private void numericUpDown6_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Y_towerPositionsHookPull1 = (double)numericUpDown6.Value;
-            Properties.Settings.Default.Save();
-
-        }
-
-        private void numericUpDown5_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Y_towerPositionsHookPull2 = (double)numericUpDown5.Value;
-            Properties.Settings.Default.Save();
-        }
-
-        private void numericUpDown4_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Y_towerPositionsHookPull3 = (double)numericUpDown4.Value;
-            Properties.Settings.Default.Save();
-
-        }
-
-        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Y_towerPositionsHookPull4 = (double)numericUpDown3.Value;
-            Properties.Settings.Default.Save();
-
-        }
-
-        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Z_heightToRaiseBed = (double)numericUpDown2.Value;
-            Properties.Settings.Default.Save();
-
-        }
-
-
-
         private void SettingsForm_Load(object sender, EventArgs e)
         {
-            numericUpDown1.Value = (decimal)Properties.Settings.Default.X_putAwayPosition;
-            numericUpDown2.Value = (decimal)Properties.Settings.Default.Z_heightToRaiseBed;
-            numericUpDown3.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookPull4;
-            numericUpDown4.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookPull3;
-            numericUpDown5.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookPull2;
-            numericUpDown6.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookPull1;
-            numericUpDown7.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookDisengaged4;
-            numericUpDown8.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookDisengaged3;
-            numericUpDown9.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookDisengaged2;
-            numericUpDown10.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookDisengaged1;
-            numericUpDown11.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookPush4;
-            numericUpDown12.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookPush3;
-            numericUpDown13.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookPush2;
-            numericUpDown14.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookPush1;
-            numericUpDown15.Value = (decimal)Properties.Settings.Default.X_toClipPosition;
-            numericUpDown16.Value = (decimal)Properties.Settings.Default.X_printingPosition;
-            numericUpDown17.Value = (decimal)Properties.Settings.Default.X_materialChangePosition;
-            numericUpDown18.Value = (decimal)Properties.Settings.Default.Z_layerHeight;
-            numericUpDown19.Value = (decimal)Properties.Settings.Default.cureTime;
-            numericUpDown20.Value = (decimal)Properties.Settings.Default.startingLayersCureTime;
-            numericUpDown21.Value = (decimal)Properties.Settings.Default.numberOfStartingLayers;
-            numericUpDown22.Value = (decimal)Properties.Settings.Default.X_feedrate;
-            numericUpDown23.Value = (decimal)Properties.Settings.Default.Y_feedrate;
-            numericUpDown24.Value = (decimal)Properties.Settings.Default.Z_feedrate;
-
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDown18_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Z_layerHeight = (double)numericUpDown18.Value;
-            Properties.Settings.Default.Save();
+            X_PutAwayPosition.Value = (decimal)Properties.Settings.Default.X_putAwayPosition;
+            Z_HeightToRaiseBed.Value = (decimal)Properties.Settings.Default.Z_heightToRaiseBed;
+            Y_TowerPositionHookPull4.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookPull4;
+            Y_TowerPositionHoolPull3.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookPull3;
+            Y_TowerPositionHoolPull2.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookPull2;
+            Y_TowerPositionHoolPull1.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookPull1;
+            Y_TowerPositionHookDisengage4.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookDisengaged4;
+            Y_TowerPositionHookDisengage3.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookDisengaged3;
+            Y_TowerPositionHookDisengage2.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookDisengaged2;
+            Y_TowerPositionHookDisengage1.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookDisengaged1;
+            Y_TowerPositionsHookPush4.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookPush4;
+            Y_TowerPositionsHookPush3.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookPush3;
+            Y_TowerPositionsHookPush2.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookPush2;
+            Y_TowerPositionsHookPush1.Value = (decimal)Properties.Settings.Default.Y_towerPositionsHookPush1;
+            X_ToClipPosition.Value = (decimal)Properties.Settings.Default.X_toClipPosition;
+            X_PrintingPosition.Value = (decimal)Properties.Settings.Default.X_printingPosition;
+            X_MaterialChangePosition.Value = (decimal)Properties.Settings.Default.X_materialChangePosition;
+            Z_LayerHeight.Value = (decimal)Properties.Settings.Default.Z_layerHeight;
+            StartingLayersCureTime.Value = (decimal)Properties.Settings.Default.startingLayersCureTime;
+            NumberOfStartingLayers.Value = (decimal)Properties.Settings.Default.numberOfStartingLayers;
+            X_FeedRate.Value = (decimal)Properties.Settings.Default.X_feedrate;
+            Y_FeedRate.Value = (decimal)Properties.Settings.Default.Y_feedrate;
+            Z_FeedRate.Value = (decimal)Properties.Settings.Default.Z_feedrate;
+            CureTime1.Value = (decimal)Properties.Settings.Default.cureTime1;
+            CureTime2.Value = (decimal)Properties.Settings.Default.cureTime2;
+            CureTime3.Value = (decimal)Properties.Settings.Default.cureTime3;
+            CureTime4.Value = (decimal)Properties.Settings.Default.cureTime4;
         }
 
         private void SettingsForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -195,6 +70,184 @@ namespace PrinterTestForms
             }
         }
 
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.X_putAwayPosition = (double)X_PutAwayPosition.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void numericUpDown16_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.X_printingPosition = (double)X_PrintingPosition.Value;
+            Properties.Settings.Default.Save();
+
+        }
+
+        private void numericUpDown15_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.X_toClipPosition = (double)X_ToClipPosition.Value;
+            Properties.Settings.Default.Save();
+
+        }
+
+        private void numericUpDown17_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.X_materialChangePosition = (double)X_MaterialChangePosition.Value;
+            Properties.Settings.Default.Save();
+
+        }
+
+        private void numericUpDown14_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Y_towerPositionsHookPush1 = (double)Y_TowerPositionsHookPush1.Value;
+            Properties.Settings.Default.Save();
+
+        }
+
+        private void numericUpDown13_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Y_towerPositionsHookPush2 = (double)Y_TowerPositionsHookPush2.Value;
+            Properties.Settings.Default.Save();
+
+        }
+
+        private void numericUpDown12_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Y_towerPositionsHookPush3 = (double)Y_TowerPositionsHookPush3.Value;
+            Properties.Settings.Default.Save();
+
+        }
+
+        private void numericUpDown11_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Y_towerPositionsHookPush4 = (double)Y_TowerPositionsHookPush4.Value;
+            Properties.Settings.Default.Save();
+
+        }
+
+        private void numericUpDown10_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Y_towerPositionsHookDisengaged1 = (double)Y_TowerPositionHookDisengage1.Value;
+            Properties.Settings.Default.Save();
+
+        }
+
+        private void numericUpDown9_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Y_towerPositionsHookDisengaged2 = (double)Y_TowerPositionHookDisengage2.Value;
+            Properties.Settings.Default.Save();
+
+        }
+
+        private void numericUpDown8_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Y_towerPositionsHookDisengaged3 = (double)Y_TowerPositionHookDisengage3.Value;
+            Properties.Settings.Default.Save();
+
+        }
+
+        private void numericUpDown7_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Y_towerPositionsHookDisengaged4 = (double)Y_TowerPositionHookDisengage4.Value;
+            Properties.Settings.Default.Save();
+
+        }
+
+        private void numericUpDown6_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Y_towerPositionsHookPull1 = (double)Y_TowerPositionHoolPull1.Value;
+            Properties.Settings.Default.Save();
+
+        }
+
+        private void numericUpDown5_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Y_towerPositionsHookPull2 = (double)Y_TowerPositionHoolPull2.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void numericUpDown4_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Y_towerPositionsHookPull3 = (double)Y_TowerPositionHoolPull3.Value;
+            Properties.Settings.Default.Save();
+
+        }
+
+        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Y_towerPositionsHookPull4 = (double)Y_TowerPositionHookPull4.Value;
+            Properties.Settings.Default.Save();
+
+        }
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Z_heightToRaiseBed = (double)Z_HeightToRaiseBed.Value;
+            Properties.Settings.Default.Save();
+
+        }
+        private void numericUpDown19_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.cureTime1 = (double)CureTime1.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void numericUpDown20_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.startingLayersCureTime = (double)StartingLayersCureTime.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void numericUpDown21_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.numberOfStartingLayers = (int)NumberOfStartingLayers.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void numericUpDown22_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.X_feedrate = (int)X_FeedRate.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void numericUpDown23_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Y_feedrate = (int)Y_FeedRate.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void numericUpDown24_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Z_feedrate = (int)Z_FeedRate.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void numericUpDown26_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.cureTime2 = (double)CureTime2.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void numericUpDown25_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.cureTime3 = (double)CureTime3.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void numericUpDown27_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.cureTime4 = (double)CureTime4.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void numericUpDown18_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Z_layerHeight = (double)Z_LayerHeight.Value;
+            Properties.Settings.Default.Save();
+        }
+
+
+
         private void button4_Click(object sender, EventArgs e)
         {
             if (port.IsOpen)
@@ -202,7 +255,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 X" + numericUpDown1.Value.ToString() + " F" + numericUpDown22.Value.ToString());
+                port.WriteLine("G1 X" + X_PutAwayPosition.Value.ToString() + " F" + X_FeedRate.Value.ToString());
             }
         }
 
@@ -213,7 +266,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 X" + numericUpDown16.Value.ToString() + " F" + numericUpDown22.Value.ToString());
+                port.WriteLine("G1 X" + X_PrintingPosition.Value.ToString() + " F" + X_FeedRate.Value.ToString());
             }
         }
 
@@ -224,7 +277,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 X" + numericUpDown15.Value.ToString() + " F" + numericUpDown22.Value.ToString());
+                port.WriteLine("G1 X" + X_ToClipPosition.Value.ToString() + " F" + X_FeedRate.Value.ToString());
             }
         }
 
@@ -235,7 +288,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 X" + numericUpDown17.Value.ToString() + " F" + numericUpDown22.Value.ToString());
+                port.WriteLine("G1 X" + X_MaterialChangePosition.Value.ToString() + " F" + X_FeedRate.Value.ToString());
             }
         }
 
@@ -246,7 +299,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown14.Value.ToString() + " F" + numericUpDown23.Value.ToString());
+                port.WriteLine("G1 Y" + Y_TowerPositionsHookPush1.Value.ToString() + " F" + Y_FeedRate.Value.ToString());
             }
         }
 
@@ -257,7 +310,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown13.Value.ToString() + " F" + numericUpDown23.Value.ToString());
+                port.WriteLine("G1 Y" + Y_TowerPositionsHookPush2.Value.ToString() + " F" + Y_FeedRate.Value.ToString());
             }
         }
 
@@ -268,7 +321,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown12.Value.ToString() + " F" + numericUpDown23.Value.ToString());
+                port.WriteLine("G1 Y" + Y_TowerPositionsHookPush3.Value.ToString() + " F" + Y_FeedRate.Value.ToString());
             }
         }
 
@@ -279,7 +332,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown11.Value.ToString() + " F" + numericUpDown23.Value.ToString());
+                port.WriteLine("G1 Y" + Y_TowerPositionsHookPush4.Value.ToString() + " F" + Y_FeedRate.Value.ToString());
             }
         }
 
@@ -290,7 +343,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown10.Value.ToString() + " F" + numericUpDown23.Value.ToString());
+                port.WriteLine("G1 Y" + Y_TowerPositionHookDisengage1.Value.ToString() + " F" + Y_FeedRate.Value.ToString());
             }
         }
 
@@ -301,7 +354,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown9.Value.ToString() + " F" + numericUpDown23.Value.ToString());
+                port.WriteLine("G1 Y" + Y_TowerPositionHookDisengage2.Value.ToString() + " F" + Y_FeedRate.Value.ToString());
             }
         }
 
@@ -312,7 +365,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown8.Value.ToString() + " F" + numericUpDown23.Value.ToString());
+                port.WriteLine("G1 Y" + Y_TowerPositionHookDisengage3.Value.ToString() + " F" + Y_FeedRate.Value.ToString());
             }
         }
 
@@ -323,7 +376,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown7.Value.ToString() + " F" + numericUpDown23.Value.ToString());
+                port.WriteLine("G1 Y" + Y_TowerPositionHookDisengage4.Value.ToString() + " F" + Y_FeedRate.Value.ToString());
             }
         }
 
@@ -334,7 +387,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown6.Value.ToString() + " F" + numericUpDown23.Value.ToString());
+                port.WriteLine("G1 Y" + Y_TowerPositionHoolPull1.Value.ToString() + " F" + Y_FeedRate.Value.ToString());
             }
         }
 
@@ -345,7 +398,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown5.Value.ToString() + " F" + numericUpDown23.Value.ToString());
+                port.WriteLine("G1 Y" + Y_TowerPositionHoolPull2.Value.ToString() + " F" + Y_FeedRate.Value.ToString());
             }
         }
 
@@ -356,7 +409,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown4.Value.ToString() + " F" + numericUpDown23.Value.ToString());
+                port.WriteLine("G1 Y" + Y_TowerPositionHoolPull3.Value.ToString() + " F" + Y_FeedRate.Value.ToString());
             }
         }
 
@@ -367,7 +420,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown3.Value.ToString() + " F" + numericUpDown23.Value.ToString());
+                port.WriteLine("G1 Y" + Y_TowerPositionHookPull4.Value.ToString() + " F" + Y_FeedRate.Value.ToString());
             }
         }
 
@@ -378,11 +431,11 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G91");
                 Task.Delay(100);
-                port.WriteLine("G1 Z-" + numericUpDown2.Value.ToString() + " F" + numericUpDown24.Value.ToString());
+                port.WriteLine("G1 Z-" + Z_HeightToRaiseBed.Value.ToString() + " F" + Z_FeedRate.Value.ToString());
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void SaveButton(object sender, EventArgs e)
         {
             string[] values = {
                 Properties.Settings.Default.X_putAwayPosition.ToString(),
@@ -403,12 +456,15 @@ namespace PrinterTestForms
                 Properties.Settings.Default.X_printingPosition.ToString(),
                 Properties.Settings.Default.X_materialChangePosition.ToString(),
                 Properties.Settings.Default.Z_layerHeight.ToString(),
-                Properties.Settings.Default.cureTime.ToString(),
                 Properties.Settings.Default.startingLayersCureTime.ToString(),
                 Properties.Settings.Default.numberOfStartingLayers.ToString(),
                 Properties.Settings.Default.X_feedrate.ToString(),
                 Properties.Settings.Default.Y_feedrate.ToString(),
-                Properties.Settings.Default.Z_feedrate.ToString()
+                Properties.Settings.Default.Z_feedrate.ToString(),
+                Properties.Settings.Default.cureTime1.ToString(),
+                Properties.Settings.Default.cureTime2.ToString(),
+                Properties.Settings.Default.cureTime3.ToString(),
+                Properties.Settings.Default.cureTime4.ToString()
         };
             SaveFileDialog file = new SaveFileDialog();
             file.OverwritePrompt = false;
@@ -426,73 +482,42 @@ namespace PrinterTestForms
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void LoadButton(object sender, EventArgs e)
         {
             OpenFileDialog file = new OpenFileDialog();
             if (file.ShowDialog() == DialogResult.OK)
             {
                 System.IO.StreamReader line = new StreamReader(file.FileName);
-                numericUpDown1.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown2.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown3.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown4.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown5.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown6.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown7.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown8.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown9.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown10.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown11.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown12.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown13.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown14.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown15.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown16.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown17.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown18.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown19.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown20.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown21.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown22.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown23.Value = Convert.ToDecimal(line.ReadLine());
-                numericUpDown24.Value = Convert.ToDecimal(line.ReadLine());
+                X_PutAwayPosition.Value = Convert.ToDecimal(line.ReadLine());
+                Z_HeightToRaiseBed.Value = Convert.ToDecimal(line.ReadLine());
+                Y_TowerPositionHookPull4.Value = Convert.ToDecimal(line.ReadLine());
+                Y_TowerPositionHoolPull3.Value = Convert.ToDecimal(line.ReadLine());
+                Y_TowerPositionHoolPull2.Value = Convert.ToDecimal(line.ReadLine());
+                Y_TowerPositionHoolPull1.Value = Convert.ToDecimal(line.ReadLine());
+                Y_TowerPositionHookDisengage4.Value = Convert.ToDecimal(line.ReadLine());
+                Y_TowerPositionHookDisengage3.Value = Convert.ToDecimal(line.ReadLine());
+                Y_TowerPositionHookDisengage2.Value = Convert.ToDecimal(line.ReadLine());
+                Y_TowerPositionHookDisengage1.Value = Convert.ToDecimal(line.ReadLine());
+                Y_TowerPositionsHookPush4.Value = Convert.ToDecimal(line.ReadLine());
+                Y_TowerPositionsHookPush3.Value = Convert.ToDecimal(line.ReadLine());
+                Y_TowerPositionsHookPush2.Value = Convert.ToDecimal(line.ReadLine());
+                Y_TowerPositionsHookPush1.Value = Convert.ToDecimal(line.ReadLine());
+                X_ToClipPosition.Value = Convert.ToDecimal(line.ReadLine());
+                X_PrintingPosition.Value = Convert.ToDecimal(line.ReadLine());
+                X_MaterialChangePosition.Value = Convert.ToDecimal(line.ReadLine());
+                Z_LayerHeight.Value = Convert.ToDecimal(line.ReadLine());
+                StartingLayersCureTime.Value = Convert.ToDecimal(line.ReadLine());
+                NumberOfStartingLayers.Value = Convert.ToDecimal(line.ReadLine());
+                X_FeedRate.Value = Convert.ToDecimal(line.ReadLine());
+                Y_FeedRate.Value = Convert.ToDecimal(line.ReadLine());
+                Z_FeedRate.Value = Convert.ToDecimal(line.ReadLine());
+                CureTime1.Value = Convert.ToDecimal(line.ReadLine());
+                CureTime2.Value = Convert.ToDecimal(line.ReadLine());
+                CureTime3.Value = Convert.ToDecimal(line.ReadLine());
+                CureTime4.Value = Convert.ToDecimal(line.ReadLine());
             }
         }
 
-        private void numericUpDown19_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.cureTime = (double)numericUpDown19.Value;
-            Properties.Settings.Default.Save();
-        }
 
-        private void numericUpDown20_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.startingLayersCureTime = (double)numericUpDown20.Value;
-            Properties.Settings.Default.Save();
-        }
-
-        private void numericUpDown21_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.numberOfStartingLayers = (int)numericUpDown21.Value;
-            Properties.Settings.Default.Save();
-        }
-
-        private void numericUpDown22_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.X_feedrate = (int)numericUpDown22.Value;
-            Properties.Settings.Default.Save();
-        }
-
-        private void numericUpDown23_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Y_feedrate = (int)numericUpDown23.Value;
-            Properties.Settings.Default.Save();
-        }
-
-        private void numericUpDown24_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Z_feedrate = (int)numericUpDown24.Value;
-            Properties.Settings.Default.Save();
-        }
     }
 }

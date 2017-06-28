@@ -59,11 +59,11 @@
     <Setting Name="Z_layerHeight" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0.1</Value>
     </Setting>
-    <Setting Name="cureTime" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">30</Value>
+    <Setting Name="cureTime1" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="startingLayersCureTime" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">60</Value>
+      <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="numberOfStartingLayers" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">3</Value>
@@ -76,6 +76,15 @@
     </Setting>
     <Setting Name="Z_feedrate" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">800</Value>
+    </Setting>
+    <Setting Name="cureTime2" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="cureTime3" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="cureTime4" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">5</Value>
     </Setting>
   </Settings>
 </SettingsFile>

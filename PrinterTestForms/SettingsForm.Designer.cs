@@ -30,22 +30,22 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown9 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown10 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown11 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown12 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown13 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown14 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown15 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown16 = new System.Windows.Forms.NumericUpDown();
+            this.X_PutAwayPosition = new System.Windows.Forms.NumericUpDown();
+            this.Z_HeightToRaiseBed = new System.Windows.Forms.NumericUpDown();
+            this.Y_TowerPositionHookPull4 = new System.Windows.Forms.NumericUpDown();
+            this.Y_TowerPositionHoolPull3 = new System.Windows.Forms.NumericUpDown();
+            this.Y_TowerPositionHoolPull2 = new System.Windows.Forms.NumericUpDown();
+            this.Y_TowerPositionHoolPull1 = new System.Windows.Forms.NumericUpDown();
+            this.Y_TowerPositionHookDisengage4 = new System.Windows.Forms.NumericUpDown();
+            this.Y_TowerPositionHookDisengage3 = new System.Windows.Forms.NumericUpDown();
+            this.Y_TowerPositionHookDisengage2 = new System.Windows.Forms.NumericUpDown();
+            this.Y_TowerPositionHookDisengage1 = new System.Windows.Forms.NumericUpDown();
+            this.Y_TowerPositionsHookPush4 = new System.Windows.Forms.NumericUpDown();
+            this.Y_TowerPositionsHookPush3 = new System.Windows.Forms.NumericUpDown();
+            this.Y_TowerPositionsHookPush2 = new System.Windows.Forms.NumericUpDown();
+            this.Y_TowerPositionsHookPush1 = new System.Windows.Forms.NumericUpDown();
+            this.X_ToClipPosition = new System.Windows.Forms.NumericUpDown();
+            this.X_PrintingPosition = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -62,7 +62,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.numericUpDown17 = new System.Windows.Forms.NumericUpDown();
+            this.X_MaterialChangePosition = new System.Windows.Forms.NumericUpDown();
             this.label18 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -82,367 +82,379 @@
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
-            this.numericUpDown18 = new System.Windows.Forms.NumericUpDown();
+            this.Z_LayerHeight = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown19 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown20 = new System.Windows.Forms.NumericUpDown();
+            this.CureTime1 = new System.Windows.Forms.NumericUpDown();
+            this.StartingLayersCureTime = new System.Windows.Forms.NumericUpDown();
             this.label20 = new System.Windows.Forms.Label();
-            this.numericUpDown21 = new System.Windows.Forms.NumericUpDown();
+            this.NumberOfStartingLayers = new System.Windows.Forms.NumericUpDown();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.numericUpDown22 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown23 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown24 = new System.Windows.Forms.NumericUpDown();
+            this.X_FeedRate = new System.Windows.Forms.NumericUpDown();
+            this.Y_FeedRate = new System.Windows.Forms.NumericUpDown();
+            this.Z_FeedRate = new System.Windows.Forms.NumericUpDown();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown21)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown22)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown23)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown24)).BeginInit();
+            this.label29 = new System.Windows.Forms.Label();
+            this.CureTime3 = new System.Windows.Forms.NumericUpDown();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.CureTime2 = new System.Windows.Forms.NumericUpDown();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.CureTime4 = new System.Windows.Forms.NumericUpDown();
+            this.label34 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.X_PutAwayPosition)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Z_HeightToRaiseBed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionHookPull4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionHoolPull3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionHoolPull2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionHoolPull1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionHookDisengage4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionHookDisengage3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionHookDisengage2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionHookDisengage1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionsHookPush4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionsHookPush3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionsHookPush2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionsHookPush1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.X_ToClipPosition)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.X_PrintingPosition)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.X_MaterialChangePosition)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Z_LayerHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CureTime1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartingLayersCureTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumberOfStartingLayers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.X_FeedRate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_FeedRate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Z_FeedRate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CureTime3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CureTime2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CureTime4)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(707, 422);
+            this.button1.Location = new System.Drawing.Point(707, 523);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(183, 40);
             this.button1.TabIndex = 0;
             this.button1.Text = "Save to External File";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.SaveButton);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(704, 342);
+            this.button2.Location = new System.Drawing.Point(704, 443);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(186, 40);
             this.button2.TabIndex = 1;
             this.button2.Text = "Load from External File";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.LoadButton);
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.DecimalPlaces = 2;
-            this.numericUpDown1.Increment = new decimal(new int[] {
+            this.X_PutAwayPosition.DecimalPlaces = 2;
+            this.X_PutAwayPosition.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.numericUpDown1.Location = new System.Drawing.Point(343, 19);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.X_PutAwayPosition.Location = new System.Drawing.Point(343, 19);
+            this.X_PutAwayPosition.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(101, 26);
-            this.numericUpDown1.TabIndex = 2;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.X_PutAwayPosition.Name = "numericUpDown1";
+            this.X_PutAwayPosition.Size = new System.Drawing.Size(101, 26);
+            this.X_PutAwayPosition.TabIndex = 2;
+            this.X_PutAwayPosition.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.DecimalPlaces = 2;
-            this.numericUpDown2.Location = new System.Drawing.Point(343, 640);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.Z_HeightToRaiseBed.DecimalPlaces = 2;
+            this.Z_HeightToRaiseBed.Location = new System.Drawing.Point(343, 640);
+            this.Z_HeightToRaiseBed.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(101, 26);
-            this.numericUpDown2.TabIndex = 3;
-            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            this.Z_HeightToRaiseBed.Name = "numericUpDown2";
+            this.Z_HeightToRaiseBed.Size = new System.Drawing.Size(101, 26);
+            this.Z_HeightToRaiseBed.TabIndex = 3;
+            this.Z_HeightToRaiseBed.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.DecimalPlaces = 2;
-            this.numericUpDown3.Increment = new decimal(new int[] {
+            this.Y_TowerPositionHookPull4.DecimalPlaces = 2;
+            this.Y_TowerPositionHookPull4.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.numericUpDown3.Location = new System.Drawing.Point(343, 483);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
+            this.Y_TowerPositionHookPull4.Location = new System.Drawing.Point(343, 483);
+            this.Y_TowerPositionHookPull4.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(101, 26);
-            this.numericUpDown3.TabIndex = 4;
-            this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
+            this.Y_TowerPositionHookPull4.Name = "numericUpDown3";
+            this.Y_TowerPositionHookPull4.Size = new System.Drawing.Size(101, 26);
+            this.Y_TowerPositionHookPull4.TabIndex = 4;
+            this.Y_TowerPositionHookPull4.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
             // 
             // numericUpDown4
             // 
-            this.numericUpDown4.DecimalPlaces = 2;
-            this.numericUpDown4.Increment = new decimal(new int[] {
+            this.Y_TowerPositionHoolPull3.DecimalPlaces = 2;
+            this.Y_TowerPositionHoolPull3.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.numericUpDown4.Location = new System.Drawing.Point(343, 515);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
+            this.Y_TowerPositionHoolPull3.Location = new System.Drawing.Point(343, 515);
+            this.Y_TowerPositionHoolPull3.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(101, 26);
-            this.numericUpDown4.TabIndex = 5;
-            this.numericUpDown4.ValueChanged += new System.EventHandler(this.numericUpDown4_ValueChanged);
+            this.Y_TowerPositionHoolPull3.Name = "numericUpDown4";
+            this.Y_TowerPositionHoolPull3.Size = new System.Drawing.Size(101, 26);
+            this.Y_TowerPositionHoolPull3.TabIndex = 5;
+            this.Y_TowerPositionHoolPull3.ValueChanged += new System.EventHandler(this.numericUpDown4_ValueChanged);
             // 
             // numericUpDown5
             // 
-            this.numericUpDown5.DecimalPlaces = 2;
-            this.numericUpDown5.Increment = new decimal(new int[] {
+            this.Y_TowerPositionHoolPull2.DecimalPlaces = 2;
+            this.Y_TowerPositionHoolPull2.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.numericUpDown5.Location = new System.Drawing.Point(343, 547);
-            this.numericUpDown5.Maximum = new decimal(new int[] {
+            this.Y_TowerPositionHoolPull2.Location = new System.Drawing.Point(343, 547);
+            this.Y_TowerPositionHoolPull2.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(101, 26);
-            this.numericUpDown5.TabIndex = 6;
-            this.numericUpDown5.ValueChanged += new System.EventHandler(this.numericUpDown5_ValueChanged);
+            this.Y_TowerPositionHoolPull2.Name = "numericUpDown5";
+            this.Y_TowerPositionHoolPull2.Size = new System.Drawing.Size(101, 26);
+            this.Y_TowerPositionHoolPull2.TabIndex = 6;
+            this.Y_TowerPositionHoolPull2.ValueChanged += new System.EventHandler(this.numericUpDown5_ValueChanged);
             // 
             // numericUpDown6
             // 
-            this.numericUpDown6.DecimalPlaces = 2;
-            this.numericUpDown6.Increment = new decimal(new int[] {
+            this.Y_TowerPositionHoolPull1.DecimalPlaces = 2;
+            this.Y_TowerPositionHoolPull1.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.numericUpDown6.Location = new System.Drawing.Point(343, 579);
-            this.numericUpDown6.Maximum = new decimal(new int[] {
+            this.Y_TowerPositionHoolPull1.Location = new System.Drawing.Point(343, 579);
+            this.Y_TowerPositionHoolPull1.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(101, 26);
-            this.numericUpDown6.TabIndex = 7;
-            this.numericUpDown6.ValueChanged += new System.EventHandler(this.numericUpDown6_ValueChanged);
+            this.Y_TowerPositionHoolPull1.Name = "numericUpDown6";
+            this.Y_TowerPositionHoolPull1.Size = new System.Drawing.Size(101, 26);
+            this.Y_TowerPositionHoolPull1.TabIndex = 7;
+            this.Y_TowerPositionHoolPull1.ValueChanged += new System.EventHandler(this.numericUpDown6_ValueChanged);
             // 
             // numericUpDown7
             // 
-            this.numericUpDown7.DecimalPlaces = 2;
-            this.numericUpDown7.Increment = new decimal(new int[] {
+            this.Y_TowerPositionHookDisengage4.DecimalPlaces = 2;
+            this.Y_TowerPositionHookDisengage4.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.numericUpDown7.Location = new System.Drawing.Point(343, 323);
-            this.numericUpDown7.Maximum = new decimal(new int[] {
+            this.Y_TowerPositionHookDisengage4.Location = new System.Drawing.Point(343, 323);
+            this.Y_TowerPositionHookDisengage4.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(101, 26);
-            this.numericUpDown7.TabIndex = 8;
-            this.numericUpDown7.ValueChanged += new System.EventHandler(this.numericUpDown7_ValueChanged);
+            this.Y_TowerPositionHookDisengage4.Name = "numericUpDown7";
+            this.Y_TowerPositionHookDisengage4.Size = new System.Drawing.Size(101, 26);
+            this.Y_TowerPositionHookDisengage4.TabIndex = 8;
+            this.Y_TowerPositionHookDisengage4.ValueChanged += new System.EventHandler(this.numericUpDown7_ValueChanged);
             // 
             // numericUpDown8
             // 
-            this.numericUpDown8.DecimalPlaces = 2;
-            this.numericUpDown8.Increment = new decimal(new int[] {
+            this.Y_TowerPositionHookDisengage3.DecimalPlaces = 2;
+            this.Y_TowerPositionHookDisengage3.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.numericUpDown8.Location = new System.Drawing.Point(343, 355);
-            this.numericUpDown8.Maximum = new decimal(new int[] {
+            this.Y_TowerPositionHookDisengage3.Location = new System.Drawing.Point(343, 355);
+            this.Y_TowerPositionHookDisengage3.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown8.Name = "numericUpDown8";
-            this.numericUpDown8.Size = new System.Drawing.Size(101, 26);
-            this.numericUpDown8.TabIndex = 9;
-            this.numericUpDown8.ValueChanged += new System.EventHandler(this.numericUpDown8_ValueChanged);
+            this.Y_TowerPositionHookDisengage3.Name = "numericUpDown8";
+            this.Y_TowerPositionHookDisengage3.Size = new System.Drawing.Size(101, 26);
+            this.Y_TowerPositionHookDisengage3.TabIndex = 9;
+            this.Y_TowerPositionHookDisengage3.ValueChanged += new System.EventHandler(this.numericUpDown8_ValueChanged);
             // 
             // numericUpDown9
             // 
-            this.numericUpDown9.DecimalPlaces = 2;
-            this.numericUpDown9.Increment = new decimal(new int[] {
+            this.Y_TowerPositionHookDisengage2.DecimalPlaces = 2;
+            this.Y_TowerPositionHookDisengage2.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.numericUpDown9.Location = new System.Drawing.Point(343, 387);
-            this.numericUpDown9.Maximum = new decimal(new int[] {
+            this.Y_TowerPositionHookDisengage2.Location = new System.Drawing.Point(343, 387);
+            this.Y_TowerPositionHookDisengage2.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown9.Name = "numericUpDown9";
-            this.numericUpDown9.Size = new System.Drawing.Size(101, 26);
-            this.numericUpDown9.TabIndex = 10;
-            this.numericUpDown9.ValueChanged += new System.EventHandler(this.numericUpDown9_ValueChanged);
+            this.Y_TowerPositionHookDisengage2.Name = "numericUpDown9";
+            this.Y_TowerPositionHookDisengage2.Size = new System.Drawing.Size(101, 26);
+            this.Y_TowerPositionHookDisengage2.TabIndex = 10;
+            this.Y_TowerPositionHookDisengage2.ValueChanged += new System.EventHandler(this.numericUpDown9_ValueChanged);
             // 
             // numericUpDown10
             // 
-            this.numericUpDown10.DecimalPlaces = 2;
-            this.numericUpDown10.Increment = new decimal(new int[] {
+            this.Y_TowerPositionHookDisengage1.DecimalPlaces = 2;
+            this.Y_TowerPositionHookDisengage1.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.numericUpDown10.Location = new System.Drawing.Point(343, 419);
-            this.numericUpDown10.Maximum = new decimal(new int[] {
+            this.Y_TowerPositionHookDisengage1.Location = new System.Drawing.Point(343, 419);
+            this.Y_TowerPositionHookDisengage1.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown10.Name = "numericUpDown10";
-            this.numericUpDown10.Size = new System.Drawing.Size(101, 26);
-            this.numericUpDown10.TabIndex = 11;
-            this.numericUpDown10.ValueChanged += new System.EventHandler(this.numericUpDown10_ValueChanged);
+            this.Y_TowerPositionHookDisengage1.Name = "numericUpDown10";
+            this.Y_TowerPositionHookDisengage1.Size = new System.Drawing.Size(101, 26);
+            this.Y_TowerPositionHookDisengage1.TabIndex = 11;
+            this.Y_TowerPositionHookDisengage1.ValueChanged += new System.EventHandler(this.numericUpDown10_ValueChanged);
             // 
             // numericUpDown11
             // 
-            this.numericUpDown11.DecimalPlaces = 2;
-            this.numericUpDown11.Increment = new decimal(new int[] {
+            this.Y_TowerPositionsHookPush4.DecimalPlaces = 2;
+            this.Y_TowerPositionsHookPush4.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.numericUpDown11.Location = new System.Drawing.Point(343, 170);
-            this.numericUpDown11.Maximum = new decimal(new int[] {
+            this.Y_TowerPositionsHookPush4.Location = new System.Drawing.Point(343, 170);
+            this.Y_TowerPositionsHookPush4.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown11.Name = "numericUpDown11";
-            this.numericUpDown11.Size = new System.Drawing.Size(101, 26);
-            this.numericUpDown11.TabIndex = 12;
-            this.numericUpDown11.ValueChanged += new System.EventHandler(this.numericUpDown11_ValueChanged);
+            this.Y_TowerPositionsHookPush4.Name = "numericUpDown11";
+            this.Y_TowerPositionsHookPush4.Size = new System.Drawing.Size(101, 26);
+            this.Y_TowerPositionsHookPush4.TabIndex = 12;
+            this.Y_TowerPositionsHookPush4.ValueChanged += new System.EventHandler(this.numericUpDown11_ValueChanged);
             // 
             // numericUpDown12
             // 
-            this.numericUpDown12.DecimalPlaces = 2;
-            this.numericUpDown12.Increment = new decimal(new int[] {
+            this.Y_TowerPositionsHookPush3.DecimalPlaces = 2;
+            this.Y_TowerPositionsHookPush3.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.numericUpDown12.Location = new System.Drawing.Point(343, 202);
-            this.numericUpDown12.Maximum = new decimal(new int[] {
+            this.Y_TowerPositionsHookPush3.Location = new System.Drawing.Point(343, 202);
+            this.Y_TowerPositionsHookPush3.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown12.Name = "numericUpDown12";
-            this.numericUpDown12.Size = new System.Drawing.Size(101, 26);
-            this.numericUpDown12.TabIndex = 13;
-            this.numericUpDown12.ValueChanged += new System.EventHandler(this.numericUpDown12_ValueChanged);
+            this.Y_TowerPositionsHookPush3.Name = "numericUpDown12";
+            this.Y_TowerPositionsHookPush3.Size = new System.Drawing.Size(101, 26);
+            this.Y_TowerPositionsHookPush3.TabIndex = 13;
+            this.Y_TowerPositionsHookPush3.ValueChanged += new System.EventHandler(this.numericUpDown12_ValueChanged);
             // 
             // numericUpDown13
             // 
-            this.numericUpDown13.DecimalPlaces = 2;
-            this.numericUpDown13.Increment = new decimal(new int[] {
+            this.Y_TowerPositionsHookPush2.DecimalPlaces = 2;
+            this.Y_TowerPositionsHookPush2.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.numericUpDown13.Location = new System.Drawing.Point(343, 234);
-            this.numericUpDown13.Maximum = new decimal(new int[] {
+            this.Y_TowerPositionsHookPush2.Location = new System.Drawing.Point(343, 234);
+            this.Y_TowerPositionsHookPush2.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown13.Name = "numericUpDown13";
-            this.numericUpDown13.Size = new System.Drawing.Size(101, 26);
-            this.numericUpDown13.TabIndex = 14;
-            this.numericUpDown13.ValueChanged += new System.EventHandler(this.numericUpDown13_ValueChanged);
+            this.Y_TowerPositionsHookPush2.Name = "numericUpDown13";
+            this.Y_TowerPositionsHookPush2.Size = new System.Drawing.Size(101, 26);
+            this.Y_TowerPositionsHookPush2.TabIndex = 14;
+            this.Y_TowerPositionsHookPush2.ValueChanged += new System.EventHandler(this.numericUpDown13_ValueChanged);
             // 
             // numericUpDown14
             // 
-            this.numericUpDown14.DecimalPlaces = 2;
-            this.numericUpDown14.Increment = new decimal(new int[] {
+            this.Y_TowerPositionsHookPush1.DecimalPlaces = 2;
+            this.Y_TowerPositionsHookPush1.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.numericUpDown14.Location = new System.Drawing.Point(343, 266);
-            this.numericUpDown14.Maximum = new decimal(new int[] {
+            this.Y_TowerPositionsHookPush1.Location = new System.Drawing.Point(343, 266);
+            this.Y_TowerPositionsHookPush1.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown14.Name = "numericUpDown14";
-            this.numericUpDown14.Size = new System.Drawing.Size(101, 26);
-            this.numericUpDown14.TabIndex = 15;
-            this.numericUpDown14.ValueChanged += new System.EventHandler(this.numericUpDown14_ValueChanged);
+            this.Y_TowerPositionsHookPush1.Name = "numericUpDown14";
+            this.Y_TowerPositionsHookPush1.Size = new System.Drawing.Size(101, 26);
+            this.Y_TowerPositionsHookPush1.TabIndex = 15;
+            this.Y_TowerPositionsHookPush1.ValueChanged += new System.EventHandler(this.numericUpDown14_ValueChanged);
             // 
             // numericUpDown15
             // 
-            this.numericUpDown15.DecimalPlaces = 2;
-            this.numericUpDown15.Increment = new decimal(new int[] {
+            this.X_ToClipPosition.DecimalPlaces = 2;
+            this.X_ToClipPosition.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.numericUpDown15.Location = new System.Drawing.Point(343, 83);
-            this.numericUpDown15.Maximum = new decimal(new int[] {
+            this.X_ToClipPosition.Location = new System.Drawing.Point(343, 83);
+            this.X_ToClipPosition.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown15.Name = "numericUpDown15";
-            this.numericUpDown15.Size = new System.Drawing.Size(101, 26);
-            this.numericUpDown15.TabIndex = 16;
-            this.numericUpDown15.ValueChanged += new System.EventHandler(this.numericUpDown15_ValueChanged);
+            this.X_ToClipPosition.Name = "numericUpDown15";
+            this.X_ToClipPosition.Size = new System.Drawing.Size(101, 26);
+            this.X_ToClipPosition.TabIndex = 16;
+            this.X_ToClipPosition.ValueChanged += new System.EventHandler(this.numericUpDown15_ValueChanged);
             // 
             // numericUpDown16
             // 
-            this.numericUpDown16.DecimalPlaces = 2;
-            this.numericUpDown16.Increment = new decimal(new int[] {
+            this.X_PrintingPosition.DecimalPlaces = 2;
+            this.X_PrintingPosition.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.numericUpDown16.Location = new System.Drawing.Point(343, 51);
-            this.numericUpDown16.Maximum = new decimal(new int[] {
+            this.X_PrintingPosition.Location = new System.Drawing.Point(343, 51);
+            this.X_PrintingPosition.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown16.Name = "numericUpDown16";
-            this.numericUpDown16.Size = new System.Drawing.Size(101, 26);
-            this.numericUpDown16.TabIndex = 17;
-            this.numericUpDown16.ValueChanged += new System.EventHandler(this.numericUpDown16_ValueChanged);
+            this.X_PrintingPosition.Name = "numericUpDown16";
+            this.X_PrintingPosition.Size = new System.Drawing.Size(101, 26);
+            this.X_PrintingPosition.TabIndex = 17;
+            this.X_PrintingPosition.ValueChanged += new System.EventHandler(this.numericUpDown16_ValueChanged);
             // 
             // label1
             // 
@@ -476,36 +488,36 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(31, 486);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(220, 20);
+            this.label5.Size = new System.Drawing.Size(169, 20);
             this.label5.TabIndex = 22;
-            this.label5.Text = "Y - Tower Height at Swap In 4";
+            this.label5.Text = "Y - Tower Height Pull 4";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(31, 518);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(220, 20);
+            this.label6.Size = new System.Drawing.Size(169, 20);
             this.label6.TabIndex = 23;
-            this.label6.Text = "Y - Tower Height at Swap In 3";
+            this.label6.Text = "Y - Tower Height Pull 3";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(31, 550);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(220, 20);
+            this.label7.Size = new System.Drawing.Size(169, 20);
             this.label7.TabIndex = 24;
-            this.label7.Text = "Y - Tower Height at Swap In 2";
+            this.label7.Text = "Y - Tower Height Pull 2";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(31, 582);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(220, 20);
+            this.label8.Size = new System.Drawing.Size(169, 20);
             this.label8.TabIndex = 25;
-            this.label8.Text = "Y - Tower Height at Swap In 1";
+            this.label8.Text = "Y - Tower Height Pull 1";
             // 
             // label9
             // 
@@ -548,36 +560,36 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(31, 173);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(232, 20);
+            this.label13.Size = new System.Drawing.Size(180, 20);
             this.label13.TabIndex = 30;
-            this.label13.Text = "Y - Tower Height at Swap Out 4";
+            this.label13.Text = "Y - Tower Height Push 4";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(31, 205);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(232, 20);
+            this.label14.Size = new System.Drawing.Size(180, 20);
             this.label14.TabIndex = 31;
-            this.label14.Text = "Y - Tower Height at Swap Out 3";
+            this.label14.Text = "Y - Tower Height Push 3";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(31, 237);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(232, 20);
+            this.label15.Size = new System.Drawing.Size(180, 20);
             this.label15.TabIndex = 32;
-            this.label15.Text = "Y - Tower Height at Swap Out 2";
+            this.label15.Text = "Y - Tower Height Push 2";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(31, 269);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(232, 20);
+            this.label16.Size = new System.Drawing.Size(180, 20);
             this.label16.TabIndex = 33;
-            this.label16.Text = "Y - Tower Height at Swap Out 1";
+            this.label16.Text = "Y - Tower Height Push 1";
             // 
             // label17
             // 
@@ -590,22 +602,22 @@
             // 
             // numericUpDown17
             // 
-            this.numericUpDown17.DecimalPlaces = 2;
-            this.numericUpDown17.Increment = new decimal(new int[] {
+            this.X_MaterialChangePosition.DecimalPlaces = 2;
+            this.X_MaterialChangePosition.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.numericUpDown17.Location = new System.Drawing.Point(343, 115);
-            this.numericUpDown17.Maximum = new decimal(new int[] {
+            this.X_MaterialChangePosition.Location = new System.Drawing.Point(343, 115);
+            this.X_MaterialChangePosition.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown17.Name = "numericUpDown17";
-            this.numericUpDown17.Size = new System.Drawing.Size(101, 26);
-            this.numericUpDown17.TabIndex = 35;
-            this.numericUpDown17.ValueChanged += new System.EventHandler(this.numericUpDown17_ValueChanged);
+            this.X_MaterialChangePosition.Name = "numericUpDown17";
+            this.X_MaterialChangePosition.Size = new System.Drawing.Size(101, 26);
+            this.X_MaterialChangePosition.TabIndex = 35;
+            this.X_MaterialChangePosition.ValueChanged += new System.EventHandler(this.numericUpDown17_ValueChanged);
             // 
             // label18
             // 
@@ -831,97 +843,97 @@
             // 
             // numericUpDown18
             // 
-            this.numericUpDown18.DecimalPlaces = 3;
-            this.numericUpDown18.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericUpDown18.Increment = new decimal(new int[] {
+            this.Z_LayerHeight.DecimalPlaces = 3;
+            this.Z_LayerHeight.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.Z_LayerHeight.Increment = new decimal(new int[] {
             25,
             0,
             0,
             196608});
-            this.numericUpDown18.Location = new System.Drawing.Point(766, 23);
-            this.numericUpDown18.Maximum = new decimal(new int[] {
+            this.Z_LayerHeight.Location = new System.Drawing.Point(766, 23);
+            this.Z_LayerHeight.Maximum = new decimal(new int[] {
             5,
             0,
             0,
             65536});
-            this.numericUpDown18.Minimum = new decimal(new int[] {
+            this.Z_LayerHeight.Minimum = new decimal(new int[] {
             25,
             0,
             0,
             196608});
-            this.numericUpDown18.Name = "numericUpDown18";
-            this.numericUpDown18.Size = new System.Drawing.Size(101, 26);
-            this.numericUpDown18.TabIndex = 57;
-            this.numericUpDown18.Value = new decimal(new int[] {
+            this.Z_LayerHeight.Name = "numericUpDown18";
+            this.Z_LayerHeight.Size = new System.Drawing.Size(101, 26);
+            this.Z_LayerHeight.TabIndex = 57;
+            this.Z_LayerHeight.Value = new decimal(new int[] {
             25,
             0,
             0,
             196608});
-            this.numericUpDown18.ValueChanged += new System.EventHandler(this.numericUpDown18_ValueChanged);
+            this.Z_LayerHeight.ValueChanged += new System.EventHandler(this.numericUpDown18_ValueChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(554, 58);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 20);
+            this.label2.Size = new System.Drawing.Size(94, 20);
             this.label2.TabIndex = 58;
-            this.label2.Text = "Cure Time";
+            this.label2.Text = "Cure Time 4";
             // 
             // numericUpDown19
             // 
-            this.numericUpDown19.DecimalPlaces = 1;
-            this.numericUpDown19.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericUpDown19.Location = new System.Drawing.Point(766, 55);
-            this.numericUpDown19.Maximum = new decimal(new int[] {
+            this.CureTime1.DecimalPlaces = 1;
+            this.CureTime1.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.CureTime1.Location = new System.Drawing.Point(766, 151);
+            this.CureTime1.Maximum = new decimal(new int[] {
             300,
             0,
             0,
             0});
-            this.numericUpDown19.Minimum = new decimal(new int[] {
+            this.CureTime1.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown19.Name = "numericUpDown19";
-            this.numericUpDown19.Size = new System.Drawing.Size(101, 26);
-            this.numericUpDown19.TabIndex = 59;
-            this.numericUpDown19.Value = new decimal(new int[] {
+            this.CureTime1.Name = "numericUpDown19";
+            this.CureTime1.Size = new System.Drawing.Size(101, 26);
+            this.CureTime1.TabIndex = 59;
+            this.CureTime1.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown19.ValueChanged += new System.EventHandler(this.numericUpDown19_ValueChanged);
+            this.CureTime1.ValueChanged += new System.EventHandler(this.numericUpDown19_ValueChanged);
             // 
             // numericUpDown20
             // 
-            this.numericUpDown20.DecimalPlaces = 1;
-            this.numericUpDown20.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericUpDown20.Location = new System.Drawing.Point(766, 126);
-            this.numericUpDown20.Maximum = new decimal(new int[] {
+            this.StartingLayersCureTime.DecimalPlaces = 1;
+            this.StartingLayersCureTime.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.StartingLayersCureTime.Location = new System.Drawing.Point(766, 227);
+            this.StartingLayersCureTime.Maximum = new decimal(new int[] {
             300,
             0,
             0,
             0});
-            this.numericUpDown20.Minimum = new decimal(new int[] {
+            this.StartingLayersCureTime.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown20.Name = "numericUpDown20";
-            this.numericUpDown20.Size = new System.Drawing.Size(101, 26);
-            this.numericUpDown20.TabIndex = 61;
-            this.numericUpDown20.Value = new decimal(new int[] {
+            this.StartingLayersCureTime.Name = "numericUpDown20";
+            this.StartingLayersCureTime.Size = new System.Drawing.Size(101, 26);
+            this.StartingLayersCureTime.TabIndex = 61;
+            this.StartingLayersCureTime.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown20.ValueChanged += new System.EventHandler(this.numericUpDown20_ValueChanged);
+            this.StartingLayersCureTime.ValueChanged += new System.EventHandler(this.numericUpDown20_ValueChanged);
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(554, 129);
+            this.label20.Location = new System.Drawing.Point(554, 230);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(192, 20);
             this.label20.TabIndex = 60;
@@ -929,27 +941,27 @@
             // 
             // numericUpDown21
             // 
-            this.numericUpDown21.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericUpDown21.Location = new System.Drawing.Point(766, 158);
-            this.numericUpDown21.Maximum = new decimal(new int[] {
+            this.NumberOfStartingLayers.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.NumberOfStartingLayers.Location = new System.Drawing.Point(766, 259);
+            this.NumberOfStartingLayers.Maximum = new decimal(new int[] {
             25,
             0,
             0,
             0});
-            this.numericUpDown21.Name = "numericUpDown21";
-            this.numericUpDown21.Size = new System.Drawing.Size(101, 26);
-            this.numericUpDown21.TabIndex = 63;
-            this.numericUpDown21.Value = new decimal(new int[] {
+            this.NumberOfStartingLayers.Name = "numericUpDown21";
+            this.NumberOfStartingLayers.Size = new System.Drawing.Size(101, 26);
+            this.NumberOfStartingLayers.TabIndex = 63;
+            this.NumberOfStartingLayers.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown21.ValueChanged += new System.EventHandler(this.numericUpDown21_ValueChanged);
+            this.NumberOfStartingLayers.ValueChanged += new System.EventHandler(this.numericUpDown21_ValueChanged);
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(554, 161);
+            this.label21.Location = new System.Drawing.Point(554, 262);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(194, 20);
             this.label21.TabIndex = 62;
@@ -976,7 +988,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(873, 128);
+            this.label24.Location = new System.Drawing.Point(873, 229);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(17, 20);
             this.label24.TabIndex = 66;
@@ -984,47 +996,47 @@
             // 
             // numericUpDown22
             // 
-            this.numericUpDown22.Location = new System.Drawing.Point(766, 205);
-            this.numericUpDown22.Maximum = new decimal(new int[] {
+            this.X_FeedRate.Location = new System.Drawing.Point(766, 306);
+            this.X_FeedRate.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown22.Name = "numericUpDown22";
-            this.numericUpDown22.Size = new System.Drawing.Size(120, 26);
-            this.numericUpDown22.TabIndex = 67;
-            this.numericUpDown22.ValueChanged += new System.EventHandler(this.numericUpDown22_ValueChanged);
+            this.X_FeedRate.Name = "numericUpDown22";
+            this.X_FeedRate.Size = new System.Drawing.Size(120, 26);
+            this.X_FeedRate.TabIndex = 67;
+            this.X_FeedRate.ValueChanged += new System.EventHandler(this.numericUpDown22_ValueChanged);
             // 
             // numericUpDown23
             // 
-            this.numericUpDown23.Location = new System.Drawing.Point(766, 237);
-            this.numericUpDown23.Maximum = new decimal(new int[] {
+            this.Y_FeedRate.Location = new System.Drawing.Point(766, 338);
+            this.Y_FeedRate.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown23.Name = "numericUpDown23";
-            this.numericUpDown23.Size = new System.Drawing.Size(120, 26);
-            this.numericUpDown23.TabIndex = 68;
-            this.numericUpDown23.ValueChanged += new System.EventHandler(this.numericUpDown23_ValueChanged);
+            this.Y_FeedRate.Name = "numericUpDown23";
+            this.Y_FeedRate.Size = new System.Drawing.Size(120, 26);
+            this.Y_FeedRate.TabIndex = 68;
+            this.Y_FeedRate.ValueChanged += new System.EventHandler(this.numericUpDown23_ValueChanged);
             // 
             // numericUpDown24
             // 
-            this.numericUpDown24.Location = new System.Drawing.Point(766, 269);
-            this.numericUpDown24.Maximum = new decimal(new int[] {
+            this.Z_FeedRate.Location = new System.Drawing.Point(766, 370);
+            this.Z_FeedRate.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown24.Name = "numericUpDown24";
-            this.numericUpDown24.Size = new System.Drawing.Size(120, 26);
-            this.numericUpDown24.TabIndex = 69;
-            this.numericUpDown24.ValueChanged += new System.EventHandler(this.numericUpDown24_ValueChanged);
+            this.Z_FeedRate.Name = "numericUpDown24";
+            this.Z_FeedRate.Size = new System.Drawing.Size(120, 26);
+            this.Z_FeedRate.TabIndex = 69;
+            this.Z_FeedRate.ValueChanged += new System.EventHandler(this.numericUpDown24_ValueChanged);
             // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(554, 275);
+            this.label25.Location = new System.Drawing.Point(554, 376);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(114, 20);
             this.label25.TabIndex = 70;
@@ -1033,7 +1045,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(554, 243);
+            this.label26.Location = new System.Drawing.Point(554, 344);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(115, 20);
             this.label26.TabIndex = 71;
@@ -1042,7 +1054,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(554, 211);
+            this.label27.Location = new System.Drawing.Point(554, 312);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(115, 20);
             this.label27.TabIndex = 72;
@@ -1051,34 +1063,172 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(750, 552);
+            this.label28.Location = new System.Drawing.Point(750, 653);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(60, 20);
             this.label28.TabIndex = 73;
             this.label28.Text = "label28";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(873, 90);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(17, 20);
+            this.label29.TabIndex = 76;
+            this.label29.Text = "s";
+            // 
+            // numericUpDown25
+            // 
+            this.CureTime3.DecimalPlaces = 1;
+            this.CureTime3.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.CureTime3.Location = new System.Drawing.Point(766, 87);
+            this.CureTime3.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.CureTime3.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.CureTime3.Name = "numericUpDown25";
+            this.CureTime3.Size = new System.Drawing.Size(101, 26);
+            this.CureTime3.TabIndex = 75;
+            this.CureTime3.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.CureTime3.ValueChanged += new System.EventHandler(this.numericUpDown25_ValueChanged);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(554, 90);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(94, 20);
+            this.label30.TabIndex = 74;
+            this.label30.Text = "Cure Time 3";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(873, 122);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(17, 20);
+            this.label31.TabIndex = 79;
+            this.label31.Text = "s";
+            // 
+            // numericUpDown26
+            // 
+            this.CureTime2.DecimalPlaces = 1;
+            this.CureTime2.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.CureTime2.Location = new System.Drawing.Point(766, 119);
+            this.CureTime2.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.CureTime2.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.CureTime2.Name = "numericUpDown26";
+            this.CureTime2.Size = new System.Drawing.Size(101, 26);
+            this.CureTime2.TabIndex = 78;
+            this.CureTime2.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.CureTime2.ValueChanged += new System.EventHandler(this.numericUpDown26_ValueChanged);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(554, 122);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(94, 20);
+            this.label32.TabIndex = 77;
+            this.label32.Text = "Cure Time 2";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(873, 154);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(17, 20);
+            this.label33.TabIndex = 82;
+            this.label33.Text = "s";
+            // 
+            // numericUpDown27
+            // 
+            this.CureTime4.DecimalPlaces = 1;
+            this.CureTime4.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.CureTime4.Location = new System.Drawing.Point(766, 54);
+            this.CureTime4.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.CureTime4.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.CureTime4.Name = "numericUpDown27";
+            this.CureTime4.Size = new System.Drawing.Size(101, 26);
+            this.CureTime4.TabIndex = 81;
+            this.CureTime4.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.CureTime4.ValueChanged += new System.EventHandler(this.numericUpDown27_ValueChanged);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(554, 154);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(94, 20);
+            this.label34.TabIndex = 80;
+            this.label34.Text = "Cure Time 1";
             // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 691);
+            this.Controls.Add(this.label33);
+            this.Controls.Add(this.CureTime4);
+            this.Controls.Add(this.label34);
+            this.Controls.Add(this.label31);
+            this.Controls.Add(this.CureTime2);
+            this.Controls.Add(this.label32);
+            this.Controls.Add(this.label29);
+            this.Controls.Add(this.CureTime3);
+            this.Controls.Add(this.label30);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.label26);
             this.Controls.Add(this.label25);
-            this.Controls.Add(this.numericUpDown24);
-            this.Controls.Add(this.numericUpDown23);
-            this.Controls.Add(this.numericUpDown22);
+            this.Controls.Add(this.Z_FeedRate);
+            this.Controls.Add(this.Y_FeedRate);
+            this.Controls.Add(this.X_FeedRate);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label22);
-            this.Controls.Add(this.numericUpDown21);
+            this.Controls.Add(this.NumberOfStartingLayers);
             this.Controls.Add(this.label21);
-            this.Controls.Add(this.numericUpDown20);
+            this.Controls.Add(this.StartingLayersCureTime);
             this.Controls.Add(this.label20);
-            this.Controls.Add(this.numericUpDown19);
+            this.Controls.Add(this.CureTime1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.numericUpDown18);
+            this.Controls.Add(this.Z_LayerHeight);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.button20);
             this.Controls.Add(this.button19);
@@ -1098,7 +1248,7 @@
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label18);
-            this.Controls.Add(this.numericUpDown17);
+            this.Controls.Add(this.X_MaterialChangePosition);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
@@ -1115,22 +1265,22 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.numericUpDown16);
-            this.Controls.Add(this.numericUpDown15);
-            this.Controls.Add(this.numericUpDown14);
-            this.Controls.Add(this.numericUpDown13);
-            this.Controls.Add(this.numericUpDown12);
-            this.Controls.Add(this.numericUpDown11);
-            this.Controls.Add(this.numericUpDown10);
-            this.Controls.Add(this.numericUpDown9);
-            this.Controls.Add(this.numericUpDown8);
-            this.Controls.Add(this.numericUpDown7);
-            this.Controls.Add(this.numericUpDown6);
-            this.Controls.Add(this.numericUpDown5);
-            this.Controls.Add(this.numericUpDown4);
-            this.Controls.Add(this.numericUpDown3);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.X_PrintingPosition);
+            this.Controls.Add(this.X_ToClipPosition);
+            this.Controls.Add(this.Y_TowerPositionsHookPush1);
+            this.Controls.Add(this.Y_TowerPositionsHookPush2);
+            this.Controls.Add(this.Y_TowerPositionsHookPush3);
+            this.Controls.Add(this.Y_TowerPositionsHookPush4);
+            this.Controls.Add(this.Y_TowerPositionHookDisengage1);
+            this.Controls.Add(this.Y_TowerPositionHookDisengage2);
+            this.Controls.Add(this.Y_TowerPositionHookDisengage3);
+            this.Controls.Add(this.Y_TowerPositionHookDisengage4);
+            this.Controls.Add(this.Y_TowerPositionHoolPull1);
+            this.Controls.Add(this.Y_TowerPositionHoolPull2);
+            this.Controls.Add(this.Y_TowerPositionHoolPull3);
+            this.Controls.Add(this.Y_TowerPositionHookPull4);
+            this.Controls.Add(this.Z_HeightToRaiseBed);
+            this.Controls.Add(this.X_PutAwayPosition);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "SettingsForm";
@@ -1138,30 +1288,33 @@
             this.Text = "Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingsForm_FormClosing);
             this.Load += new System.EventHandler(this.SettingsForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown21)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown22)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown23)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown24)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.X_PutAwayPosition)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Z_HeightToRaiseBed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionHookPull4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionHoolPull3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionHoolPull2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionHoolPull1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionHookDisengage4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionHookDisengage3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionHookDisengage2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionHookDisengage1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionsHookPush4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionsHookPush3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionsHookPush2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionsHookPush1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.X_ToClipPosition)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.X_PrintingPosition)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.X_MaterialChangePosition)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Z_LayerHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CureTime1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartingLayersCureTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumberOfStartingLayers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.X_FeedRate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Y_FeedRate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Z_FeedRate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CureTime3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CureTime2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CureTime4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1171,22 +1324,22 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
-        private System.Windows.Forms.NumericUpDown numericUpDown6;
-        private System.Windows.Forms.NumericUpDown numericUpDown7;
-        private System.Windows.Forms.NumericUpDown numericUpDown8;
-        private System.Windows.Forms.NumericUpDown numericUpDown9;
-        private System.Windows.Forms.NumericUpDown numericUpDown10;
-        private System.Windows.Forms.NumericUpDown numericUpDown11;
-        private System.Windows.Forms.NumericUpDown numericUpDown12;
-        private System.Windows.Forms.NumericUpDown numericUpDown13;
-        private System.Windows.Forms.NumericUpDown numericUpDown14;
-        private System.Windows.Forms.NumericUpDown numericUpDown15;
-        private System.Windows.Forms.NumericUpDown numericUpDown16;
+        private System.Windows.Forms.NumericUpDown X_PutAwayPosition;
+        private System.Windows.Forms.NumericUpDown Z_HeightToRaiseBed;
+        private System.Windows.Forms.NumericUpDown Y_TowerPositionHookPull4;
+        private System.Windows.Forms.NumericUpDown Y_TowerPositionHoolPull3;
+        private System.Windows.Forms.NumericUpDown Y_TowerPositionHoolPull2;
+        private System.Windows.Forms.NumericUpDown Y_TowerPositionHoolPull1;
+        private System.Windows.Forms.NumericUpDown Y_TowerPositionHookDisengage4;
+        private System.Windows.Forms.NumericUpDown Y_TowerPositionHookDisengage3;
+        private System.Windows.Forms.NumericUpDown Y_TowerPositionHookDisengage2;
+        private System.Windows.Forms.NumericUpDown Y_TowerPositionHookDisengage1;
+        private System.Windows.Forms.NumericUpDown Y_TowerPositionsHookPush4;
+        private System.Windows.Forms.NumericUpDown Y_TowerPositionsHookPush3;
+        private System.Windows.Forms.NumericUpDown Y_TowerPositionsHookPush2;
+        private System.Windows.Forms.NumericUpDown Y_TowerPositionsHookPush1;
+        private System.Windows.Forms.NumericUpDown X_ToClipPosition;
+        private System.Windows.Forms.NumericUpDown X_PrintingPosition;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -1203,7 +1356,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.NumericUpDown numericUpDown17;
+        private System.Windows.Forms.NumericUpDown X_MaterialChangePosition;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
@@ -1223,22 +1376,31 @@
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.NumericUpDown numericUpDown18;
+        private System.Windows.Forms.NumericUpDown Z_LayerHeight;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericUpDown19;
-        private System.Windows.Forms.NumericUpDown numericUpDown20;
+        private System.Windows.Forms.NumericUpDown CureTime1;
+        private System.Windows.Forms.NumericUpDown StartingLayersCureTime;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.NumericUpDown numericUpDown21;
+        private System.Windows.Forms.NumericUpDown NumberOfStartingLayers;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.NumericUpDown numericUpDown22;
-        private System.Windows.Forms.NumericUpDown numericUpDown23;
-        private System.Windows.Forms.NumericUpDown numericUpDown24;
+        private System.Windows.Forms.NumericUpDown X_FeedRate;
+        private System.Windows.Forms.NumericUpDown Y_FeedRate;
+        private System.Windows.Forms.NumericUpDown Z_FeedRate;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.NumericUpDown CureTime3;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.NumericUpDown CureTime2;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.NumericUpDown CureTime4;
+        private System.Windows.Forms.Label label34;
     }
 }
