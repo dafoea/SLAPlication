@@ -78,6 +78,10 @@ namespace PrinterTestForms
         SettingsForm set = new SettingsForm();
         bool _readyToProject = false;
 
+        int X_feed = Properties.Settings.Default.X_feedrate;
+        int Y_feed = Properties.Settings.Default.Y_feedrate;
+        int Z_feed = Properties.Settings.Default.Z_feedrate;
+
         /// <summary>
         /// Indicates whether the Arduino is ready to receive further commands (Last string recieved from Arduino == "ok"
         /// </summary>
@@ -174,11 +178,12 @@ namespace PrinterTestForms
         /// </summary>
         public void processCommands()
         {
+            Queue<string> commandsToSend = new Queue<string>(commands);
             if (serialPort1.IsOpen)
             {
-                while (commands.Count > 0)
+                while (commandsToSend.Count > 0)
                 {
-                    string command = commands.Dequeue();
+                    string command = commandsToSend.Dequeue();
                     serialBox.AppendText("<<TX>> " + command + System.Environment.NewLine);
                     while (!sendMessage(command)) ;
                 }
@@ -210,37 +215,15 @@ namespace PrinterTestForms
             home(axis.z);
             home(axis.x);
             home(axis.y);
-
-            Thread t = new Thread(() => processCommands());
-            t.Start(); // begin threading commands to the printer
             reinitializeSettings();
 
-            //First layer
-            for (int material = 0; material < _fileNames.Capacity; material++)
-            {
-                if (_finalLayerForMaterial[material] > 0)
-                {
-                    _thisLayerHasMaterial[material] = checkIfImageHasContent(_fileNames[material][0]);
-                }
-                else
-                {
-                    _thisLayerHasMaterial[material] = false;
-                }
-            }
-            findNextMaterial();
             move(X_cleaningPosition);
-            queueMaterial(_nextMaterial);
-            takeOutMaterial();
-            _currentMaterial = _nextMaterial;
-            t.Join();
-            t = new Thread(() => processCommands());
+            Thread t = new Thread(() => processCommands());
             t.Start();
-
-
             for (_currentLayer = 0; _currentLayer < _totalNumberOfLayers; _currentLayer++)
             {
                 //populate the boolian list _thisLayerHasMaterial for the current layer
-                for (int material = 0; material < _fileNames.Capacity; material++)
+                for (int material = 0; material < 4; material++)
                 {
                     if (_currentLayer < _finalLayerForMaterial[material])
                     {
@@ -251,14 +234,17 @@ namespace PrinterTestForms
                         _thisLayerHasMaterial[material] = false;
                     }
                 }
-                t.Join(); //wait until the current thread of commands have finished.
                 findNextMaterial();
+                queueMaterial(_nextMaterial);
+                takeOutMaterial(_nextMaterial);
                 _currentMaterial = _nextMaterial;
+                t.Join(); //wait until the current thread of commands have finished.
+
 
 
                 while (_thisLayerHasMaterial[(int)_currentMaterial])
                 {
-                    changeToMaterial(_currentMaterial);
+
                     askToProject();
                     t = new Thread(() => processCommands());
                     t.Start();
@@ -266,9 +252,17 @@ namespace PrinterTestForms
                     Thread t2 = new Thread(() => projectImage());
                     t2.Start();
                     t2.Join();
+                    shear();
                     statusText.Text = "Done Projecting";
                     findNextMaterial();
-                    _currentMaterial = _nextMaterial;
+
+                    //check if this layer has any more materials to print. if so, change to that material.
+                    //this check prevents switching to the same material between layers
+                    if (_thisLayerHasMaterial[(int)_nextMaterial])
+                    {
+                        changeToMaterial(_nextMaterial);
+                        _currentMaterial = _nextMaterial;
+                    }
                 }
 
                 firstMaterialOfLayer = true;
@@ -277,9 +271,11 @@ namespace PrinterTestForms
 
 
         }
+        /// <summary>
+        /// Passes a request to transmit position after the arduino has completed the most recent list of commands.
+        /// </summary>
         private void askToProject()
         {
-            commands.Enqueue("M400");
             commands.Enqueue("M114");
         }
         private void projectImage()
@@ -287,6 +283,7 @@ namespace PrinterTestForms
             while (!_readyToProject) ;
             statusText.Text = "Projecting...";
             double duration = (_currentLayer > _initialLayers) ? _cureTime : _intitialCureTime;
+
             n.changePicture(_fileNames[(int)_currentMaterial][(int)_currentLayer]);
             Thread.Sleep(Convert.ToInt32(Math.Round(duration * 1000)));
             n.clearPicture();
@@ -309,12 +306,11 @@ namespace PrinterTestForms
         /// <param name="mat">The material that will be available once the operation is finished</param>
         private void changeToMaterial(material mat)
         {
-            if (_currentMaterial != mat)
-            {
+
                 putAwayMaterial();
                 queueMaterial(mat);
-                takeOutMaterial();
-            }
+                takeOutMaterial(mat);
+
 
         }
 
@@ -346,21 +342,21 @@ namespace PrinterTestForms
         /// <summary>
         /// Takes out _currentMaterial
         /// </summary>
-        private void takeOutMaterial()
+        private void takeOutMaterial(material mat)
         {
 
             setAbsoluteCoordinates();
             move(X_toClipPosition);
-            move(Y_towerPositionsHookPull[(int)_currentMaterial]);
+            move(Y_towerPositionsHookPull[(int)mat]);
             move(X_takeOutPosition);
             if (firstMaterialOfLayer)
             {
-                move(new Tuple<axis, double>(axis.z, -1 * Z_heightToRaiseBed.Item2 + _layerHeight));
+                move(new Tuple<axis, double>(axis.z,  Z_heightToRaiseBed.Item2 - _layerHeight));
                 firstMaterialOfLayer = false;
             }
             else
             {
-                move(new Tuple<axis, double>(axis.z, -1 * Z_heightToRaiseBed.Item2));
+                move(new Tuple<axis, double>(axis.z, Z_heightToRaiseBed.Item2));
             }
         }
 
@@ -369,7 +365,9 @@ namespace PrinterTestForms
         /// </summary>
         private void shear()
         {
-            //Insert G-code to shear layer
+            setRelativeCoordinates();
+            move(new Tuple<axis, double>(axis.z, -10));
+            move(new Tuple<axis, double>(axis.z, 10));
         }
 
         /// <summary>
@@ -381,7 +379,21 @@ namespace PrinterTestForms
         }
         private void move(Tuple<axis, double> movement)
         {
-            commands.Enqueue("G1 " + movement.Item1.ToString().ToUpper() + movement.Item2.ToString());
+            int feed = 0;
+            switch (movement.Item1)
+            {
+                case axis.x:
+                    feed = X_feed;
+                    break;
+                case axis.y:
+                    feed = Y_feed;
+                    break;
+                case axis.z:
+                    feed = Z_feed;
+                    break;
+
+            }
+            commands.Enqueue("G1 " + movement.Item1.ToString().ToUpper() + movement.Item2.ToString() + " F" + feed.ToString());
         }
 
         /// <summary>
@@ -739,6 +751,9 @@ namespace PrinterTestForms
             _currentLayer = 0;
             _currentMaterial = material.m1;
             _totalHeight = _totalNumberOfLayers * _layerHeight;
+            X_feed = Properties.Settings.Default.X_feedrate;
+            Y_feed = Properties.Settings.Default.Y_feedrate;
+            Z_feed = Properties.Settings.Default.Z_feedrate;
 
 
 
@@ -759,9 +774,8 @@ namespace PrinterTestForms
         }
 
         /// <summary>
-        /// Returns true if the image located at the specified filepath has pixels that are not black. Returns null if an unsupported
-        /// filetype is passed
-        /// </summary>
+        /// Returns true if the image located at the specified filepath has pixels that are not black. 
+        /// /// </summary>
         /// <param name="filepath"></param>
         /// <returns></returns>
         private bool checkIfImageHasContent(string filepath)
@@ -795,7 +809,7 @@ namespace PrinterTestForms
 
         private void printButton_Click(object sender, EventArgs e)
         {
-            if (!serialPort1.IsOpen)
+            if (serialPort1.IsOpen)
             {
                 Thread mainThread = new Thread(() => PRINT());
                 mainThread.Start();

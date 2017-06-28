@@ -73,7 +73,7 @@ namespace PrinterTestForms.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("357")]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
         public double Y_towerPositionsHookPush1 {
             get {
                 return ((double)(this["Y_towerPositionsHookPush1"]));
@@ -85,7 +85,7 @@ namespace PrinterTestForms.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("505")]
+        [global::System.Configuration.DefaultSettingValueAttribute("146")]
         public double Y_towerPositionsHookPush2 {
             get {
                 return ((double)(this["Y_towerPositionsHookPush2"]));
@@ -97,7 +97,7 @@ namespace PrinterTestForms.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("636")]
+        [global::System.Configuration.DefaultSettingValueAttribute("297")]
         public double Y_towerPositionsHookPush3 {
             get {
                 return ((double)(this["Y_towerPositionsHookPush3"]));
@@ -109,7 +109,7 @@ namespace PrinterTestForms.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("758")]
+        [global::System.Configuration.DefaultSettingValueAttribute("460")]
         public double Y_towerPositionsHookPush4 {
             get {
                 return ((double)(this["Y_towerPositionsHookPush4"]));
@@ -121,7 +121,7 @@ namespace PrinterTestForms.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("332")]
+        [global::System.Configuration.DefaultSettingValueAttribute("29")]
         public double Y_towerPositionsHookDisengaged1 {
             get {
                 return ((double)(this["Y_towerPositionsHookDisengaged1"]));
@@ -133,7 +133,7 @@ namespace PrinterTestForms.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("480")]
+        [global::System.Configuration.DefaultSettingValueAttribute("170")]
         public double Y_towerPositionsHookDisengaged2 {
             get {
                 return ((double)(this["Y_towerPositionsHookDisengaged2"]));
@@ -145,7 +145,7 @@ namespace PrinterTestForms.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("611")]
+        [global::System.Configuration.DefaultSettingValueAttribute("325")]
         public double Y_towerPositionsHookDisengaged3 {
             get {
                 return ((double)(this["Y_towerPositionsHookDisengaged3"]));
@@ -157,7 +157,7 @@ namespace PrinterTestForms.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("733")]
+        [global::System.Configuration.DefaultSettingValueAttribute("490")]
         public double Y_towerPositionsHookDisengaged4 {
             get {
                 return ((double)(this["Y_towerPositionsHookDisengaged4"]));
@@ -169,7 +169,7 @@ namespace PrinterTestForms.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("362")]
+        [global::System.Configuration.DefaultSettingValueAttribute("11")]
         public double Y_towerPositionsHookPull1 {
             get {
                 return ((double)(this["Y_towerPositionsHookPull1"]));
@@ -181,7 +181,7 @@ namespace PrinterTestForms.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("507")]
+        [global::System.Configuration.DefaultSettingValueAttribute("151")]
         public double Y_towerPositionsHookPull2 {
             get {
                 return ((double)(this["Y_towerPositionsHookPull2"]));
@@ -193,7 +193,7 @@ namespace PrinterTestForms.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("638")]
+        [global::System.Configuration.DefaultSettingValueAttribute("302")]
         public double Y_towerPositionsHookPull3 {
             get {
                 return ((double)(this["Y_towerPositionsHookPull3"]));
@@ -205,7 +205,7 @@ namespace PrinterTestForms.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("760")]
+        [global::System.Configuration.DefaultSettingValueAttribute("465")]
         public double Y_towerPositionsHookPull4 {
             get {
                 return ((double)(this["Y_towerPositionsHookPull4"]));
@@ -217,7 +217,7 @@ namespace PrinterTestForms.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.DefaultSettingValueAttribute("-50")]
         public double Z_heightToRaiseBed {
             get {
                 return ((double)(this["Z_heightToRaiseBed"]));
@@ -284,6 +284,42 @@ namespace PrinterTestForms.Properties {
             }
             set {
                 this["numberOfStartingLayers"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1200")]
+        public int X_feedrate {
+            get {
+                return ((int)(this["X_feedrate"]));
+            }
+            set {
+                this["X_feedrate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("700")]
+        public int Y_feedrate {
+            get {
+                return ((int)(this["Y_feedrate"]));
+            }
+            set {
+                this["Y_feedrate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("800")]
+        public int Z_feedrate {
+            get {
+                return ((int)(this["Z_feedrate"]));
+            }
+            set {
+                this["Z_feedrate"] = value;
             }
         }
     }

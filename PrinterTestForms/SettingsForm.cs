@@ -168,6 +168,10 @@ namespace PrinterTestForms
             numericUpDown19.Value = (decimal)Properties.Settings.Default.cureTime;
             numericUpDown20.Value = (decimal)Properties.Settings.Default.startingLayersCureTime;
             numericUpDown21.Value = (decimal)Properties.Settings.Default.numberOfStartingLayers;
+            numericUpDown22.Value = (decimal)Properties.Settings.Default.X_feedrate;
+            numericUpDown23.Value = (decimal)Properties.Settings.Default.Y_feedrate;
+            numericUpDown24.Value = (decimal)Properties.Settings.Default.Z_feedrate;
+
 
         }
 
@@ -198,7 +202,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 X" + numericUpDown1.Value.ToString());
+                port.WriteLine("G1 X" + numericUpDown1.Value.ToString() + " F" + numericUpDown22.Value.ToString());
             }
         }
 
@@ -209,7 +213,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 X" + numericUpDown16.Value.ToString());
+                port.WriteLine("G1 X" + numericUpDown16.Value.ToString() + " F" + numericUpDown22.Value.ToString());
             }
         }
 
@@ -220,7 +224,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 X" + numericUpDown15.Value.ToString());
+                port.WriteLine("G1 X" + numericUpDown15.Value.ToString() + " F" + numericUpDown22.Value.ToString());
             }
         }
 
@@ -231,7 +235,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 X" + numericUpDown17.Value.ToString());
+                port.WriteLine("G1 X" + numericUpDown17.Value.ToString() + " F" + numericUpDown22.Value.ToString());
             }
         }
 
@@ -242,7 +246,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown14.Value.ToString());
+                port.WriteLine("G1 Y" + numericUpDown14.Value.ToString() + " F" + numericUpDown23.Value.ToString());
             }
         }
 
@@ -253,7 +257,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown13.Value.ToString());
+                port.WriteLine("G1 Y" + numericUpDown13.Value.ToString() + " F" + numericUpDown23.Value.ToString());
             }
         }
 
@@ -264,7 +268,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown12.Value.ToString());
+                port.WriteLine("G1 Y" + numericUpDown12.Value.ToString() + " F" + numericUpDown23.Value.ToString());
             }
         }
 
@@ -275,7 +279,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown11.Value.ToString());
+                port.WriteLine("G1 Y" + numericUpDown11.Value.ToString() + " F" + numericUpDown23.Value.ToString());
             }
         }
 
@@ -286,7 +290,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown10.Value.ToString());
+                port.WriteLine("G1 Y" + numericUpDown10.Value.ToString() + " F" + numericUpDown23.Value.ToString());
             }
         }
 
@@ -297,7 +301,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown9.Value.ToString());
+                port.WriteLine("G1 Y" + numericUpDown9.Value.ToString() + " F" + numericUpDown23.Value.ToString());
             }
         }
 
@@ -308,7 +312,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown8.Value.ToString());
+                port.WriteLine("G1 Y" + numericUpDown8.Value.ToString() + " F" + numericUpDown23.Value.ToString());
             }
         }
 
@@ -319,7 +323,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown7.Value.ToString());
+                port.WriteLine("G1 Y" + numericUpDown7.Value.ToString() + " F" + numericUpDown23.Value.ToString());
             }
         }
 
@@ -330,7 +334,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown6.Value.ToString());
+                port.WriteLine("G1 Y" + numericUpDown6.Value.ToString() + " F" + numericUpDown23.Value.ToString());
             }
         }
 
@@ -341,7 +345,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown5.Value.ToString());
+                port.WriteLine("G1 Y" + numericUpDown5.Value.ToString() + " F" + numericUpDown23.Value.ToString());
             }
         }
 
@@ -352,7 +356,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown4.Value.ToString());
+                port.WriteLine("G1 Y" + numericUpDown4.Value.ToString() + " F" + numericUpDown23.Value.ToString());
             }
         }
 
@@ -363,7 +367,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G90");
                 Task.Delay(100);
-                port.WriteLine("G1 Y" + numericUpDown3.Value.ToString());
+                port.WriteLine("G1 Y" + numericUpDown3.Value.ToString() + " F" + numericUpDown23.Value.ToString());
             }
         }
 
@@ -374,7 +378,7 @@ namespace PrinterTestForms
                 Task.Delay(100);
                 port.WriteLine("G91");
                 Task.Delay(100);
-                port.WriteLine("G1 Z-" + numericUpDown2.Value.ToString());
+                port.WriteLine("G1 Z-" + numericUpDown2.Value.ToString() + " F" + numericUpDown24.Value.ToString());
             }
         }
 
@@ -401,7 +405,10 @@ namespace PrinterTestForms
                 Properties.Settings.Default.Z_layerHeight.ToString(),
                 Properties.Settings.Default.cureTime.ToString(),
                 Properties.Settings.Default.startingLayersCureTime.ToString(),
-                Properties.Settings.Default.numberOfStartingLayers.ToString()
+                Properties.Settings.Default.numberOfStartingLayers.ToString(),
+                Properties.Settings.Default.X_feedrate.ToString(),
+                Properties.Settings.Default.Y_feedrate.ToString(),
+                Properties.Settings.Default.Z_feedrate.ToString()
         };
             SaveFileDialog file = new SaveFileDialog();
             file.OverwritePrompt = false;
@@ -446,6 +453,9 @@ namespace PrinterTestForms
                 numericUpDown19.Value = Convert.ToDecimal(line.ReadLine());
                 numericUpDown20.Value = Convert.ToDecimal(line.ReadLine());
                 numericUpDown21.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown22.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown23.Value = Convert.ToDecimal(line.ReadLine());
+                numericUpDown24.Value = Convert.ToDecimal(line.ReadLine());
             }
         }
 
@@ -464,6 +474,24 @@ namespace PrinterTestForms
         private void numericUpDown21_ValueChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.numberOfStartingLayers = (int)numericUpDown21.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void numericUpDown22_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.X_feedrate = (int)numericUpDown22.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void numericUpDown23_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Y_feedrate = (int)numericUpDown23.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void numericUpDown24_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Z_feedrate = (int)numericUpDown24.Value;
             Properties.Settings.Default.Save();
         }
     }
