@@ -179,6 +179,7 @@ namespace PrinterTestForms
         public void processCommands()
         {
             Queue<string> commandsToSend = new Queue<string>(commands);
+            commands.Clear();
             if (serialPort1.IsOpen)
             {
                 while (commandsToSend.Count > 0)
@@ -235,16 +236,22 @@ namespace PrinterTestForms
                     }
                 }
                 findNextMaterial();
-                queueMaterial(_nextMaterial);
-                takeOutMaterial(_nextMaterial);
+                if (_currentLayer == 0 || _currentMaterial != _nextMaterial)
+                {
+                    if (_currentLayer != 0)
+                    {
+                        putAwayMaterial();
+                    }
+                    queueMaterial(_nextMaterial);
+                    takeOutMaterial(_nextMaterial);
+                }
                 _currentMaterial = _nextMaterial;
                 t.Join(); //wait until the current thread of commands have finished.
 
 
 
-                while (_thisLayerHasMaterial[(int)_currentMaterial])
+                while (_thisLayerHasMaterial[(int)_currentMaterial] || _thisLayerHasMaterial[(int)_nextMaterial])
                 {
-
                     askToProject();
                     t = new Thread(() => processCommands());
                     t.Start();
@@ -267,8 +274,10 @@ namespace PrinterTestForms
 
                 firstMaterialOfLayer = true;
             }
-
-
+            putAwayMaterial();
+            home(axis.z);
+            home(axis.x, axis.y);
+            t = new Thread(() => processCommands());
 
         }
         /// <summary>
@@ -276,6 +285,7 @@ namespace PrinterTestForms
         /// </summary>
         private void askToProject()
         {
+            commands.Enqueue("M400");
             commands.Enqueue("M114");
         }
         private void projectImage()
@@ -306,11 +316,12 @@ namespace PrinterTestForms
         /// <param name="mat">The material that will be available once the operation is finished</param>
         private void changeToMaterial(material mat)
         {
-
+            if (_currentMaterial != mat)
+            {
                 putAwayMaterial();
                 queueMaterial(mat);
                 takeOutMaterial(mat);
-
+            }
 
         }
 
@@ -322,6 +333,7 @@ namespace PrinterTestForms
             setRelativeCoordinates();
             move(Z_heightToRaiseBed);
             setAbsoluteCoordinates();
+            move(Y_towerPositionsHookPush[(int)_currentMaterial]);
             move(X_putAwayPosition);
             move(Y_towerPositionsHookDisengaged[(int)_currentMaterial]);
             move(X_cleaningPosition);
