@@ -218,9 +218,27 @@ namespace PrinterTestForms
             home(axis.y);
             reinitializeSettings();
 
-            move(X_cleaningPosition);
+            //First pass boolean list population so we can move the y axis along with the x on the first operation.
+            _currentLayer = 0;
+            for (int material = 0; material < 4; material++)
+            {
+                if (_currentLayer < _finalLayerForMaterial[material])
+                {
+                    _thisLayerHasMaterial[material] = checkIfImageHasContent(_fileNames[material][_currentLayer]);
+                }
+                else
+                {
+                    _thisLayerHasMaterial[material] = false;
+                }
+            }
+
+
+            findNextMaterial();
+            setAbsoluteCoordinates();
+            move(X_cleaningPosition, Y_towerPositionsHookDisengaged[(int)_nextMaterial]);
             Thread t = new Thread(() => processCommands());
             t.Start();
+
             for (_currentLayer = 0; _currentLayer < _totalNumberOfLayers; _currentLayer++)
             {
                 //populate the boolian list _thisLayerHasMaterial for the current layer
@@ -236,6 +254,8 @@ namespace PrinterTestForms
                     }
                 }
                 findNextMaterial();
+
+
                 if (_currentLayer == 0 || _currentMaterial != _nextMaterial)
                 {
                     if (_currentLayer != 0)
@@ -278,6 +298,8 @@ namespace PrinterTestForms
             home(axis.z);
             home(axis.x, axis.y);
             t = new Thread(() => processCommands());
+            t.Start();
+            t.Join();
 
         }
         /// <summary>
@@ -363,7 +385,7 @@ namespace PrinterTestForms
             move(X_takeOutPosition);
             if (firstMaterialOfLayer)
             {
-                move(new Tuple<axis, double>(axis.z,  Z_heightToRaiseBed.Item2 - _layerHeight));
+                move(new Tuple<axis, double>(axis.z, Z_heightToRaiseBed.Item2 - _layerHeight));
                 firstMaterialOfLayer = false;
             }
             else
@@ -389,23 +411,29 @@ namespace PrinterTestForms
         {
             //Insert G-code to clean material
         }
-        private void move(Tuple<axis, double> movement)
-        {
-            int feed = 0;
-            switch (movement.Item1)
-            {
-                case axis.x:
-                    feed = X_feed;
-                    break;
-                case axis.y:
-                    feed = Y_feed;
-                    break;
-                case axis.z:
-                    feed = Z_feed;
-                    break;
 
+        private void move(params Tuple<axis, double>[] movements)
+        {
+            string message = "G1 ";
+            foreach (Tuple<axis, double> move in movements)
+            {
+                int feed = 0;
+                switch (move.Item1)
+                {
+                    case axis.x:
+                        feed = X_feed;
+                        break;
+                    case axis.y:
+                        feed = Y_feed;
+                        break;
+                    case axis.z:
+                        feed = Z_feed;
+                        break;
+
+                }
+                message += move.Item1.ToString().ToUpper() + move.Item2.ToString() + " F" + feed.ToString();
             }
-            commands.Enqueue("G1 " + movement.Item1.ToString().ToUpper() + movement.Item2.ToString() + " F" + feed.ToString());
+            commands.Enqueue(message);
         }
 
         /// <summary>
