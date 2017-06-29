@@ -304,6 +304,8 @@ namespace PrinterTestForms
         }
         /// <summary>
         /// Passes a request to transmit position after the arduino has completed the most recent list of commands.
+        /// Use this for synchronizing projecction, since the position command will flag readiness to project.
+        /// 
         /// </summary>
         private void askToProject()
         {
