@@ -13,3 +13,4 @@ C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTes
 C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Release\PrinterTestForms.exe
 C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Release\PrinterTestForms.pdb
 C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Release\PrinterTestForms.csprojResolveAssemblyReference.cache
+C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Release\PrinterTestForms.TrustInfo.xml

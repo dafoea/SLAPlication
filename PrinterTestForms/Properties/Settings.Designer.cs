@@ -217,7 +217,7 @@ namespace PrinterTestForms.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("-50")]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
         public double Z_heightToRaiseBed {
             get {
                 return ((double)(this["Z_heightToRaiseBed"]));

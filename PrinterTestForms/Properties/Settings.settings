@@ -51,7 +51,7 @@
       <Value Profile="(Default)">465</Value>
     </Setting>
     <Setting Name="Z_heightToRaiseBed" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">-50</Value>
+      <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="printerBaudRate" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">250000</Value>
