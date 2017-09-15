@@ -358,5 +358,65 @@ namespace PrinterTestForms.Properties {
                 this["cureTime4"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("G1 X100\r\nG1 Y200")]
+        public string ShearProcess {
+            get {
+                return ((string)(this["ShearProcess"]));
+            }
+            set {
+                this["ShearProcess"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public double Z_zeroMaterial1 {
+            get {
+                return ((double)(this["Z_zeroMaterial1"]));
+            }
+            set {
+                this["Z_zeroMaterial1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public double Z_zeroMaterial2 {
+            get {
+                return ((double)(this["Z_zeroMaterial2"]));
+            }
+            set {
+                this["Z_zeroMaterial2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public double Z_zeroMaterial3 {
+            get {
+                return ((double)(this["Z_zeroMaterial3"]));
+            }
+            set {
+                this["Z_zeroMaterial3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public double Z_zeroMaterial4 {
+            get {
+                return ((double)(this["Z_zeroMaterial4"]));
+            }
+            set {
+                this["Z_zeroMaterial4"] = value;
+            }
+        }
     }
 }

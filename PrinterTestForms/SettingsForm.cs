@@ -59,6 +59,11 @@ namespace PrinterTestForms
             CureTime2.Value = (decimal)Properties.Settings.Default.cureTime2;
             CureTime3.Value = (decimal)Properties.Settings.Default.cureTime3;
             CureTime4.Value = (decimal)Properties.Settings.Default.cureTime4;
+            shearProcessBox.Text = Properties.Settings.Default.ShearProcess;
+            Zzero1.Value = (decimal)Properties.Settings.Default.Z_zeroMaterial1;
+            Zzero2.Value = (decimal)Properties.Settings.Default.Z_zeroMaterial2;
+            Zzero3.Value = (decimal)Properties.Settings.Default.Z_zeroMaterial3;
+            Zzero4.Value = (decimal)Properties.Settings.Default.Z_zeroMaterial4;
         }
 
         private void SettingsForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -246,7 +251,34 @@ namespace PrinterTestForms
             Properties.Settings.Default.Save();
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ShearProcess = shearProcessBox.Text;
+            Properties.Settings.Default.Save();
+        }
+        private void Zzero2_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Z_zeroMaterial2 = (double)Zzero2.Value;
+            Properties.Settings.Default.Save();
+        }
 
+        private void Zzero1_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Z_zeroMaterial1 = (double)Zzero1.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void Zzero3_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Z_zeroMaterial3 = (double)Zzero3.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void Zzero4_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Z_zeroMaterial4 = (double)Zzero4.Value;
+            Properties.Settings.Default.Save();
+        }
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -435,6 +467,62 @@ namespace PrinterTestForms
             }
         }
 
+        private void testShearButton_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                string[] lines = Properties.Settings.Default.ShearProcess.Split('\n');
+                foreach (string line in lines)
+                {
+                    Task.Delay(100);
+                    port.WriteLine(line);
+                }
+            }
+        }
+        private void ZM1_button_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G90");
+                Task.Delay(100);
+                port.WriteLine("G1 Z" + Zzero1.Value.ToString() + " F" + Z_FeedRate.Value.ToString());
+            }
+        }
+
+        private void ZM2_button_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G90");
+                Task.Delay(100);
+                port.WriteLine("G1 Z" + Zzero2.Value.ToString() + " F" + Z_FeedRate.Value.ToString());
+            }
+        }
+
+        private void ZM3_button_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G90");
+                Task.Delay(100);
+                port.WriteLine("G1 Z" + Zzero3.Value.ToString() + " F" + Z_FeedRate.Value.ToString());
+            }
+        }
+
+        private void ZM4_button_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G90");
+                Task.Delay(100);
+                port.WriteLine("G1 Z" + Zzero4.Value.ToString() + " F" + Z_FeedRate.Value.ToString());
+            }
+        }
+
         private void SaveButton(object sender, EventArgs e)
         {
             string[] values = {
@@ -464,7 +552,11 @@ namespace PrinterTestForms
                 Properties.Settings.Default.cureTime1.ToString(),
                 Properties.Settings.Default.cureTime2.ToString(),
                 Properties.Settings.Default.cureTime3.ToString(),
-                Properties.Settings.Default.cureTime4.ToString()
+                Properties.Settings.Default.cureTime4.ToString(),
+                Properties.Settings.Default.Z_zeroMaterial1.ToString(),
+                Properties.Settings.Default.Z_zeroMaterial2.ToString(),
+                Properties.Settings.Default.Z_zeroMaterial3.ToString(),
+                Properties.Settings.Default.Z_zeroMaterial4.ToString()
         };
             SaveFileDialog file = new SaveFileDialog();
             file.OverwritePrompt = false;
@@ -515,8 +607,15 @@ namespace PrinterTestForms
                 CureTime2.Value = Convert.ToDecimal(line.ReadLine());
                 CureTime3.Value = Convert.ToDecimal(line.ReadLine());
                 CureTime4.Value = Convert.ToDecimal(line.ReadLine());
+                Zzero1.Value = Convert.ToDecimal(line.ReadLine());
+                Zzero2.Value = Convert.ToDecimal(line.ReadLine());
+                Zzero3.Value = Convert.ToDecimal(line.ReadLine());
+                Zzero4.Value = Convert.ToDecimal(line.ReadLine());
+
             }
         }
+
+
 
 
     }

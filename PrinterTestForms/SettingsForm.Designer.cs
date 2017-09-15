@@ -108,6 +108,20 @@
             this.label33 = new System.Windows.Forms.Label();
             this.CureTime4 = new System.Windows.Forms.NumericUpDown();
             this.label34 = new System.Windows.Forms.Label();
+            this.shearProcessBox = new System.Windows.Forms.TextBox();
+            this.testShearButton = new System.Windows.Forms.Button();
+            this.ZM1_button = new System.Windows.Forms.Button();
+            this.ZM2_button = new System.Windows.Forms.Button();
+            this.ZM3_button = new System.Windows.Forms.Button();
+            this.ZM4_button = new System.Windows.Forms.Button();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.Zzero4 = new System.Windows.Forms.NumericUpDown();
+            this.Zzero3 = new System.Windows.Forms.NumericUpDown();
+            this.Zzero2 = new System.Windows.Forms.NumericUpDown();
+            this.Zzero1 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.X_PutAwayPosition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Z_HeightToRaiseBed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionHookPull4)).BeginInit();
@@ -135,11 +149,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.CureTime3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CureTime2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CureTime4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Zzero4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Zzero3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Zzero2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Zzero1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(707, 523);
+            this.button1.Location = new System.Drawing.Point(766, 626);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(183, 40);
             this.button1.TabIndex = 0;
@@ -149,15 +167,15 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(704, 443);
+            this.button2.Location = new System.Drawing.Point(563, 627);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(186, 40);
+            this.button2.Size = new System.Drawing.Size(128, 40);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Load from External File";
+            this.button2.Text = "Load Settings";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.LoadButton);
             // 
-            // numericUpDown1
+            // X_PutAwayPosition
             // 
             this.X_PutAwayPosition.DecimalPlaces = 2;
             this.X_PutAwayPosition.Increment = new decimal(new int[] {
@@ -171,12 +189,12 @@
             0,
             0,
             0});
-            this.X_PutAwayPosition.Name = "numericUpDown1";
+            this.X_PutAwayPosition.Name = "X_PutAwayPosition";
             this.X_PutAwayPosition.Size = new System.Drawing.Size(101, 26);
             this.X_PutAwayPosition.TabIndex = 2;
             this.X_PutAwayPosition.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
-            // numericUpDown2
+            // Z_HeightToRaiseBed
             // 
             this.Z_HeightToRaiseBed.DecimalPlaces = 2;
             this.Z_HeightToRaiseBed.Location = new System.Drawing.Point(343, 640);
@@ -185,12 +203,12 @@
             0,
             0,
             0});
-            this.Z_HeightToRaiseBed.Name = "numericUpDown2";
+            this.Z_HeightToRaiseBed.Name = "Z_HeightToRaiseBed";
             this.Z_HeightToRaiseBed.Size = new System.Drawing.Size(101, 26);
             this.Z_HeightToRaiseBed.TabIndex = 3;
             this.Z_HeightToRaiseBed.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
-            // numericUpDown3
+            // Y_TowerPositionHookPull4
             // 
             this.Y_TowerPositionHookPull4.DecimalPlaces = 2;
             this.Y_TowerPositionHookPull4.Increment = new decimal(new int[] {
@@ -204,12 +222,12 @@
             0,
             0,
             0});
-            this.Y_TowerPositionHookPull4.Name = "numericUpDown3";
+            this.Y_TowerPositionHookPull4.Name = "Y_TowerPositionHookPull4";
             this.Y_TowerPositionHookPull4.Size = new System.Drawing.Size(101, 26);
             this.Y_TowerPositionHookPull4.TabIndex = 4;
             this.Y_TowerPositionHookPull4.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
             // 
-            // numericUpDown4
+            // Y_TowerPositionHoolPull3
             // 
             this.Y_TowerPositionHoolPull3.DecimalPlaces = 2;
             this.Y_TowerPositionHoolPull3.Increment = new decimal(new int[] {
@@ -223,12 +241,12 @@
             0,
             0,
             0});
-            this.Y_TowerPositionHoolPull3.Name = "numericUpDown4";
+            this.Y_TowerPositionHoolPull3.Name = "Y_TowerPositionHoolPull3";
             this.Y_TowerPositionHoolPull3.Size = new System.Drawing.Size(101, 26);
             this.Y_TowerPositionHoolPull3.TabIndex = 5;
             this.Y_TowerPositionHoolPull3.ValueChanged += new System.EventHandler(this.numericUpDown4_ValueChanged);
             // 
-            // numericUpDown5
+            // Y_TowerPositionHoolPull2
             // 
             this.Y_TowerPositionHoolPull2.DecimalPlaces = 2;
             this.Y_TowerPositionHoolPull2.Increment = new decimal(new int[] {
@@ -242,12 +260,12 @@
             0,
             0,
             0});
-            this.Y_TowerPositionHoolPull2.Name = "numericUpDown5";
+            this.Y_TowerPositionHoolPull2.Name = "Y_TowerPositionHoolPull2";
             this.Y_TowerPositionHoolPull2.Size = new System.Drawing.Size(101, 26);
             this.Y_TowerPositionHoolPull2.TabIndex = 6;
             this.Y_TowerPositionHoolPull2.ValueChanged += new System.EventHandler(this.numericUpDown5_ValueChanged);
             // 
-            // numericUpDown6
+            // Y_TowerPositionHoolPull1
             // 
             this.Y_TowerPositionHoolPull1.DecimalPlaces = 2;
             this.Y_TowerPositionHoolPull1.Increment = new decimal(new int[] {
@@ -261,12 +279,12 @@
             0,
             0,
             0});
-            this.Y_TowerPositionHoolPull1.Name = "numericUpDown6";
+            this.Y_TowerPositionHoolPull1.Name = "Y_TowerPositionHoolPull1";
             this.Y_TowerPositionHoolPull1.Size = new System.Drawing.Size(101, 26);
             this.Y_TowerPositionHoolPull1.TabIndex = 7;
             this.Y_TowerPositionHoolPull1.ValueChanged += new System.EventHandler(this.numericUpDown6_ValueChanged);
             // 
-            // numericUpDown7
+            // Y_TowerPositionHookDisengage4
             // 
             this.Y_TowerPositionHookDisengage4.DecimalPlaces = 2;
             this.Y_TowerPositionHookDisengage4.Increment = new decimal(new int[] {
@@ -280,12 +298,12 @@
             0,
             0,
             0});
-            this.Y_TowerPositionHookDisengage4.Name = "numericUpDown7";
+            this.Y_TowerPositionHookDisengage4.Name = "Y_TowerPositionHookDisengage4";
             this.Y_TowerPositionHookDisengage4.Size = new System.Drawing.Size(101, 26);
             this.Y_TowerPositionHookDisengage4.TabIndex = 8;
             this.Y_TowerPositionHookDisengage4.ValueChanged += new System.EventHandler(this.numericUpDown7_ValueChanged);
             // 
-            // numericUpDown8
+            // Y_TowerPositionHookDisengage3
             // 
             this.Y_TowerPositionHookDisengage3.DecimalPlaces = 2;
             this.Y_TowerPositionHookDisengage3.Increment = new decimal(new int[] {
@@ -299,12 +317,12 @@
             0,
             0,
             0});
-            this.Y_TowerPositionHookDisengage3.Name = "numericUpDown8";
+            this.Y_TowerPositionHookDisengage3.Name = "Y_TowerPositionHookDisengage3";
             this.Y_TowerPositionHookDisengage3.Size = new System.Drawing.Size(101, 26);
             this.Y_TowerPositionHookDisengage3.TabIndex = 9;
             this.Y_TowerPositionHookDisengage3.ValueChanged += new System.EventHandler(this.numericUpDown8_ValueChanged);
             // 
-            // numericUpDown9
+            // Y_TowerPositionHookDisengage2
             // 
             this.Y_TowerPositionHookDisengage2.DecimalPlaces = 2;
             this.Y_TowerPositionHookDisengage2.Increment = new decimal(new int[] {
@@ -318,12 +336,12 @@
             0,
             0,
             0});
-            this.Y_TowerPositionHookDisengage2.Name = "numericUpDown9";
+            this.Y_TowerPositionHookDisengage2.Name = "Y_TowerPositionHookDisengage2";
             this.Y_TowerPositionHookDisengage2.Size = new System.Drawing.Size(101, 26);
             this.Y_TowerPositionHookDisengage2.TabIndex = 10;
             this.Y_TowerPositionHookDisengage2.ValueChanged += new System.EventHandler(this.numericUpDown9_ValueChanged);
             // 
-            // numericUpDown10
+            // Y_TowerPositionHookDisengage1
             // 
             this.Y_TowerPositionHookDisengage1.DecimalPlaces = 2;
             this.Y_TowerPositionHookDisengage1.Increment = new decimal(new int[] {
@@ -337,12 +355,12 @@
             0,
             0,
             0});
-            this.Y_TowerPositionHookDisengage1.Name = "numericUpDown10";
+            this.Y_TowerPositionHookDisengage1.Name = "Y_TowerPositionHookDisengage1";
             this.Y_TowerPositionHookDisengage1.Size = new System.Drawing.Size(101, 26);
             this.Y_TowerPositionHookDisengage1.TabIndex = 11;
             this.Y_TowerPositionHookDisengage1.ValueChanged += new System.EventHandler(this.numericUpDown10_ValueChanged);
             // 
-            // numericUpDown11
+            // Y_TowerPositionsHookPush4
             // 
             this.Y_TowerPositionsHookPush4.DecimalPlaces = 2;
             this.Y_TowerPositionsHookPush4.Increment = new decimal(new int[] {
@@ -356,12 +374,12 @@
             0,
             0,
             0});
-            this.Y_TowerPositionsHookPush4.Name = "numericUpDown11";
+            this.Y_TowerPositionsHookPush4.Name = "Y_TowerPositionsHookPush4";
             this.Y_TowerPositionsHookPush4.Size = new System.Drawing.Size(101, 26);
             this.Y_TowerPositionsHookPush4.TabIndex = 12;
             this.Y_TowerPositionsHookPush4.ValueChanged += new System.EventHandler(this.numericUpDown11_ValueChanged);
             // 
-            // numericUpDown12
+            // Y_TowerPositionsHookPush3
             // 
             this.Y_TowerPositionsHookPush3.DecimalPlaces = 2;
             this.Y_TowerPositionsHookPush3.Increment = new decimal(new int[] {
@@ -375,12 +393,12 @@
             0,
             0,
             0});
-            this.Y_TowerPositionsHookPush3.Name = "numericUpDown12";
+            this.Y_TowerPositionsHookPush3.Name = "Y_TowerPositionsHookPush3";
             this.Y_TowerPositionsHookPush3.Size = new System.Drawing.Size(101, 26);
             this.Y_TowerPositionsHookPush3.TabIndex = 13;
             this.Y_TowerPositionsHookPush3.ValueChanged += new System.EventHandler(this.numericUpDown12_ValueChanged);
             // 
-            // numericUpDown13
+            // Y_TowerPositionsHookPush2
             // 
             this.Y_TowerPositionsHookPush2.DecimalPlaces = 2;
             this.Y_TowerPositionsHookPush2.Increment = new decimal(new int[] {
@@ -394,12 +412,12 @@
             0,
             0,
             0});
-            this.Y_TowerPositionsHookPush2.Name = "numericUpDown13";
+            this.Y_TowerPositionsHookPush2.Name = "Y_TowerPositionsHookPush2";
             this.Y_TowerPositionsHookPush2.Size = new System.Drawing.Size(101, 26);
             this.Y_TowerPositionsHookPush2.TabIndex = 14;
             this.Y_TowerPositionsHookPush2.ValueChanged += new System.EventHandler(this.numericUpDown13_ValueChanged);
             // 
-            // numericUpDown14
+            // Y_TowerPositionsHookPush1
             // 
             this.Y_TowerPositionsHookPush1.DecimalPlaces = 2;
             this.Y_TowerPositionsHookPush1.Increment = new decimal(new int[] {
@@ -413,12 +431,12 @@
             0,
             0,
             0});
-            this.Y_TowerPositionsHookPush1.Name = "numericUpDown14";
+            this.Y_TowerPositionsHookPush1.Name = "Y_TowerPositionsHookPush1";
             this.Y_TowerPositionsHookPush1.Size = new System.Drawing.Size(101, 26);
             this.Y_TowerPositionsHookPush1.TabIndex = 15;
             this.Y_TowerPositionsHookPush1.ValueChanged += new System.EventHandler(this.numericUpDown14_ValueChanged);
             // 
-            // numericUpDown15
+            // X_ToClipPosition
             // 
             this.X_ToClipPosition.DecimalPlaces = 2;
             this.X_ToClipPosition.Increment = new decimal(new int[] {
@@ -432,12 +450,12 @@
             0,
             0,
             0});
-            this.X_ToClipPosition.Name = "numericUpDown15";
+            this.X_ToClipPosition.Name = "X_ToClipPosition";
             this.X_ToClipPosition.Size = new System.Drawing.Size(101, 26);
             this.X_ToClipPosition.TabIndex = 16;
             this.X_ToClipPosition.ValueChanged += new System.EventHandler(this.numericUpDown15_ValueChanged);
             // 
-            // numericUpDown16
+            // X_PrintingPosition
             // 
             this.X_PrintingPosition.DecimalPlaces = 2;
             this.X_PrintingPosition.Increment = new decimal(new int[] {
@@ -451,7 +469,7 @@
             0,
             0,
             0});
-            this.X_PrintingPosition.Name = "numericUpDown16";
+            this.X_PrintingPosition.Name = "X_PrintingPosition";
             this.X_PrintingPosition.Size = new System.Drawing.Size(101, 26);
             this.X_PrintingPosition.TabIndex = 17;
             this.X_PrintingPosition.ValueChanged += new System.EventHandler(this.numericUpDown16_ValueChanged);
@@ -600,7 +618,7 @@
             this.label17.TabIndex = 34;
             this.label17.Text = "X - Printing Position";
             // 
-            // numericUpDown17
+            // X_MaterialChangePosition
             // 
             this.X_MaterialChangePosition.DecimalPlaces = 2;
             this.X_MaterialChangePosition.Increment = new decimal(new int[] {
@@ -614,7 +632,7 @@
             0,
             0,
             0});
-            this.X_MaterialChangePosition.Name = "numericUpDown17";
+            this.X_MaterialChangePosition.Name = "X_MaterialChangePosition";
             this.X_MaterialChangePosition.Size = new System.Drawing.Size(101, 26);
             this.X_MaterialChangePosition.TabIndex = 35;
             this.X_MaterialChangePosition.ValueChanged += new System.EventHandler(this.numericUpDown17_ValueChanged);
@@ -841,7 +859,7 @@
             this.label19.TabIndex = 56;
             this.label19.Text = "Layer Height";
             // 
-            // numericUpDown18
+            // Z_LayerHeight
             // 
             this.Z_LayerHeight.DecimalPlaces = 3;
             this.Z_LayerHeight.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -861,7 +879,7 @@
             0,
             0,
             196608});
-            this.Z_LayerHeight.Name = "numericUpDown18";
+            this.Z_LayerHeight.Name = "Z_LayerHeight";
             this.Z_LayerHeight.Size = new System.Drawing.Size(101, 26);
             this.Z_LayerHeight.TabIndex = 57;
             this.Z_LayerHeight.Value = new decimal(new int[] {
@@ -880,7 +898,7 @@
             this.label2.TabIndex = 58;
             this.label2.Text = "Cure Time 4";
             // 
-            // numericUpDown19
+            // CureTime1
             // 
             this.CureTime1.DecimalPlaces = 1;
             this.CureTime1.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -895,7 +913,7 @@
             0,
             0,
             0});
-            this.CureTime1.Name = "numericUpDown19";
+            this.CureTime1.Name = "CureTime1";
             this.CureTime1.Size = new System.Drawing.Size(101, 26);
             this.CureTime1.TabIndex = 59;
             this.CureTime1.Value = new decimal(new int[] {
@@ -905,7 +923,7 @@
             0});
             this.CureTime1.ValueChanged += new System.EventHandler(this.numericUpDown19_ValueChanged);
             // 
-            // numericUpDown20
+            // StartingLayersCureTime
             // 
             this.StartingLayersCureTime.DecimalPlaces = 1;
             this.StartingLayersCureTime.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -920,7 +938,7 @@
             0,
             0,
             0});
-            this.StartingLayersCureTime.Name = "numericUpDown20";
+            this.StartingLayersCureTime.Name = "StartingLayersCureTime";
             this.StartingLayersCureTime.Size = new System.Drawing.Size(101, 26);
             this.StartingLayersCureTime.TabIndex = 61;
             this.StartingLayersCureTime.Value = new decimal(new int[] {
@@ -939,7 +957,7 @@
             this.label20.TabIndex = 60;
             this.label20.Text = "Starting Layers Cure Time";
             // 
-            // numericUpDown21
+            // NumberOfStartingLayers
             // 
             this.NumberOfStartingLayers.ForeColor = System.Drawing.SystemColors.WindowText;
             this.NumberOfStartingLayers.Location = new System.Drawing.Point(766, 259);
@@ -948,7 +966,7 @@
             0,
             0,
             0});
-            this.NumberOfStartingLayers.Name = "numericUpDown21";
+            this.NumberOfStartingLayers.Name = "NumberOfStartingLayers";
             this.NumberOfStartingLayers.Size = new System.Drawing.Size(101, 26);
             this.NumberOfStartingLayers.TabIndex = 63;
             this.NumberOfStartingLayers.Value = new decimal(new int[] {
@@ -994,7 +1012,7 @@
             this.label24.TabIndex = 66;
             this.label24.Text = "s";
             // 
-            // numericUpDown22
+            // X_FeedRate
             // 
             this.X_FeedRate.Location = new System.Drawing.Point(766, 306);
             this.X_FeedRate.Maximum = new decimal(new int[] {
@@ -1002,12 +1020,12 @@
             0,
             0,
             0});
-            this.X_FeedRate.Name = "numericUpDown22";
+            this.X_FeedRate.Name = "X_FeedRate";
             this.X_FeedRate.Size = new System.Drawing.Size(120, 26);
             this.X_FeedRate.TabIndex = 67;
             this.X_FeedRate.ValueChanged += new System.EventHandler(this.numericUpDown22_ValueChanged);
             // 
-            // numericUpDown23
+            // Y_FeedRate
             // 
             this.Y_FeedRate.Location = new System.Drawing.Point(766, 338);
             this.Y_FeedRate.Maximum = new decimal(new int[] {
@@ -1015,12 +1033,12 @@
             0,
             0,
             0});
-            this.Y_FeedRate.Name = "numericUpDown23";
+            this.Y_FeedRate.Name = "Y_FeedRate";
             this.Y_FeedRate.Size = new System.Drawing.Size(120, 26);
             this.Y_FeedRate.TabIndex = 68;
             this.Y_FeedRate.ValueChanged += new System.EventHandler(this.numericUpDown23_ValueChanged);
             // 
-            // numericUpDown24
+            // Z_FeedRate
             // 
             this.Z_FeedRate.Location = new System.Drawing.Point(766, 370);
             this.Z_FeedRate.Maximum = new decimal(new int[] {
@@ -1028,7 +1046,7 @@
             0,
             0,
             0});
-            this.Z_FeedRate.Name = "numericUpDown24";
+            this.Z_FeedRate.Name = "Z_FeedRate";
             this.Z_FeedRate.Size = new System.Drawing.Size(120, 26);
             this.Z_FeedRate.TabIndex = 69;
             this.Z_FeedRate.ValueChanged += new System.EventHandler(this.numericUpDown24_ValueChanged);
@@ -1063,11 +1081,11 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(750, 653);
+            this.label28.Location = new System.Drawing.Point(554, 426);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(60, 20);
+            this.label28.Size = new System.Drawing.Size(126, 20);
             this.label28.TabIndex = 73;
-            this.label28.Text = "label28";
+            this.label28.Text = "Shear Operation";
             // 
             // label29
             // 
@@ -1078,7 +1096,7 @@
             this.label29.TabIndex = 76;
             this.label29.Text = "s";
             // 
-            // numericUpDown25
+            // CureTime3
             // 
             this.CureTime3.DecimalPlaces = 1;
             this.CureTime3.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -1093,7 +1111,7 @@
             0,
             0,
             0});
-            this.CureTime3.Name = "numericUpDown25";
+            this.CureTime3.Name = "CureTime3";
             this.CureTime3.Size = new System.Drawing.Size(101, 26);
             this.CureTime3.TabIndex = 75;
             this.CureTime3.Value = new decimal(new int[] {
@@ -1121,7 +1139,7 @@
             this.label31.TabIndex = 79;
             this.label31.Text = "s";
             // 
-            // numericUpDown26
+            // CureTime2
             // 
             this.CureTime2.DecimalPlaces = 1;
             this.CureTime2.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -1136,7 +1154,7 @@
             0,
             0,
             0});
-            this.CureTime2.Name = "numericUpDown26";
+            this.CureTime2.Name = "CureTime2";
             this.CureTime2.Size = new System.Drawing.Size(101, 26);
             this.CureTime2.TabIndex = 78;
             this.CureTime2.Value = new decimal(new int[] {
@@ -1164,7 +1182,7 @@
             this.label33.TabIndex = 82;
             this.label33.Text = "s";
             // 
-            // numericUpDown27
+            // CureTime4
             // 
             this.CureTime4.DecimalPlaces = 1;
             this.CureTime4.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -1179,7 +1197,7 @@
             0,
             0,
             0});
-            this.CureTime4.Name = "numericUpDown27";
+            this.CureTime4.Name = "CureTime4";
             this.CureTime4.Size = new System.Drawing.Size(101, 26);
             this.CureTime4.TabIndex = 81;
             this.CureTime4.Value = new decimal(new int[] {
@@ -1198,11 +1216,206 @@
             this.label34.TabIndex = 80;
             this.label34.Text = "Cure Time 1";
             // 
+            // shearProcessBox
+            // 
+            this.shearProcessBox.Location = new System.Drawing.Point(558, 452);
+            this.shearProcessBox.Multiline = true;
+            this.shearProcessBox.Name = "shearProcessBox";
+            this.shearProcessBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.shearProcessBox.Size = new System.Drawing.Size(391, 153);
+            this.shearProcessBox.TabIndex = 83;
+            this.shearProcessBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // testShearButton
+            // 
+            this.testShearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.testShearButton.Location = new System.Drawing.Point(686, 423);
+            this.testShearButton.Name = "testShearButton";
+            this.testShearButton.Size = new System.Drawing.Size(58, 27);
+            this.testShearButton.TabIndex = 84;
+            this.testShearButton.Text = "Test";
+            this.testShearButton.UseVisualStyleBackColor = true;
+            this.testShearButton.Click += new System.EventHandler(this.testShearButton_Click);
+            // 
+            // ZM1_button
+            // 
+            this.ZM1_button.AutoSize = true;
+            this.ZM1_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.ZM1_button.Location = new System.Drawing.Point(1232, 22);
+            this.ZM1_button.Name = "ZM1_button";
+            this.ZM1_button.Size = new System.Drawing.Size(58, 27);
+            this.ZM1_button.TabIndex = 96;
+            this.ZM1_button.Text = "Test";
+            this.ZM1_button.UseVisualStyleBackColor = true;
+            this.ZM1_button.Click += new System.EventHandler(this.ZM1_button_Click);
+            // 
+            // ZM2_button
+            // 
+            this.ZM2_button.AutoSize = true;
+            this.ZM2_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.ZM2_button.Location = new System.Drawing.Point(1232, 54);
+            this.ZM2_button.Name = "ZM2_button";
+            this.ZM2_button.Size = new System.Drawing.Size(58, 27);
+            this.ZM2_button.TabIndex = 95;
+            this.ZM2_button.Text = "Test";
+            this.ZM2_button.UseVisualStyleBackColor = true;
+            this.ZM2_button.Click += new System.EventHandler(this.ZM2_button_Click);
+            // 
+            // ZM3_button
+            // 
+            this.ZM3_button.AutoSize = true;
+            this.ZM3_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.ZM3_button.Location = new System.Drawing.Point(1232, 86);
+            this.ZM3_button.Name = "ZM3_button";
+            this.ZM3_button.Size = new System.Drawing.Size(58, 27);
+            this.ZM3_button.TabIndex = 94;
+            this.ZM3_button.Text = "Test";
+            this.ZM3_button.UseVisualStyleBackColor = true;
+            this.ZM3_button.Click += new System.EventHandler(this.ZM3_button_Click);
+            // 
+            // ZM4_button
+            // 
+            this.ZM4_button.AutoSize = true;
+            this.ZM4_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.ZM4_button.Location = new System.Drawing.Point(1232, 118);
+            this.ZM4_button.Name = "ZM4_button";
+            this.ZM4_button.Size = new System.Drawing.Size(58, 27);
+            this.ZM4_button.TabIndex = 93;
+            this.ZM4_button.Text = "Test";
+            this.ZM4_button.UseVisualStyleBackColor = true;
+            this.ZM4_button.Click += new System.EventHandler(this.ZM4_button_Click);
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(928, 121);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(168, 20);
+            this.label35.TabIndex = 92;
+            this.label35.Text = "Z - Zero position of M4";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(928, 89);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(168, 20);
+            this.label36.TabIndex = 91;
+            this.label36.Text = "Z - Zero position of M3";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(928, 57);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(168, 20);
+            this.label37.TabIndex = 90;
+            this.label37.Text = "Z - Zero position of M2";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(928, 25);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(168, 20);
+            this.label38.TabIndex = 89;
+            this.label38.Text = "Z - Zero position of M1";
+            // 
+            // Zzero4
+            // 
+            this.Zzero4.DecimalPlaces = 2;
+            this.Zzero4.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.Zzero4.Location = new System.Drawing.Point(1125, 118);
+            this.Zzero4.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.Zzero4.Name = "Zzero4";
+            this.Zzero4.Size = new System.Drawing.Size(101, 26);
+            this.Zzero4.TabIndex = 88;
+            this.Zzero4.ValueChanged += new System.EventHandler(this.Zzero4_ValueChanged);
+            // 
+            // Zzero3
+            // 
+            this.Zzero3.DecimalPlaces = 2;
+            this.Zzero3.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.Zzero3.Location = new System.Drawing.Point(1125, 86);
+            this.Zzero3.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.Zzero3.Name = "Zzero3";
+            this.Zzero3.Size = new System.Drawing.Size(101, 26);
+            this.Zzero3.TabIndex = 87;
+            this.Zzero3.ValueChanged += new System.EventHandler(this.Zzero3_ValueChanged);
+            // 
+            // Zzero2
+            // 
+            this.Zzero2.DecimalPlaces = 2;
+            this.Zzero2.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.Zzero2.Location = new System.Drawing.Point(1125, 54);
+            this.Zzero2.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.Zzero2.Name = "Zzero2";
+            this.Zzero2.Size = new System.Drawing.Size(101, 26);
+            this.Zzero2.TabIndex = 86;
+            this.Zzero2.ValueChanged += new System.EventHandler(this.Zzero2_ValueChanged);
+            // 
+            // Zzero1
+            // 
+            this.Zzero1.DecimalPlaces = 2;
+            this.Zzero1.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.Zzero1.Location = new System.Drawing.Point(1125, 22);
+            this.Zzero1.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.Zzero1.Name = "Zzero1";
+            this.Zzero1.Size = new System.Drawing.Size(101, 26);
+            this.Zzero1.TabIndex = 85;
+            this.Zzero1.ValueChanged += new System.EventHandler(this.Zzero1_ValueChanged);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 691);
+            this.ClientSize = new System.Drawing.Size(1332, 685);
+            this.Controls.Add(this.ZM1_button);
+            this.Controls.Add(this.ZM2_button);
+            this.Controls.Add(this.ZM3_button);
+            this.Controls.Add(this.ZM4_button);
+            this.Controls.Add(this.label35);
+            this.Controls.Add(this.label36);
+            this.Controls.Add(this.label37);
+            this.Controls.Add(this.label38);
+            this.Controls.Add(this.Zzero4);
+            this.Controls.Add(this.Zzero3);
+            this.Controls.Add(this.Zzero2);
+            this.Controls.Add(this.Zzero1);
+            this.Controls.Add(this.testShearButton);
+            this.Controls.Add(this.shearProcessBox);
             this.Controls.Add(this.label33);
             this.Controls.Add(this.CureTime4);
             this.Controls.Add(this.label34);
@@ -1285,7 +1498,7 @@
             this.Controls.Add(this.button1);
             this.Name = "SettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Settings";
+            this.Text = "Shear Operation";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingsForm_FormClosing);
             this.Load += new System.EventHandler(this.SettingsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.X_PutAwayPosition)).EndInit();
@@ -1315,6 +1528,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.CureTime3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CureTime2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CureTime4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Zzero4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Zzero3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Zzero2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Zzero1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1402,5 +1619,19 @@
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.NumericUpDown CureTime4;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TextBox shearProcessBox;
+        private System.Windows.Forms.Button testShearButton;
+        private System.Windows.Forms.Button ZM1_button;
+        private System.Windows.Forms.Button ZM2_button;
+        private System.Windows.Forms.Button ZM3_button;
+        private System.Windows.Forms.Button ZM4_button;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.NumericUpDown Zzero4;
+        private System.Windows.Forms.NumericUpDown Zzero3;
+        private System.Windows.Forms.NumericUpDown Zzero2;
+        private System.Windows.Forms.NumericUpDown Zzero1;
     }
 }

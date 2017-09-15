@@ -74,6 +74,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.printButton = new System.Windows.Forms.Button();
+            this.towerUPbutton = new System.Windows.Forms.Button();
+            this.bedUPbutton = new System.Windows.Forms.Button();
+            this.bedDOWNbutton = new System.Windows.Forms.Button();
+            this.towerDOWNbutton = new System.Windows.Forms.Button();
+            this.vatLEFTbutton = new System.Windows.Forms.Button();
+            this.vatRIGHTbutton = new System.Windows.Forms.Button();
+            this.towerDist = new System.Windows.Forms.NumericUpDown();
+            this.bedDist = new System.Windows.Forms.NumericUpDown();
+            this.vatDist = new System.Windows.Forms.NumericUpDown();
+            this.homeALLbutton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -88,6 +98,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.previewPic3)).BeginInit();
             this.tabpreview4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.previewPic4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.towerDist)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bedDist)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vatDist)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -100,7 +113,7 @@
             this.tabControl1.Location = new System.Drawing.Point(873, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(373, 277);
+            this.tabControl1.Size = new System.Drawing.Size(518, 277);
             this.tabControl1.TabIndex = 15;
             // 
             // tabPage1
@@ -108,7 +121,7 @@
             this.tabPage1.Controls.Add(this.mat1list);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(365, 244);
+            this.tabPage1.Size = new System.Drawing.Size(510, 244);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "---";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -120,7 +133,7 @@
             this.mat1list.ItemHeight = 20;
             this.mat1list.Location = new System.Drawing.Point(3, 3);
             this.mat1list.Name = "mat1list";
-            this.mat1list.Size = new System.Drawing.Size(366, 240);
+            this.mat1list.Size = new System.Drawing.Size(504, 240);
             this.mat1list.TabIndex = 0;
             // 
             // tabPage2
@@ -128,7 +141,7 @@
             this.tabPage2.Controls.Add(this.mat2list);
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(365, 244);
+            this.tabPage2.Size = new System.Drawing.Size(510, 244);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "---";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -140,7 +153,7 @@
             this.mat2list.ItemHeight = 20;
             this.mat2list.Location = new System.Drawing.Point(-4, 0);
             this.mat2list.Name = "mat2list";
-            this.mat2list.Size = new System.Drawing.Size(366, 240);
+            this.mat2list.Size = new System.Drawing.Size(514, 240);
             this.mat2list.TabIndex = 0;
             // 
             // tabPage3
@@ -148,7 +161,7 @@
             this.tabPage3.Controls.Add(this.mat3list);
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(365, 244);
+            this.tabPage3.Size = new System.Drawing.Size(510, 244);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "---";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -160,7 +173,7 @@
             this.mat3list.ItemHeight = 20;
             this.mat3list.Location = new System.Drawing.Point(2, -2);
             this.mat3list.Name = "mat3list";
-            this.mat3list.Size = new System.Drawing.Size(362, 260);
+            this.mat3list.Size = new System.Drawing.Size(508, 260);
             this.mat3list.TabIndex = 0;
             // 
             // tabPage4
@@ -168,7 +181,7 @@
             this.tabPage4.Controls.Add(this.mat4list);
             this.tabPage4.Location = new System.Drawing.Point(4, 29);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(365, 244);
+            this.tabPage4.Size = new System.Drawing.Size(510, 244);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "---";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -180,7 +193,7 @@
             this.mat4list.ItemHeight = 20;
             this.mat4list.Location = new System.Drawing.Point(4, 0);
             this.mat4list.Name = "mat4list";
-            this.mat4list.Size = new System.Drawing.Size(358, 240);
+            this.mat4list.Size = new System.Drawing.Size(506, 240);
             this.mat4list.TabIndex = 0;
             // 
             // checkBox1
@@ -259,7 +272,7 @@
             // serialBox
             // 
             this.serialBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.serialBox.Location = new System.Drawing.Point(811, 315);
+            this.serialBox.Location = new System.Drawing.Point(953, 295);
             this.serialBox.Multiline = true;
             this.serialBox.Name = "serialBox";
             this.serialBox.ReadOnly = true;
@@ -270,7 +283,7 @@
             // 
             // messageBox
             // 
-            this.messageBox.Location = new System.Drawing.Point(811, 727);
+            this.messageBox.Location = new System.Drawing.Point(956, 704);
             this.messageBox.Name = "messageBox";
             this.messageBox.Size = new System.Drawing.Size(350, 26);
             this.messageBox.TabIndex = 25;
@@ -279,7 +292,7 @@
             // sendButton
             // 
             this.sendButton.AutoSize = true;
-            this.sendButton.Location = new System.Drawing.Point(1167, 725);
+            this.sendButton.Location = new System.Drawing.Point(1312, 702);
             this.sendButton.Name = "sendButton";
             this.sendButton.Size = new System.Drawing.Size(75, 30);
             this.sendButton.TabIndex = 26;
@@ -538,11 +551,160 @@
             this.printButton.UseVisualStyleBackColor = true;
             this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
+            // towerUPbutton
+            // 
+            this.towerUPbutton.Location = new System.Drawing.Point(565, 471);
+            this.towerUPbutton.Name = "towerUPbutton";
+            this.towerUPbutton.Size = new System.Drawing.Size(103, 32);
+            this.towerUPbutton.TabIndex = 47;
+            this.towerUPbutton.Text = "Tower up";
+            this.towerUPbutton.UseVisualStyleBackColor = true;
+            this.towerUPbutton.Click += new System.EventHandler(this.towerUPbutton_Click);
+            // 
+            // bedUPbutton
+            // 
+            this.bedUPbutton.Location = new System.Drawing.Point(772, 373);
+            this.bedUPbutton.Name = "bedUPbutton";
+            this.bedUPbutton.Size = new System.Drawing.Size(85, 32);
+            this.bedUPbutton.TabIndex = 48;
+            this.bedUPbutton.Text = "Bed up";
+            this.bedUPbutton.UseVisualStyleBackColor = true;
+            this.bedUPbutton.Click += new System.EventHandler(this.bedUPbutton_Click);
+            // 
+            // bedDOWNbutton
+            // 
+            this.bedDOWNbutton.Location = new System.Drawing.Point(772, 471);
+            this.bedDOWNbutton.Name = "bedDOWNbutton";
+            this.bedDOWNbutton.Size = new System.Drawing.Size(85, 32);
+            this.bedDOWNbutton.TabIndex = 49;
+            this.bedDOWNbutton.Text = "Bed dwn";
+            this.bedDOWNbutton.UseVisualStyleBackColor = true;
+            this.bedDOWNbutton.Click += new System.EventHandler(this.bedDOWNbutton_Click);
+            // 
+            // towerDOWNbutton
+            // 
+            this.towerDOWNbutton.Location = new System.Drawing.Point(565, 605);
+            this.towerDOWNbutton.Name = "towerDOWNbutton";
+            this.towerDOWNbutton.Size = new System.Drawing.Size(103, 32);
+            this.towerDOWNbutton.TabIndex = 50;
+            this.towerDOWNbutton.Text = "Tower dwn";
+            this.towerDOWNbutton.UseVisualStyleBackColor = true;
+            this.towerDOWNbutton.Click += new System.EventHandler(this.towerDOWNbutton_Click);
+            // 
+            // vatLEFTbutton
+            // 
+            this.vatLEFTbutton.Location = new System.Drawing.Point(694, 537);
+            this.vatLEFTbutton.Name = "vatLEFTbutton";
+            this.vatLEFTbutton.Size = new System.Drawing.Size(75, 32);
+            this.vatLEFTbutton.TabIndex = 51;
+            this.vatLEFTbutton.Text = "Vat L";
+            this.vatLEFTbutton.UseVisualStyleBackColor = true;
+            this.vatLEFTbutton.Click += new System.EventHandler(this.vatLEFTbutton_Click);
+            // 
+            // vatRIGHTbutton
+            // 
+            this.vatRIGHTbutton.Location = new System.Drawing.Point(856, 537);
+            this.vatRIGHTbutton.Name = "vatRIGHTbutton";
+            this.vatRIGHTbutton.Size = new System.Drawing.Size(75, 32);
+            this.vatRIGHTbutton.TabIndex = 52;
+            this.vatRIGHTbutton.Text = "Vat R";
+            this.vatRIGHTbutton.UseVisualStyleBackColor = true;
+            this.vatRIGHTbutton.Click += new System.EventHandler(this.vatRIGHTbutton_Click);
+            // 
+            // towerDist
+            // 
+            this.towerDist.DecimalPlaces = 2;
+            this.towerDist.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.towerDist.Location = new System.Drawing.Point(565, 541);
+            this.towerDist.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.towerDist.Name = "towerDist";
+            this.towerDist.Size = new System.Drawing.Size(103, 26);
+            this.towerDist.TabIndex = 53;
+            this.towerDist.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // bedDist
+            // 
+            this.bedDist.DecimalPlaces = 2;
+            this.bedDist.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.bedDist.Location = new System.Drawing.Point(772, 427);
+            this.bedDist.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.bedDist.Name = "bedDist";
+            this.bedDist.Size = new System.Drawing.Size(85, 26);
+            this.bedDist.TabIndex = 54;
+            this.bedDist.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // vatDist
+            // 
+            this.vatDist.DecimalPlaces = 2;
+            this.vatDist.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.vatDist.Location = new System.Drawing.Point(771, 540);
+            this.vatDist.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.vatDist.Name = "vatDist";
+            this.vatDist.Size = new System.Drawing.Size(85, 26);
+            this.vatDist.TabIndex = 55;
+            this.vatDist.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // homeALLbutton
+            // 
+            this.homeALLbutton.Location = new System.Drawing.Point(193, 244);
+            this.homeALLbutton.Name = "homeALLbutton";
+            this.homeALLbutton.Size = new System.Drawing.Size(101, 34);
+            this.homeALLbutton.TabIndex = 56;
+            this.homeALLbutton.Text = "Home XYZ";
+            this.homeALLbutton.UseVisualStyleBackColor = true;
+            this.homeALLbutton.Click += new System.EventHandler(this.homeALLbutton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1258, 794);
+            this.ClientSize = new System.Drawing.Size(1396, 794);
+            this.Controls.Add(this.homeALLbutton);
+            this.Controls.Add(this.vatDist);
+            this.Controls.Add(this.bedDist);
+            this.Controls.Add(this.towerDist);
+            this.Controls.Add(this.vatRIGHTbutton);
+            this.Controls.Add(this.vatLEFTbutton);
+            this.Controls.Add(this.towerDOWNbutton);
+            this.Controls.Add(this.bedDOWNbutton);
+            this.Controls.Add(this.bedUPbutton);
+            this.Controls.Add(this.towerUPbutton);
             this.Controls.Add(this.printButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
@@ -588,6 +750,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.previewPic3)).EndInit();
             this.tabpreview4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.previewPic4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.towerDist)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bedDist)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vatDist)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -639,6 +804,16 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button printButton;
+        private System.Windows.Forms.Button towerUPbutton;
+        private System.Windows.Forms.Button bedUPbutton;
+        private System.Windows.Forms.Button bedDOWNbutton;
+        private System.Windows.Forms.Button towerDOWNbutton;
+        private System.Windows.Forms.Button vatLEFTbutton;
+        private System.Windows.Forms.Button vatRIGHTbutton;
+        private System.Windows.Forms.NumericUpDown towerDist;
+        private System.Windows.Forms.NumericUpDown bedDist;
+        private System.Windows.Forms.NumericUpDown vatDist;
+        private System.Windows.Forms.Button homeALLbutton;
     }
 }
 

@@ -33,12 +33,17 @@ namespace PrinterTestForms
             z = 'Z'
         }
         private double _layerHeight = Properties.Settings.Default.Z_layerHeight; //Expressed in millimeters
-        private double _cureTime = Properties.Settings.Default.cureTime1;
+        private double _cureTime1 = Properties.Settings.Default.cureTime1;
+        private double _cureTime2 = Properties.Settings.Default.cureTime2;
+        private double _cureTime3 = Properties.Settings.Default.cureTime3;
+        private double _cureTime4 = Properties.Settings.Default.cureTime4;
+
+
         private double _intitialCureTime = Properties.Settings.Default.startingLayersCureTime;
         private int _initialLayers = Properties.Settings.Default.numberOfStartingLayers;
         private int _totalNumberOfLayers = 0;
         private double _totalHeight = 0;
-        private int _currentLayer = 1;
+        private int _currentLayer = 0;
         public Tuple<axis, double> X_putAwayPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_putAwayPosition);
         public Tuple<axis, double> X_takeOutPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_printingPosition);
         public Tuple<axis, double> X_toClipPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_toClipPosition);
@@ -78,12 +83,31 @@ namespace PrinterTestForms
         SettingsForm set = new SettingsForm();
         bool _readyToProject = false;
 
+        double Z_zeroMat1 = Properties.Settings.Default.Z_zeroMaterial1;
+        double Z_zeroMat2 = Properties.Settings.Default.Z_zeroMaterial2;
+        double Z_zeroMat3 = Properties.Settings.Default.Z_zeroMaterial3;
+        double Z_zeroMat4 = Properties.Settings.Default.Z_zeroMaterial4;
+
         int X_feed = Properties.Settings.Default.X_feedrate;
         int Y_feed = Properties.Settings.Default.Y_feedrate;
         int Z_feed = Properties.Settings.Default.Z_feedrate;
 
+        List<string> shearProcess = parseShearProcessSetting();
+
+        private static List<string> parseShearProcessSetting()
+        {
+            string[] lines = Properties.Settings.Default.ShearProcess.Split('\n');
+            List<string> lineList = new List<string>();
+
+            foreach(string line in lines)
+            {
+                lineList.Add(line);
+            }
+            return lineList;
+        }
+
         /// <summary>
-        /// Indicates whether the Arduino is ready to receive further commands (Last string recieved from Arduino == "ok"
+        /// Indicates whether the Arduino is ready to receive further commands (Last string recieved from Arduino == "ok")
         /// </summary>
         bool _readyToReceive = true;
 
@@ -213,6 +237,7 @@ namespace PrinterTestForms
         // ---------------------------Printer Operations------------------------------------------
         private void PRINT()
         {
+            
             home(axis.z);
             home(axis.x);
             home(axis.y);
@@ -272,14 +297,15 @@ namespace PrinterTestForms
 
                 while (_thisLayerHasMaterial[(int)_currentMaterial] || _thisLayerHasMaterial[(int)_nextMaterial])
                 {
+                    moveZtoPrintPosition(_currentLayer, _currentMaterial);
                     askToProject();
                     t = new Thread(() => processCommands());
                     t.Start();
                     t.Join();
-                    Thread t2 = new Thread(() => projectImage());
+                    Thread t2 = new Thread(() => projectImage(_currentMaterial));
                     t2.Start();
                     t2.Join();
-                    shear();
+                    Shear();
                     statusText.Text = "Done Projecting";
                     findNextMaterial();
 
@@ -309,14 +335,31 @@ namespace PrinterTestForms
         /// </summary>
         private void askToProject()
         {
-            commands.Enqueue("M400");
-            commands.Enqueue("M114");
+            commands.Enqueue("M400"); //wait until the planner queue is empty
+            commands.Enqueue("M114"); //request position from printer
         }
-        private void projectImage()
+        private void projectImage(material mat)
         {
+            double cureTime = new double();
+            switch (mat)
+            {
+                case material.m1:
+                    cureTime = _cureTime1;
+                    break;
+                case material.m2:
+                    cureTime = _cureTime2;
+                    break;
+                case material.m3:
+                    cureTime = _cureTime3;
+                    break;
+                case material.m4:
+                    cureTime = _cureTime4;
+                    break;
+            }
+
             while (!_readyToProject) ;
             statusText.Text = "Projecting...";
-            double duration = (_currentLayer > _initialLayers) ? _cureTime : _intitialCureTime;
+            double duration = (_currentLayer > _initialLayers) ? cureTime : _intitialCureTime;
 
             n.changePicture(_fileNames[(int)_currentMaterial][(int)_currentLayer]);
             Thread.Sleep(Convert.ToInt32(Math.Round(duration * 1000)));
@@ -342,12 +385,37 @@ namespace PrinterTestForms
         {
             if (_currentMaterial != mat)
             {
+                setAbsoluteCoordinates();
                 putAwayMaterial();
                 queueMaterial(mat);
                 takeOutMaterial(mat);
             }
 
         }
+        private void moveZtoPrintPosition(int layerNumber, material mat)
+        {
+            double zeroheight = new double();
+            switch (mat)
+            {
+                case material.m1:
+                    zeroheight = Z_zeroMat1;
+                    break;
+                case material.m2:
+                    zeroheight = Z_zeroMat2;
+                    break;
+                case material.m3:
+                    zeroheight = Z_zeroMat3;
+                    break;
+                case material.m4:
+                    zeroheight = Z_zeroMat4;
+                    break;
+            }
+
+            setAbsoluteCoordinates();
+            move(new Tuple<axis, double>(axis.z, zeroheight - (layerNumber * _layerHeight)));
+
+        }
+
 
         /// <summary>
         /// Puts away the _currentMaterial
@@ -384,26 +452,15 @@ namespace PrinterTestForms
             setAbsoluteCoordinates();
             move(X_toClipPosition);
             move(Y_towerPositionsHookPull[(int)mat]);
-            move(X_takeOutPosition);
-            if (firstMaterialOfLayer)
-            {
-                move(new Tuple<axis, double>(axis.z, Z_heightToRaiseBed.Item2 - _layerHeight));
-                firstMaterialOfLayer = false;
-            }
-            else
-            {
-                move(new Tuple<axis, double>(axis.z, Z_heightToRaiseBed.Item2));
-            }
+
         }
 
         /// <summary>
         /// Performs a shear operation to release the part from the print window
         /// </summary>
-        private void shear()
+        private void Shear()
         {
-            setRelativeCoordinates();
-            move(new Tuple<axis, double>(axis.z, -10));
-            move(new Tuple<axis, double>(axis.z, 10));
+            foreach (string line in shearProcess) commands.Enqueue(line);
         }
 
         /// <summary>
@@ -786,7 +843,14 @@ namespace PrinterTestForms
         };
             Z_heightToRaiseBed = new Tuple<axis, double>(axis.z, Properties.Settings.Default.Z_heightToRaiseBed);
             _layerHeight = Properties.Settings.Default.Z_layerHeight;
-            _cureTime = Properties.Settings.Default.cureTime1;
+            _cureTime1 = Properties.Settings.Default.cureTime1;
+            _cureTime2 = Properties.Settings.Default.cureTime2;
+            _cureTime3 = Properties.Settings.Default.cureTime3;
+            _cureTime4 = Properties.Settings.Default.cureTime4;
+            Z_zeroMat1 = Properties.Settings.Default.Z_zeroMaterial1;
+            Z_zeroMat2 = Properties.Settings.Default.Z_zeroMaterial2;
+            Z_zeroMat3 = Properties.Settings.Default.Z_zeroMaterial3;
+            Z_zeroMat4 = Properties.Settings.Default.Z_zeroMaterial4;
             _intitialCureTime = Properties.Settings.Default.startingLayersCureTime;
             _initialLayers = Properties.Settings.Default.numberOfStartingLayers;
 
@@ -797,7 +861,8 @@ namespace PrinterTestForms
             Y_feed = Properties.Settings.Default.Y_feedrate;
             Z_feed = Properties.Settings.Default.Z_feedrate;
 
-
+            _readyToProject = false;
+            List<string> shearProcess = parseShearProcessSetting();
 
         }
 
@@ -856,6 +921,48 @@ namespace PrinterTestForms
                 Thread mainThread = new Thread(() => PRINT());
                 mainThread.Start();
             }
+        }
+
+        private void towerUPbutton_Click(object sender, EventArgs e)
+        {
+            move(new Tuple<axis, double>(axis.y, -1*(double)towerDist.Value));
+            processCommands();
+        }
+
+        private void towerDOWNbutton_Click(object sender, EventArgs e)
+        {
+            move(new Tuple<axis, double>(axis.y, (double)towerDist.Value));
+            processCommands();
+        }
+
+        private void bedUPbutton_Click(object sender, EventArgs e)
+        {
+            move(new Tuple<axis, double>(axis.z, -1*(double)bedDist.Value));
+            processCommands();
+        }
+
+        private void bedDOWNbutton_Click(object sender, EventArgs e)
+        {
+            move(new Tuple<axis, double>(axis.z, (double)bedDist.Value));
+            processCommands();
+        }
+
+        private void vatLEFTbutton_Click(object sender, EventArgs e)
+        {
+            move(new Tuple<axis, double>(axis.x, (double)vatDist.Value));
+            processCommands();
+        }
+
+        private void vatRIGHTbutton_Click(object sender, EventArgs e)
+        {
+            move(new Tuple<axis, double>(axis.x, -1*(double)vatDist.Value));
+            processCommands();
+        }
+
+        private void homeALLbutton_Click(object sender, EventArgs e)
+        {
+            home(axis.x, axis.y, axis.z);
+            processCommands();
         }
     }
     public static class TupleListExtensions

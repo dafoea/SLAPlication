@@ -86,5 +86,21 @@
     <Setting Name="cureTime4" Type="System.Double" Scope="User">
       <Value Profile="(Default)">5</Value>
     </Setting>
+    <Setting Name="ShearProcess" Type="System.String" Scope="User">
+      <Value Profile="(Default)">G1 X100
+G1 Y200</Value>
+    </Setting>
+    <Setting Name="Z_zeroMaterial1" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="Z_zeroMaterial2" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="Z_zeroMaterial3" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="Z_zeroMaterial4" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
