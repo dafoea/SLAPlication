@@ -45,7 +45,8 @@ namespace PrinterTestForms
         private double _totalHeight = 0;
         private int _currentLayer = 0;
         public Tuple<axis, double> X_putAwayPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_putAwayPosition);
-        public Tuple<axis, double> X_takeOutPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_printingPosition);
+        public Tuple<axis, double> X_printPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_printingPosition);
+        public Tuple<axis, double> X_pullOutPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_pullOutPosition);
         public Tuple<axis, double> X_toClipPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_toClipPosition);
         public Tuple<axis, double> X_cleaningPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_materialChangePosition);
         public List<Tuple<axis, double>> Y_towerPositionsHookPush = new List<Tuple<axis, double>>() {
@@ -67,7 +68,7 @@ namespace PrinterTestForms
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull4 }
         };
         public int baud = Properties.Settings.Default.printerBaudRate;
-        public Tuple<axis, double> Z_heightToRaiseBed = new Tuple<axis, double>(axis.z, Properties.Settings.Default.Z_heightToRaiseBed);
+        public Tuple<axis, double> Z_heightToRaiseBed = new Tuple<axis, double>(axis.z, -1*Properties.Settings.Default.Z_heightToRaiseBed);
         private material _currentMaterial = material.m1;
         private material _nextMaterial = material.m1;
         List<material> _activeMaterials = new List<material>();
@@ -359,7 +360,7 @@ namespace PrinterTestForms
 
             while (!_readyToProject) ;
             statusText.Text = "Projecting...";
-            double duration = (_currentLayer > _initialLayers) ? cureTime : _intitialCureTime;
+            double duration = (_currentLayer > _initialLayers-1) ? cureTime : _intitialCureTime;
 
             n.changePicture(_fileNames[(int)_currentMaterial][(int)_currentLayer]);
             Thread.Sleep(Convert.ToInt32(Math.Round(duration * 1000)));
@@ -452,6 +453,8 @@ namespace PrinterTestForms
             setAbsoluteCoordinates();
             move(X_toClipPosition);
             move(Y_towerPositionsHookPull[(int)mat]);
+            move(X_pullOutPosition);
+            move(X_printPosition);
 
         }
 
@@ -820,7 +823,7 @@ namespace PrinterTestForms
         public void reinitializeSettings()
         {
             X_putAwayPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_putAwayPosition);
-            X_takeOutPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_printingPosition);
+            X_printPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_printingPosition);
             X_toClipPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_toClipPosition);
             X_cleaningPosition = new Tuple<axis, double>(axis.x, Properties.Settings.Default.X_materialChangePosition);
             Y_towerPositionsHookPush = new List<Tuple<axis, double>>() {
@@ -841,7 +844,7 @@ namespace PrinterTestForms
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull3 },
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull4 }
         };
-            Z_heightToRaiseBed = new Tuple<axis, double>(axis.z, Properties.Settings.Default.Z_heightToRaiseBed);
+            Z_heightToRaiseBed = new Tuple<axis, double>(axis.z, -1*Properties.Settings.Default.Z_heightToRaiseBed);
             _layerHeight = Properties.Settings.Default.Z_layerHeight;
             _cureTime1 = Properties.Settings.Default.cureTime1;
             _cureTime2 = Properties.Settings.Default.cureTime2;
@@ -925,36 +928,42 @@ namespace PrinterTestForms
 
         private void towerUPbutton_Click(object sender, EventArgs e)
         {
+            setRelativeCoordinates();
             move(new Tuple<axis, double>(axis.y, -1*(double)towerDist.Value));
             processCommands();
         }
 
         private void towerDOWNbutton_Click(object sender, EventArgs e)
         {
+            setRelativeCoordinates();
             move(new Tuple<axis, double>(axis.y, (double)towerDist.Value));
             processCommands();
         }
 
         private void bedUPbutton_Click(object sender, EventArgs e)
         {
+            setRelativeCoordinates();
             move(new Tuple<axis, double>(axis.z, -1*(double)bedDist.Value));
             processCommands();
         }
 
         private void bedDOWNbutton_Click(object sender, EventArgs e)
         {
+            setRelativeCoordinates();
             move(new Tuple<axis, double>(axis.z, (double)bedDist.Value));
             processCommands();
         }
 
         private void vatLEFTbutton_Click(object sender, EventArgs e)
         {
+            setRelativeCoordinates();
             move(new Tuple<axis, double>(axis.x, (double)vatDist.Value));
             processCommands();
         }
 
         private void vatRIGHTbutton_Click(object sender, EventArgs e)
         {
+            setRelativeCoordinates();
             move(new Tuple<axis, double>(axis.x, -1*(double)vatDist.Value));
             processCommands();
         }

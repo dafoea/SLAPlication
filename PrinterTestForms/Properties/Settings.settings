@@ -3,55 +3,55 @@
   <Profiles />
   <Settings>
     <Setting Name="X_putAwayPosition" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">322</Value>
+      <Value Profile="(Default)">312</Value>
     </Setting>
     <Setting Name="X_printingPosition" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">42</Value>
+      <Value Profile="(Default)">31</Value>
     </Setting>
     <Setting Name="X_toClipPosition" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">318</Value>
+      <Value Profile="(Default)">308</Value>
     </Setting>
     <Setting Name="X_materialChangePosition" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">298</Value>
+      <Value Profile="(Default)">275</Value>
     </Setting>
     <Setting Name="Y_towerPositionsHookPush1" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">6</Value>
-    </Setting>
-    <Setting Name="Y_towerPositionsHookPush2" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">146</Value>
-    </Setting>
-    <Setting Name="Y_towerPositionsHookPush3" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">297</Value>
-    </Setting>
-    <Setting Name="Y_towerPositionsHookPush4" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">460</Value>
-    </Setting>
-    <Setting Name="Y_towerPositionsHookDisengaged1" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">29</Value>
-    </Setting>
-    <Setting Name="Y_towerPositionsHookDisengaged2" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">170</Value>
-    </Setting>
-    <Setting Name="Y_towerPositionsHookDisengaged3" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">325</Value>
-    </Setting>
-    <Setting Name="Y_towerPositionsHookDisengaged4" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">490</Value>
-    </Setting>
-    <Setting Name="Y_towerPositionsHookPull1" Type="System.Double" Scope="User">
       <Value Profile="(Default)">11</Value>
     </Setting>
-    <Setting Name="Y_towerPositionsHookPull2" Type="System.Double" Scope="User">
+    <Setting Name="Y_towerPositionsHookPush2" Type="System.Double" Scope="User">
       <Value Profile="(Default)">151</Value>
     </Setting>
-    <Setting Name="Y_towerPositionsHookPull3" Type="System.Double" Scope="User">
+    <Setting Name="Y_towerPositionsHookPush3" Type="System.Double" Scope="User">
       <Value Profile="(Default)">302</Value>
     </Setting>
+    <Setting Name="Y_towerPositionsHookPush4" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">462</Value>
+    </Setting>
+    <Setting Name="Y_towerPositionsHookDisengaged1" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">35</Value>
+    </Setting>
+    <Setting Name="Y_towerPositionsHookDisengaged2" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">180</Value>
+    </Setting>
+    <Setting Name="Y_towerPositionsHookDisengaged3" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">330</Value>
+    </Setting>
+    <Setting Name="Y_towerPositionsHookDisengaged4" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">462</Value>
+    </Setting>
+    <Setting Name="Y_towerPositionsHookPull1" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">8.6</Value>
+    </Setting>
+    <Setting Name="Y_towerPositionsHookPull2" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">146</Value>
+    </Setting>
+    <Setting Name="Y_towerPositionsHookPull3" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">293.5</Value>
+    </Setting>
     <Setting Name="Y_towerPositionsHookPull4" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">465</Value>
+      <Value Profile="(Default)">455</Value>
     </Setting>
     <Setting Name="Z_heightToRaiseBed" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">5</Value>
+      <Value Profile="(Default)">70</Value>
     </Setting>
     <Setting Name="printerBaudRate" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">250000</Value>
@@ -60,16 +60,16 @@
       <Value Profile="(Default)">0.1</Value>
     </Setting>
     <Setting Name="cureTime1" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">5</Value>
+      <Value Profile="(Default)">30</Value>
     </Setting>
     <Setting Name="startingLayersCureTime" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">10</Value>
+      <Value Profile="(Default)">60</Value>
     </Setting>
     <Setting Name="numberOfStartingLayers" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="X_feedrate" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1200</Value>
+      <Value Profile="(Default)">1100</Value>
     </Setting>
     <Setting Name="Y_feedrate" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">700</Value>
@@ -78,20 +78,22 @@
       <Value Profile="(Default)">800</Value>
     </Setting>
     <Setting Name="cureTime2" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">5</Value>
+      <Value Profile="(Default)">30</Value>
     </Setting>
     <Setting Name="cureTime3" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">5</Value>
+      <Value Profile="(Default)">30</Value>
     </Setting>
     <Setting Name="cureTime4" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">5</Value>
+      <Value Profile="(Default)">30</Value>
     </Setting>
     <Setting Name="ShearProcess" Type="System.String" Scope="User">
-      <Value Profile="(Default)">G1 X100
-G1 Y200</Value>
+      <Value Profile="(Default)">G91
+G1 X25 Z-2 
+G1 X-39 Z-4 
+G1 X14</Value>
     </Setting>
     <Setting Name="Z_zeroMaterial1" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">100</Value>
+      <Value Profile="(Default)">273.5</Value>
     </Setting>
     <Setting Name="Z_zeroMaterial2" Type="System.Double" Scope="User">
       <Value Profile="(Default)">100</Value>
@@ -101,6 +103,9 @@ G1 Y200</Value>
     </Setting>
     <Setting Name="Z_zeroMaterial4" Type="System.Double" Scope="User">
       <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="X_pullOutPosition" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">10</Value>
     </Setting>
   </Settings>
 </SettingsFile>

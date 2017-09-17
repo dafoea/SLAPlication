@@ -64,6 +64,7 @@ namespace PrinterTestForms
             Zzero2.Value = (decimal)Properties.Settings.Default.Z_zeroMaterial2;
             Zzero3.Value = (decimal)Properties.Settings.Default.Z_zeroMaterial3;
             Zzero4.Value = (decimal)Properties.Settings.Default.Z_zeroMaterial4;
+            X_PullOutPosition.Value = (decimal)Properties.Settings.Default.X_pullOutPosition;
         }
 
         private void SettingsForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -279,6 +280,11 @@ namespace PrinterTestForms
             Properties.Settings.Default.Z_zeroMaterial4 = (double)Zzero4.Value;
             Properties.Settings.Default.Save();
         }
+        private void X_PullOutPosition_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.X_pullOutPosition = (double)X_PullOutPosition.Value;
+            Properties.Settings.Default.Save();
+        }
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -288,6 +294,16 @@ namespace PrinterTestForms
                 port.WriteLine("G90");
                 Task.Delay(100);
                 port.WriteLine("G1 X" + X_PutAwayPosition.Value.ToString() + " F" + X_FeedRate.Value.ToString());
+            }
+        }
+        private void X_PulloutPosition_button_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                Task.Delay(100);
+                port.WriteLine("G90");
+                Task.Delay(100);
+                port.WriteLine("G1 X" + X_PullOutPosition.Value.ToString() + " F" + X_FeedRate.Value.ToString());
             }
         }
 
@@ -523,6 +539,7 @@ namespace PrinterTestForms
             }
         }
 
+
         private void SaveButton(object sender, EventArgs e)
         {
             string[] values = {
@@ -556,7 +573,9 @@ namespace PrinterTestForms
                 Properties.Settings.Default.Z_zeroMaterial1.ToString(),
                 Properties.Settings.Default.Z_zeroMaterial2.ToString(),
                 Properties.Settings.Default.Z_zeroMaterial3.ToString(),
-                Properties.Settings.Default.Z_zeroMaterial4.ToString()
+                Properties.Settings.Default.Z_zeroMaterial4.ToString(),
+                Properties.Settings.Default.X_pullOutPosition.ToString(),
+
         };
             SaveFileDialog file = new SaveFileDialog();
             file.OverwritePrompt = false;
@@ -611,11 +630,11 @@ namespace PrinterTestForms
                 Zzero2.Value = Convert.ToDecimal(line.ReadLine());
                 Zzero3.Value = Convert.ToDecimal(line.ReadLine());
                 Zzero4.Value = Convert.ToDecimal(line.ReadLine());
+                X_PullOutPosition.Value = Convert.ToDecimal(line.ReadLine());
+
 
             }
         }
-
-
 
 
     }

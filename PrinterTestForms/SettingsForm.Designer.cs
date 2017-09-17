@@ -122,6 +122,9 @@
             this.Zzero3 = new System.Windows.Forms.NumericUpDown();
             this.Zzero2 = new System.Windows.Forms.NumericUpDown();
             this.Zzero1 = new System.Windows.Forms.NumericUpDown();
+            this.X_PulloutPosition_button = new System.Windows.Forms.Button();
+            this.label39 = new System.Windows.Forms.Label();
+            this.X_PullOutPosition = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.X_PutAwayPosition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Z_HeightToRaiseBed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionHookPull4)).BeginInit();
@@ -153,6 +156,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Zzero3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Zzero2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Zzero1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.X_PullOutPosition)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -197,7 +201,7 @@
             // Z_HeightToRaiseBed
             // 
             this.Z_HeightToRaiseBed.DecimalPlaces = 2;
-            this.Z_HeightToRaiseBed.Location = new System.Drawing.Point(343, 640);
+            this.Z_HeightToRaiseBed.Location = new System.Drawing.Point(343, 675);
             this.Z_HeightToRaiseBed.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -216,7 +220,7 @@
             0,
             0,
             65536});
-            this.Y_TowerPositionHookPull4.Location = new System.Drawing.Point(343, 483);
+            this.Y_TowerPositionHookPull4.Location = new System.Drawing.Point(343, 518);
             this.Y_TowerPositionHookPull4.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -235,7 +239,7 @@
             0,
             0,
             65536});
-            this.Y_TowerPositionHoolPull3.Location = new System.Drawing.Point(343, 515);
+            this.Y_TowerPositionHoolPull3.Location = new System.Drawing.Point(343, 550);
             this.Y_TowerPositionHoolPull3.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -254,7 +258,7 @@
             0,
             0,
             65536});
-            this.Y_TowerPositionHoolPull2.Location = new System.Drawing.Point(343, 547);
+            this.Y_TowerPositionHoolPull2.Location = new System.Drawing.Point(343, 582);
             this.Y_TowerPositionHoolPull2.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -273,7 +277,7 @@
             0,
             0,
             65536});
-            this.Y_TowerPositionHoolPull1.Location = new System.Drawing.Point(343, 579);
+            this.Y_TowerPositionHoolPull1.Location = new System.Drawing.Point(343, 614);
             this.Y_TowerPositionHoolPull1.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -292,7 +296,7 @@
             0,
             0,
             65536});
-            this.Y_TowerPositionHookDisengage4.Location = new System.Drawing.Point(343, 323);
+            this.Y_TowerPositionHookDisengage4.Location = new System.Drawing.Point(343, 358);
             this.Y_TowerPositionHookDisengage4.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -311,7 +315,7 @@
             0,
             0,
             65536});
-            this.Y_TowerPositionHookDisengage3.Location = new System.Drawing.Point(343, 355);
+            this.Y_TowerPositionHookDisengage3.Location = new System.Drawing.Point(343, 390);
             this.Y_TowerPositionHookDisengage3.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -330,7 +334,7 @@
             0,
             0,
             65536});
-            this.Y_TowerPositionHookDisengage2.Location = new System.Drawing.Point(343, 387);
+            this.Y_TowerPositionHookDisengage2.Location = new System.Drawing.Point(343, 422);
             this.Y_TowerPositionHookDisengage2.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -349,7 +353,7 @@
             0,
             0,
             65536});
-            this.Y_TowerPositionHookDisengage1.Location = new System.Drawing.Point(343, 419);
+            this.Y_TowerPositionHookDisengage1.Location = new System.Drawing.Point(343, 454);
             this.Y_TowerPositionHookDisengage1.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -368,7 +372,7 @@
             0,
             0,
             65536});
-            this.Y_TowerPositionsHookPush4.Location = new System.Drawing.Point(343, 170);
+            this.Y_TowerPositionsHookPush4.Location = new System.Drawing.Point(343, 205);
             this.Y_TowerPositionsHookPush4.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -387,7 +391,7 @@
             0,
             0,
             65536});
-            this.Y_TowerPositionsHookPush3.Location = new System.Drawing.Point(343, 202);
+            this.Y_TowerPositionsHookPush3.Location = new System.Drawing.Point(343, 237);
             this.Y_TowerPositionsHookPush3.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -406,7 +410,7 @@
             0,
             0,
             65536});
-            this.Y_TowerPositionsHookPush2.Location = new System.Drawing.Point(343, 234);
+            this.Y_TowerPositionsHookPush2.Location = new System.Drawing.Point(343, 269);
             this.Y_TowerPositionsHookPush2.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -425,7 +429,7 @@
             0,
             0,
             65536});
-            this.Y_TowerPositionsHookPush1.Location = new System.Drawing.Point(343, 266);
+            this.Y_TowerPositionsHookPush1.Location = new System.Drawing.Point(343, 301);
             this.Y_TowerPositionsHookPush1.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -444,7 +448,7 @@
             0,
             0,
             65536});
-            this.X_ToClipPosition.Location = new System.Drawing.Point(343, 83);
+            this.X_ToClipPosition.Location = new System.Drawing.Point(343, 115);
             this.X_ToClipPosition.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -463,7 +467,7 @@
             0,
             0,
             65536});
-            this.X_PrintingPosition.Location = new System.Drawing.Point(343, 51);
+            this.X_PrintingPosition.Location = new System.Drawing.Point(343, 83);
             this.X_PrintingPosition.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -486,7 +490,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 643);
+            this.label3.Location = new System.Drawing.Point(31, 678);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(306, 20);
             this.label3.TabIndex = 20;
@@ -495,7 +499,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 86);
+            this.label4.Location = new System.Drawing.Point(31, 118);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(158, 20);
             this.label4.TabIndex = 21;
@@ -504,7 +508,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(31, 486);
+            this.label5.Location = new System.Drawing.Point(31, 521);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(169, 20);
             this.label5.TabIndex = 22;
@@ -513,7 +517,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 518);
+            this.label6.Location = new System.Drawing.Point(31, 553);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(169, 20);
             this.label6.TabIndex = 23;
@@ -522,7 +526,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(31, 550);
+            this.label7.Location = new System.Drawing.Point(31, 585);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(169, 20);
             this.label7.TabIndex = 24;
@@ -531,7 +535,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(31, 582);
+            this.label8.Location = new System.Drawing.Point(31, 617);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(169, 20);
             this.label8.TabIndex = 25;
@@ -540,7 +544,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(31, 326);
+            this.label9.Location = new System.Drawing.Point(31, 361);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(239, 20);
             this.label9.TabIndex = 26;
@@ -549,7 +553,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(31, 358);
+            this.label10.Location = new System.Drawing.Point(31, 393);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(239, 20);
             this.label10.TabIndex = 27;
@@ -558,7 +562,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(31, 390);
+            this.label11.Location = new System.Drawing.Point(31, 425);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(239, 20);
             this.label11.TabIndex = 28;
@@ -567,7 +571,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(31, 422);
+            this.label12.Location = new System.Drawing.Point(31, 457);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(239, 20);
             this.label12.TabIndex = 29;
@@ -576,7 +580,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(31, 173);
+            this.label13.Location = new System.Drawing.Point(31, 208);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(180, 20);
             this.label13.TabIndex = 30;
@@ -585,7 +589,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(31, 205);
+            this.label14.Location = new System.Drawing.Point(31, 240);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(180, 20);
             this.label14.TabIndex = 31;
@@ -594,7 +598,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(31, 237);
+            this.label15.Location = new System.Drawing.Point(31, 272);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(180, 20);
             this.label15.TabIndex = 32;
@@ -603,7 +607,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(31, 269);
+            this.label16.Location = new System.Drawing.Point(31, 304);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(180, 20);
             this.label16.TabIndex = 33;
@@ -612,7 +616,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(31, 54);
+            this.label17.Location = new System.Drawing.Point(31, 86);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(146, 20);
             this.label17.TabIndex = 34;
@@ -626,7 +630,7 @@
             0,
             0,
             65536});
-            this.X_MaterialChangePosition.Location = new System.Drawing.Point(343, 115);
+            this.X_MaterialChangePosition.Location = new System.Drawing.Point(343, 147);
             this.X_MaterialChangePosition.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -640,7 +644,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(31, 118);
+            this.label18.Location = new System.Drawing.Point(31, 150);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(209, 20);
             this.label18.TabIndex = 36;
@@ -662,7 +666,7 @@
             // 
             this.button5.AutoSize = true;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button5.Location = new System.Drawing.Point(450, 51);
+            this.button5.Location = new System.Drawing.Point(450, 83);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(58, 27);
             this.button5.TabIndex = 40;
@@ -674,7 +678,7 @@
             // 
             this.button6.AutoSize = true;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button6.Location = new System.Drawing.Point(450, 83);
+            this.button6.Location = new System.Drawing.Point(450, 115);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(58, 27);
             this.button6.TabIndex = 41;
@@ -686,7 +690,7 @@
             // 
             this.button7.AutoSize = true;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button7.Location = new System.Drawing.Point(450, 115);
+            this.button7.Location = new System.Drawing.Point(450, 147);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(58, 27);
             this.button7.TabIndex = 42;
@@ -698,7 +702,7 @@
             // 
             this.button8.AutoSize = true;
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button8.Location = new System.Drawing.Point(450, 266);
+            this.button8.Location = new System.Drawing.Point(450, 301);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(58, 27);
             this.button8.TabIndex = 43;
@@ -710,7 +714,7 @@
             // 
             this.button9.AutoSize = true;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button9.Location = new System.Drawing.Point(450, 234);
+            this.button9.Location = new System.Drawing.Point(450, 269);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(58, 27);
             this.button9.TabIndex = 44;
@@ -722,7 +726,7 @@
             // 
             this.button10.AutoSize = true;
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button10.Location = new System.Drawing.Point(450, 202);
+            this.button10.Location = new System.Drawing.Point(450, 237);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(58, 27);
             this.button10.TabIndex = 45;
@@ -734,7 +738,7 @@
             // 
             this.button11.AutoSize = true;
             this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button11.Location = new System.Drawing.Point(450, 170);
+            this.button11.Location = new System.Drawing.Point(450, 205);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(58, 27);
             this.button11.TabIndex = 46;
@@ -746,7 +750,7 @@
             // 
             this.button12.AutoSize = true;
             this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button12.Location = new System.Drawing.Point(450, 419);
+            this.button12.Location = new System.Drawing.Point(450, 454);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(58, 27);
             this.button12.TabIndex = 47;
@@ -758,7 +762,7 @@
             // 
             this.button13.AutoSize = true;
             this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button13.Location = new System.Drawing.Point(450, 387);
+            this.button13.Location = new System.Drawing.Point(450, 422);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(58, 27);
             this.button13.TabIndex = 48;
@@ -770,7 +774,7 @@
             // 
             this.button14.AutoSize = true;
             this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button14.Location = new System.Drawing.Point(450, 355);
+            this.button14.Location = new System.Drawing.Point(450, 390);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(58, 27);
             this.button14.TabIndex = 49;
@@ -782,7 +786,7 @@
             // 
             this.button15.AutoSize = true;
             this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button15.Location = new System.Drawing.Point(450, 323);
+            this.button15.Location = new System.Drawing.Point(450, 358);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(58, 27);
             this.button15.TabIndex = 50;
@@ -794,7 +798,7 @@
             // 
             this.button16.AutoSize = true;
             this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button16.Location = new System.Drawing.Point(450, 579);
+            this.button16.Location = new System.Drawing.Point(450, 614);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(58, 27);
             this.button16.TabIndex = 51;
@@ -806,7 +810,7 @@
             // 
             this.button17.AutoSize = true;
             this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button17.Location = new System.Drawing.Point(450, 547);
+            this.button17.Location = new System.Drawing.Point(450, 582);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(58, 27);
             this.button17.TabIndex = 52;
@@ -818,7 +822,7 @@
             // 
             this.button18.AutoSize = true;
             this.button18.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button18.Location = new System.Drawing.Point(450, 515);
+            this.button18.Location = new System.Drawing.Point(450, 550);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(58, 27);
             this.button18.TabIndex = 53;
@@ -830,7 +834,7 @@
             // 
             this.button19.AutoSize = true;
             this.button19.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button19.Location = new System.Drawing.Point(450, 483);
+            this.button19.Location = new System.Drawing.Point(450, 518);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(58, 27);
             this.button19.TabIndex = 54;
@@ -842,7 +846,7 @@
             // 
             this.button20.AutoSize = true;
             this.button20.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button20.Location = new System.Drawing.Point(450, 640);
+            this.button20.Location = new System.Drawing.Point(450, 675);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(58, 27);
             this.button20.TabIndex = 55;
@@ -1397,11 +1401,54 @@
             this.Zzero1.TabIndex = 85;
             this.Zzero1.ValueChanged += new System.EventHandler(this.Zzero1_ValueChanged);
             // 
+            // X_PulloutPosition_button
+            // 
+            this.X_PulloutPosition_button.AutoSize = true;
+            this.X_PulloutPosition_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.X_PulloutPosition_button.Location = new System.Drawing.Point(450, 51);
+            this.X_PulloutPosition_button.Name = "X_PulloutPosition_button";
+            this.X_PulloutPosition_button.Size = new System.Drawing.Size(58, 27);
+            this.X_PulloutPosition_button.TabIndex = 99;
+            this.X_PulloutPosition_button.Text = "Test";
+            this.X_PulloutPosition_button.UseVisualStyleBackColor = true;
+            this.X_PulloutPosition_button.Click += new System.EventHandler(this.X_PulloutPosition_button_Click);
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(31, 54);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(148, 20);
+            this.label39.TabIndex = 98;
+            this.label39.Text = "X - Pull Out Position";
+            // 
+            // X_PullOutPosition
+            // 
+            this.X_PullOutPosition.DecimalPlaces = 2;
+            this.X_PullOutPosition.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.X_PullOutPosition.Location = new System.Drawing.Point(343, 51);
+            this.X_PullOutPosition.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.X_PullOutPosition.Name = "X_PullOutPosition";
+            this.X_PullOutPosition.Size = new System.Drawing.Size(101, 26);
+            this.X_PullOutPosition.TabIndex = 97;
+            this.X_PullOutPosition.ValueChanged += new System.EventHandler(this.X_PullOutPosition_ValueChanged);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1332, 685);
+            this.ClientSize = new System.Drawing.Size(1332, 726);
+            this.Controls.Add(this.X_PulloutPosition_button);
+            this.Controls.Add(this.label39);
+            this.Controls.Add(this.X_PullOutPosition);
             this.Controls.Add(this.ZM1_button);
             this.Controls.Add(this.ZM2_button);
             this.Controls.Add(this.ZM3_button);
@@ -1532,6 +1579,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Zzero3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Zzero2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Zzero1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.X_PullOutPosition)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1633,5 +1681,8 @@
         private System.Windows.Forms.NumericUpDown Zzero3;
         private System.Windows.Forms.NumericUpDown Zzero2;
         private System.Windows.Forms.NumericUpDown Zzero1;
+        private System.Windows.Forms.Button X_PulloutPosition_button;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.NumericUpDown X_PullOutPosition;
     }
 }
