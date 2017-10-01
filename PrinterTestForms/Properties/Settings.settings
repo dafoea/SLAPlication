@@ -36,7 +36,7 @@
       <Value Profile="(Default)">330</Value>
     </Setting>
     <Setting Name="Y_towerPositionsHookDisengaged4" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">462</Value>
+      <Value Profile="(Default)">500</Value>
     </Setting>
     <Setting Name="Y_towerPositionsHookPull1" Type="System.Double" Scope="User">
       <Value Profile="(Default)">8.6</Value>

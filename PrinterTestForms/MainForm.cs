@@ -126,6 +126,8 @@ namespace PrinterTestForms
             n.WindowState = FormWindowState.Maximized;
             n.fitPictureToFrame();
 
+            
+
             //Format the listboxes and preview images within the material image display tabs;
             mat1list.Bounds = tabPage1.Bounds;
             mat2list.Bounds = tabPage2.Bounds;
@@ -145,6 +147,8 @@ namespace PrinterTestForms
             //Populates the combobox with a list of available COM ports and sets the comPort field to the first value.
             string[] ports = SerialPort.GetPortNames();
             comboBox1.DataSource = ports;
+            
+            /*
             if (ports.Length > 0)
             {
                 comPort = ports[0];
@@ -154,7 +158,8 @@ namespace PrinterTestForms
                 serialPort1.Open();
                 serialPort1.DtrEnable = true;
             }
-            else statusText.Text = "Arduino not connected.";
+            */
+             statusText.Text = "Arduino not connected.";
         }
 
 
@@ -210,6 +215,7 @@ namespace PrinterTestForms
                 while (commandsToSend.Count > 0)
                 {
                     string command = commandsToSend.Dequeue();
+                    
                     serialBox.AppendText("<<TX>> " + command + System.Environment.NewLine);
                     while (!sendMessage(command)) ;
                 }
@@ -493,7 +499,7 @@ namespace PrinterTestForms
                         break;
 
                 }
-                message += move.Item1.ToString().ToUpper() + move.Item2.ToString() + " F" + feed.ToString();
+                message += move.Item1.ToString().ToUpper() + move.Item2.ToString() + " F" + feed.ToString() + " ";
             }
             commands.Enqueue(message);
         }
@@ -622,13 +628,13 @@ namespace PrinterTestForms
                 if (d.ShowDialog() == DialogResult.OK)
                 {
                     _materialDirectories[(int)mat] = d.SelectedPath;
-                    _layersRemainingForMaterial[(int)mat] = Directory.GetFiles(d.SelectedPath).Length;
-                    List<string> temp = new List<string>(Directory.GetFiles(d.SelectedPath));
+                    _layersRemainingForMaterial[(int)mat] = Directory.GetFiles(d.SelectedPath,@"*.png").Length;
+                    List<string> temp = new List<string>(Directory.GetFiles(d.SelectedPath, @"*.png"));
                     _fileNames.RemoveAt((int)mat);
                     _fileNames.Insert((int)mat, temp);
                 }
                 list.Items.Clear();
-                foreach (string item in Directory.GetFiles(d.SelectedPath).Select(Path.GetFileName))
+                foreach (string item in Directory.GetFiles(d.SelectedPath, @"*.png").Select(Path.GetFileName))
                 {
                     list.Items.Add(item);
                 }

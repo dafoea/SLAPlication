@@ -1,0 +1,16 @@
+C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\bin\Debug\SLAPlication.exe.config
+C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\bin\Debug\SLAPlication.exe.manifest
+C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\bin\Debug\SLAPlication.application
+C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\bin\Debug\SLAPlication.exe
+C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\bin\Debug\SLAPlication.pdb
+C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Debug\PrinterTestForms.csprojResolveAssemblyReference.cache
+C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Debug\PrinterTestForms.Form1.resources
+C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Debug\PrinterTestForms.FSpicturebox.resources
+C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Debug\PrinterTestForms.Properties.Resources.resources
+C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Debug\PrinterTestForms.SettingsForm.resources
+C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Debug\PrinterTestForms.csproj.GenerateResource.Cache
+C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Debug\SLAPlication.TrustInfo.xml
+C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Debug\SLAPlication.exe.manifest
+C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Debug\SLAPlication.application
+C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Debug\SLAPlication.exe
+C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Debug\SLAPlication.pdb

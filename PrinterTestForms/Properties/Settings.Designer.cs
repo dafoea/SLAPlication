@@ -157,7 +157,7 @@ namespace PrinterTestForms.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("462")]
+        [global::System.Configuration.DefaultSettingValueAttribute("500")]
         public double Y_towerPositionsHookDisengaged4 {
             get {
                 return ((double)(this["Y_towerPositionsHookDisengaged4"]));
