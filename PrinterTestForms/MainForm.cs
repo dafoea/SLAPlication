@@ -147,18 +147,22 @@ namespace PrinterTestForms
             //Populates the combobox with a list of available COM ports and sets the comPort field to the first value.
             string[] ports = SerialPort.GetPortNames();
             comboBox1.DataSource = ports;
-            
-            /*
+
+
             if (ports.Length > 0)
             {
-                comPort = ports[0];
-                serialPort1 = new SerialPort(comPort, baud);
-                statusText.Text = comPort + " selected";
-                serialPort1.DataReceived += new SerialDataReceivedEventHandler(serialPort1_DataReceived);
-                serialPort1.Open();
-                serialPort1.DtrEnable = true;
+                try
+                {
+                    comPort = ports[0];
+                    serialPort1 = new SerialPort(comPort, baud);
+                    statusText.Text = comPort + " selected";
+                    serialPort1.DataReceived += new SerialDataReceivedEventHandler(serialPort1_DataReceived);
+                    serialPort1.Open();
+                    serialPort1.DtrEnable = true;
+                }
+                catch { MessageBox.Show("Unable to communicate through default COM port. Please try again or select a new port form the list."); }
             }
-            */
+            
              statusText.Text = "Arduino not connected.";
         }
 
@@ -329,7 +333,8 @@ namespace PrinterTestForms
             }
             putAwayMaterial();
             home(axis.z);
-            home(axis.x, axis.y);
+            home(axis.y);
+            move(X_cleaningPosition);
             t = new Thread(() => processCommands());
             t.Start();
             t.Join();
@@ -808,6 +813,7 @@ namespace PrinterTestForms
                 _readyToReceive = false;
                 serialPort1.WriteLine(msg);
                 success = true;
+               
             }
             return success;
         }
@@ -936,48 +942,62 @@ namespace PrinterTestForms
         {
             setRelativeCoordinates();
             move(new Tuple<axis, double>(axis.y, -1*(double)towerDist.Value));
-            processCommands();
+            Thread t = new Thread(() => processCommands());
+            t.Start();
+            t.Join();
         }
 
         private void towerDOWNbutton_Click(object sender, EventArgs e)
         {
             setRelativeCoordinates();
             move(new Tuple<axis, double>(axis.y, (double)towerDist.Value));
-            processCommands();
+            Thread t = new Thread(() => processCommands());
+            t.Start();
+            t.Join();
         }
 
         private void bedUPbutton_Click(object sender, EventArgs e)
         {
             setRelativeCoordinates();
             move(new Tuple<axis, double>(axis.z, -1*(double)bedDist.Value));
-            processCommands();
+            Thread t = new Thread(() => processCommands());
+            t.Start();
+            t.Join();
         }
 
         private void bedDOWNbutton_Click(object sender, EventArgs e)
         {
             setRelativeCoordinates();
             move(new Tuple<axis, double>(axis.z, (double)bedDist.Value));
-            processCommands();
+            Thread t = new Thread(() => processCommands());
+            t.Start();
+            t.Join();
         }
 
         private void vatLEFTbutton_Click(object sender, EventArgs e)
         {
             setRelativeCoordinates();
             move(new Tuple<axis, double>(axis.x, (double)vatDist.Value));
-            processCommands();
+            Thread t = new Thread(() => processCommands());
+            t.Start();
+            t.Join();
         }
 
         private void vatRIGHTbutton_Click(object sender, EventArgs e)
         {
             setRelativeCoordinates();
             move(new Tuple<axis, double>(axis.x, -1*(double)vatDist.Value));
-            processCommands();
+            Thread t = new Thread(() => processCommands());
+            t.Start();
+            t.Join();
         }
 
         private void homeALLbutton_Click(object sender, EventArgs e)
         {
             home(axis.x, axis.y, axis.z);
-            processCommands();
+            Thread t = new Thread(() => processCommands());
+            t.Start();
+            t.Join();
         }
     }
     public static class TupleListExtensions
