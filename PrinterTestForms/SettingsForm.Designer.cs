@@ -125,6 +125,34 @@
             this.X_PulloutPosition_button = new System.Windows.Forms.Button();
             this.label39 = new System.Windows.Forms.Label();
             this.X_PullOutPosition = new System.Windows.Forms.NumericUpDown();
+            this.label40 = new System.Windows.Forms.Label();
+            this.SprayIntensity = new System.Windows.Forms.NumericUpDown();
+            this.label41 = new System.Windows.Forms.Label();
+            this.CleaningIntensity = new System.Windows.Forms.NumericUpDown();
+            this.label42 = new System.Windows.Forms.Label();
+            this.CleaningOscillations = new System.Windows.Forms.NumericUpDown();
+            this.label43 = new System.Windows.Forms.Label();
+            this.CleaningDistPositive = new System.Windows.Forms.NumericUpDown();
+            this.label44 = new System.Windows.Forms.Label();
+            this.cleaningDistNeg = new System.Windows.Forms.NumericUpDown();
+            this.label45 = new System.Windows.Forms.Label();
+            this.FeedDuringOsc = new System.Windows.Forms.NumericUpDown();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.positiveBedCleaningDistance = new System.Windows.Forms.NumericUpDown();
+            this.negativeBedCleaningDistance = new System.Windows.Forms.NumericUpDown();
+            this.label48 = new System.Windows.Forms.Label();
+            this.cleaningDuration = new System.Windows.Forms.TextBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.dryingFanDuration = new System.Windows.Forms.NumericUpDown();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.dryingFanIntensity = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.X_PutAwayPosition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Z_HeightToRaiseBed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionHookPull4)).BeginInit();
@@ -157,11 +185,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.Zzero2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Zzero1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.X_PullOutPosition)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SprayIntensity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CleaningIntensity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CleaningOscillations)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CleaningDistPositive)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cleaningDistNeg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FeedDuringOsc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.positiveBedCleaningDistance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.negativeBedCleaningDistance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dryingFanDuration)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dryingFanIntensity)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(766, 626);
+            this.button1.Location = new System.Drawing.Point(707, 627);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(183, 40);
             this.button1.TabIndex = 0;
@@ -1020,7 +1058,7 @@
             // 
             this.X_FeedRate.Location = new System.Drawing.Point(766, 306);
             this.X_FeedRate.Maximum = new decimal(new int[] {
-            2000,
+            10000,
             0,
             0,
             0});
@@ -1033,7 +1071,7 @@
             // 
             this.Y_FeedRate.Location = new System.Drawing.Point(766, 338);
             this.Y_FeedRate.Maximum = new decimal(new int[] {
-            2000,
+            10000,
             0,
             0,
             0});
@@ -1046,7 +1084,7 @@
             // 
             this.Z_FeedRate.Location = new System.Drawing.Point(766, 370);
             this.Z_FeedRate.Maximum = new decimal(new int[] {
-            2000,
+            10000,
             0,
             0,
             0});
@@ -1226,7 +1264,7 @@
             this.shearProcessBox.Multiline = true;
             this.shearProcessBox.Name = "shearProcessBox";
             this.shearProcessBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.shearProcessBox.Size = new System.Drawing.Size(391, 153);
+            this.shearProcessBox.Size = new System.Drawing.Size(350, 153);
             this.shearProcessBox.TabIndex = 83;
             this.shearProcessBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -1441,11 +1479,338 @@
             this.X_PullOutPosition.TabIndex = 97;
             this.X_PullOutPosition.ValueChanged += new System.EventHandler(this.X_PullOutPosition_ValueChanged);
             // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(928, 182);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(313, 20);
+            this.label40.TabIndex = 100;
+            this.label40.Text = "Spray Intensity During Material Change (%)";
+            // 
+            // SprayIntensity
+            // 
+            this.SprayIntensity.Location = new System.Drawing.Point(1294, 180);
+            this.SprayIntensity.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.SprayIntensity.Name = "SprayIntensity";
+            this.SprayIntensity.Size = new System.Drawing.Size(76, 26);
+            this.SprayIntensity.TabIndex = 101;
+            this.SprayIntensity.ValueChanged += new System.EventHandler(this.SprayIntensity_ValueChanged);
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(928, 214);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(343, 20);
+            this.label41.TabIndex = 102;
+            this.label41.Text = "Spray Intensity During Cleaning Oscillations (%)";
+            // 
+            // CleaningIntensity
+            // 
+            this.CleaningIntensity.Location = new System.Drawing.Point(1294, 212);
+            this.CleaningIntensity.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.CleaningIntensity.Name = "CleaningIntensity";
+            this.CleaningIntensity.Size = new System.Drawing.Size(76, 26);
+            this.CleaningIntensity.TabIndex = 103;
+            this.CleaningIntensity.ValueChanged += new System.EventHandler(this.CleaningIntensity_ValueChanged);
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(928, 246);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(233, 20);
+            this.label42.TabIndex = 104;
+            this.label42.Text = "Number of Cleaning Oscillations";
+            // 
+            // CleaningOscillations
+            // 
+            this.CleaningOscillations.Location = new System.Drawing.Point(1294, 244);
+            this.CleaningOscillations.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.CleaningOscillations.Name = "CleaningOscillations";
+            this.CleaningOscillations.Size = new System.Drawing.Size(76, 26);
+            this.CleaningOscillations.TabIndex = 105;
+            this.CleaningOscillations.ValueChanged += new System.EventHandler(this.CleaningOscillations_ValueChanged);
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(928, 278);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(352, 20);
+            this.label43.TabIndex = 106;
+            this.label43.Text = "Positive Cleaning Vat Distance During Oscillation";
+            // 
+            // CleaningDistPositive
+            // 
+            this.CleaningDistPositive.Cursor = System.Windows.Forms.Cursors.Default;
+            this.CleaningDistPositive.DecimalPlaces = 2;
+            this.CleaningDistPositive.Location = new System.Drawing.Point(1294, 276);
+            this.CleaningDistPositive.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.CleaningDistPositive.Name = "CleaningDistPositive";
+            this.CleaningDistPositive.Size = new System.Drawing.Size(76, 26);
+            this.CleaningDistPositive.TabIndex = 107;
+            this.CleaningDistPositive.ValueChanged += new System.EventHandler(this.CleaningDistPositive_ValueChanged);
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(928, 310);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(360, 20);
+            this.label44.TabIndex = 108;
+            this.label44.Text = "Negative Cleaning Vat Distance During Oscillation";
+            // 
+            // cleaningDistNeg
+            // 
+            this.cleaningDistNeg.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cleaningDistNeg.DecimalPlaces = 2;
+            this.cleaningDistNeg.Location = new System.Drawing.Point(1294, 308);
+            this.cleaningDistNeg.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.cleaningDistNeg.Name = "cleaningDistNeg";
+            this.cleaningDistNeg.Size = new System.Drawing.Size(76, 26);
+            this.cleaningDistNeg.TabIndex = 109;
+            this.cleaningDistNeg.ValueChanged += new System.EventHandler(this.cleaningDistNeg_ValueChanged);
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(928, 342);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(201, 20);
+            this.label45.TabIndex = 110;
+            this.label45.Text = "Feedrate During Oscillation";
+            // 
+            // FeedDuringOsc
+            // 
+            this.FeedDuringOsc.Location = new System.Drawing.Point(1294, 340);
+            this.FeedDuringOsc.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.FeedDuringOsc.Name = "FeedDuringOsc";
+            this.FeedDuringOsc.Size = new System.Drawing.Size(76, 26);
+            this.FeedDuringOsc.TabIndex = 111;
+            this.FeedDuringOsc.ValueChanged += new System.EventHandler(this.FeedDuringOsc_ValueChanged);
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(928, 376);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(290, 20);
+            this.label46.TabIndex = 112;
+            this.label46.Text = "Positive Bed Distance During Oscillation";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(928, 408);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(298, 20);
+            this.label47.TabIndex = 113;
+            this.label47.Text = "Negative Bed Distance During Oscillation";
+            // 
+            // positiveBedCleaningDistance
+            // 
+            this.positiveBedCleaningDistance.Cursor = System.Windows.Forms.Cursors.Default;
+            this.positiveBedCleaningDistance.DecimalPlaces = 2;
+            this.positiveBedCleaningDistance.Location = new System.Drawing.Point(1294, 372);
+            this.positiveBedCleaningDistance.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.positiveBedCleaningDistance.Name = "positiveBedCleaningDistance";
+            this.positiveBedCleaningDistance.Size = new System.Drawing.Size(76, 26);
+            this.positiveBedCleaningDistance.TabIndex = 114;
+            this.positiveBedCleaningDistance.ValueChanged += new System.EventHandler(this.positiveBedCleaningDistance_ValueChanged);
+            // 
+            // negativeBedCleaningDistance
+            // 
+            this.negativeBedCleaningDistance.Cursor = System.Windows.Forms.Cursors.Default;
+            this.negativeBedCleaningDistance.DecimalPlaces = 2;
+            this.negativeBedCleaningDistance.Location = new System.Drawing.Point(1294, 404);
+            this.negativeBedCleaningDistance.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.negativeBedCleaningDistance.Name = "negativeBedCleaningDistance";
+            this.negativeBedCleaningDistance.Size = new System.Drawing.Size(76, 26);
+            this.negativeBedCleaningDistance.TabIndex = 115;
+            this.negativeBedCleaningDistance.ValueChanged += new System.EventHandler(this.negativeBedCleaningDistance_ValueChanged);
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(928, 460);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(247, 20);
+            this.label48.TabIndex = 116;
+            this.label48.Text = "Approximate Duration of Cleaning";
+            // 
+            // cleaningDuration
+            // 
+            this.cleaningDuration.Location = new System.Drawing.Point(1188, 457);
+            this.cleaningDuration.Name = "cleaningDuration";
+            this.cleaningDuration.ReadOnly = true;
+            this.cleaningDuration.Size = new System.Drawing.Size(68, 26);
+            this.cleaningDuration.TabIndex = 117;
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(1262, 460);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(69, 20);
+            this.label49.TabIndex = 118;
+            this.label49.Text = "seconds";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(928, 518);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(151, 20);
+            this.label50.TabIndex = 119;
+            this.label50.Text = "Drying Fan Duration";
+            // 
+            // dryingFanDuration
+            // 
+            this.dryingFanDuration.Location = new System.Drawing.Point(1125, 515);
+            this.dryingFanDuration.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.dryingFanDuration.Name = "dryingFanDuration";
+            this.dryingFanDuration.Size = new System.Drawing.Size(76, 26);
+            this.dryingFanDuration.TabIndex = 120;
+            this.dryingFanDuration.ValueChanged += new System.EventHandler(this.dryingFanDuration_ValueChanged);
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(1376, 278);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(35, 20);
+            this.label51.TabIndex = 121;
+            this.label51.Text = "mm";
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(1376, 308);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(35, 20);
+            this.label52.TabIndex = 122;
+            this.label52.Text = "mm";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(1376, 372);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(35, 20);
+            this.label54.TabIndex = 124;
+            this.label54.Text = "mm";
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(1376, 406);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(35, 20);
+            this.label55.TabIndex = 125;
+            this.label55.Text = "mm";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(1211, 517);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(69, 20);
+            this.label53.TabIndex = 126;
+            this.label53.Text = "seconds";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(928, 550);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(178, 20);
+            this.label56.TabIndex = 127;
+            this.label56.Text = "Drying Fan Intensity (%)";
+            // 
+            // dryingFanIntensity
+            // 
+            this.dryingFanIntensity.Location = new System.Drawing.Point(1125, 551);
+            this.dryingFanIntensity.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.dryingFanIntensity.Name = "dryingFanIntensity";
+            this.dryingFanIntensity.Size = new System.Drawing.Size(76, 26);
+            this.dryingFanIntensity.TabIndex = 128;
+            this.dryingFanIntensity.ValueChanged += new System.EventHandler(this.dryingFanIntensity_ValueChanged);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1332, 726);
+            this.ClientSize = new System.Drawing.Size(1418, 726);
+            this.Controls.Add(this.dryingFanIntensity);
+            this.Controls.Add(this.label56);
+            this.Controls.Add(this.label53);
+            this.Controls.Add(this.label55);
+            this.Controls.Add(this.label54);
+            this.Controls.Add(this.label52);
+            this.Controls.Add(this.label51);
+            this.Controls.Add(this.dryingFanDuration);
+            this.Controls.Add(this.label50);
+            this.Controls.Add(this.label49);
+            this.Controls.Add(this.cleaningDuration);
+            this.Controls.Add(this.label48);
+            this.Controls.Add(this.negativeBedCleaningDistance);
+            this.Controls.Add(this.positiveBedCleaningDistance);
+            this.Controls.Add(this.label47);
+            this.Controls.Add(this.label46);
+            this.Controls.Add(this.FeedDuringOsc);
+            this.Controls.Add(this.label45);
+            this.Controls.Add(this.cleaningDistNeg);
+            this.Controls.Add(this.label44);
+            this.Controls.Add(this.CleaningDistPositive);
+            this.Controls.Add(this.label43);
+            this.Controls.Add(this.CleaningOscillations);
+            this.Controls.Add(this.label42);
+            this.Controls.Add(this.CleaningIntensity);
+            this.Controls.Add(this.label41);
+            this.Controls.Add(this.SprayIntensity);
+            this.Controls.Add(this.label40);
             this.Controls.Add(this.X_PulloutPosition_button);
             this.Controls.Add(this.label39);
             this.Controls.Add(this.X_PullOutPosition);
@@ -1580,6 +1945,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.Zzero2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Zzero1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.X_PullOutPosition)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SprayIntensity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CleaningIntensity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CleaningOscillations)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CleaningDistPositive)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cleaningDistNeg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FeedDuringOsc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.positiveBedCleaningDistance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.negativeBedCleaningDistance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dryingFanDuration)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dryingFanIntensity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1684,5 +2059,33 @@
         private System.Windows.Forms.Button X_PulloutPosition_button;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.NumericUpDown X_PullOutPosition;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.NumericUpDown SprayIntensity;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.NumericUpDown CleaningIntensity;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.NumericUpDown CleaningOscillations;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.NumericUpDown CleaningDistPositive;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.NumericUpDown cleaningDistNeg;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.NumericUpDown FeedDuringOsc;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.NumericUpDown positiveBedCleaningDistance;
+        private System.Windows.Forms.NumericUpDown negativeBedCleaningDistance;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.TextBox cleaningDuration;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.NumericUpDown dryingFanDuration;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.NumericUpDown dryingFanIntensity;
     }
 }

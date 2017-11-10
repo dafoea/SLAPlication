@@ -430,5 +430,125 @@ namespace PrinterTestForms.Properties {
                 this["X_pullOutPosition"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int pumpIntensitySpraying {
+            get {
+                return ((int)(this["pumpIntensitySpraying"]));
+            }
+            set {
+                this["pumpIntensitySpraying"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int pumpIntensityCleaning {
+            get {
+                return ((int)(this["pumpIntensityCleaning"]));
+            }
+            set {
+                this["pumpIntensityCleaning"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public int numberOfCleaningOscillations {
+            get {
+                return ((int)(this["numberOfCleaningOscillations"]));
+            }
+            set {
+                this["numberOfCleaningOscillations"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("800")]
+        public int cleaningOscillationSpeed {
+            get {
+                return ((int)(this["cleaningOscillationSpeed"]));
+            }
+            set {
+                this["cleaningOscillationSpeed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public double X_positiveCleaningOscillationDistance {
+            get {
+                return ((double)(this["X_positiveCleaningOscillationDistance"]));
+            }
+            set {
+                this["X_positiveCleaningOscillationDistance"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public double X_negativeCleaningOscillationDistance {
+            get {
+                return ((double)(this["X_negativeCleaningOscillationDistance"]));
+            }
+            set {
+                this["X_negativeCleaningOscillationDistance"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public double Z_positiveCleaningOscillationDistance {
+            get {
+                return ((double)(this["Z_positiveCleaningOscillationDistance"]));
+            }
+            set {
+                this["Z_positiveCleaningOscillationDistance"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public double Z_negativeCleaningOscillationDistance {
+            get {
+                return ((double)(this["Z_negativeCleaningOscillationDistance"]));
+            }
+            set {
+                this["Z_negativeCleaningOscillationDistance"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public int dryingFanDuration {
+            get {
+                return ((int)(this["dryingFanDuration"]));
+            }
+            set {
+                this["dryingFanDuration"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int dryingFanIntensity {
+            get {
+                return ((int)(this["dryingFanIntensity"]));
+            }
+            set {
+                this["dryingFanIntensity"] = value;
+            }
+        }
     }
 }

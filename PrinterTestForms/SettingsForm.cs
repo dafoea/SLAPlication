@@ -65,6 +65,29 @@ namespace PrinterTestForms
             Zzero3.Value = (decimal)Properties.Settings.Default.Z_zeroMaterial3;
             Zzero4.Value = (decimal)Properties.Settings.Default.Z_zeroMaterial4;
             X_PullOutPosition.Value = (decimal)Properties.Settings.Default.X_pullOutPosition;
+            SprayIntensity.Value = (decimal)Properties.Settings.Default.pumpIntensitySpraying;
+            CleaningIntensity.Value = (decimal)Properties.Settings.Default.pumpIntensityCleaning;
+            CleaningOscillations.Value = (decimal)Properties.Settings.Default.numberOfCleaningOscillations;
+            CleaningDistPositive.Value = (decimal)Properties.Settings.Default.X_positiveCleaningOscillationDistance;
+            cleaningDistNeg.Value = (decimal)Properties.Settings.Default.X_negativeCleaningOscillationDistance;
+            FeedDuringOsc.Value = (decimal)Properties.Settings.Default.cleaningOscillationSpeed;
+            positiveBedCleaningDistance.Value = (decimal)Properties.Settings.Default.Z_positiveCleaningOscillationDistance;
+            negativeBedCleaningDistance.Value = (decimal)Properties.Settings.Default.Z_negativeCleaningOscillationDistance;
+            dryingFanDuration.Value = (decimal)Properties.Settings.Default.dryingFanDuration;
+            dryingFanIntensity.Value = (decimal)Properties.Settings.Default.dryingFanIntensity;
+            
+            updateCleaningTime();
+
+        }
+
+        private void updateCleaningTime()
+        {
+            double crossDist = Math.Sqrt(Math.Pow((double)(CleaningDistPositive.Value + cleaningDistNeg.Value), 2) + Math.Pow((double)(positiveBedCleaningDistance.Value + negativeBedCleaningDistance.Value), 2));
+            double moveDist = (double)(cleaningDistNeg.Value + CleaningDistPositive.Value);
+            double cycleDist = 2 * moveDist + 2 * crossDist;
+
+
+            cleaningDuration.Text = (Math.Round(cycleDist * (double)CleaningOscillations.Value / (double)FeedDuringOsc.Value * 60) + (double)dryingFanDuration.Value).ToString();
         }
 
         private void SettingsForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -283,6 +306,89 @@ namespace PrinterTestForms
         private void X_PullOutPosition_ValueChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.X_pullOutPosition = (double)X_PullOutPosition.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void SprayIntensity_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.pumpIntensitySpraying = (int)SprayIntensity.Value;
+            SprayIntensity.Value = (decimal)((int)SprayIntensity.Value);
+            Properties.Settings.Default.Save();
+            updateCleaningTime();
+        }
+        private void CleaningIntensity_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.pumpIntensityCleaning = (int)CleaningIntensity.Value;
+            CleaningIntensity.Value = (decimal)((int)CleaningIntensity.Value);
+            Properties.Settings.Default.Save();
+            updateCleaningTime();
+        }
+
+        private void CleaningOscillations_ValueChanged(object sender, EventArgs e)
+        {
+            if (CleaningOscillations.Value < 2)
+            {
+                MessageBox.Show("Error: Number of oscillations must be at least 2");
+                CleaningOscillations.Value = 2m;
+            }
+            Properties.Settings.Default.numberOfCleaningOscillations = (int)CleaningOscillations.Value;
+            CleaningOscillations.Value = (decimal)((int)CleaningOscillations.Value);
+            Properties.Settings.Default.Save();
+            updateCleaningTime();
+        }
+
+        private void CleaningDistPositive_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.X_positiveCleaningOscillationDistance = (double)CleaningDistPositive.Value;
+            Properties.Settings.Default.Save();
+            updateCleaningTime();
+        }
+
+        private void FeedDuringOsc_ValueChanged(object sender, EventArgs e)
+        {
+            if ((int)FeedDuringOsc.Value > Math.Min(Properties.Settings.Default.X_feedrate, Properties.Settings.Default.Z_feedrate))
+            {
+                MessageBox.Show("Cleaning feedrate cannot exceed the maximum values of the X and Z axis feedrates. Restoring valid value.");
+                FeedDuringOsc.Value = (decimal)Math.Min(Properties.Settings.Default.X_feedrate, Properties.Settings.Default.Z_feedrate);
+            }
+            Properties.Settings.Default.cleaningOscillationSpeed = (int)FeedDuringOsc.Value;
+            Properties.Settings.Default.Save();
+            updateCleaningTime();
+        }
+
+        private void cleaningDistNeg_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.X_negativeCleaningOscillationDistance = (double)cleaningDistNeg.Value;
+            Properties.Settings.Default.Save();
+            updateCleaningTime();
+        }
+
+        private void positiveBedCleaningDistance_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Z_positiveCleaningOscillationDistance = (double)positiveBedCleaningDistance.Value;
+            Properties.Settings.Default.Save();
+            updateCleaningTime();
+        }
+
+        private void negativeBedCleaningDistance_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Z_negativeCleaningOscillationDistance = (double)negativeBedCleaningDistance.Value;
+            Properties.Settings.Default.Save();
+            updateCleaningTime();
+        }
+
+        private void dryingFanDuration_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.dryingFanDuration = (int)dryingFanDuration.Value;
+            dryingFanDuration.Value = (int)dryingFanDuration.Value;
+            Properties.Settings.Default.Save();
+            updateCleaningTime();
+
+        }
+        private void dryingFanIntensity_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.dryingFanIntensity = (int)dryingFanIntensity.Value;
+            dryingFanIntensity.Value = (int)dryingFanIntensity.Value;
             Properties.Settings.Default.Save();
         }
 
@@ -576,6 +682,19 @@ namespace PrinterTestForms
                 Properties.Settings.Default.Z_zeroMaterial4.ToString(),
                 Properties.Settings.Default.X_pullOutPosition.ToString(),
 
+                Properties.Settings.Default.pumpIntensitySpraying.ToString(),
+                Properties.Settings.Default.pumpIntensityCleaning.ToString(),
+                Properties.Settings.Default.numberOfCleaningOscillations.ToString(),
+                Properties.Settings.Default.X_positiveCleaningOscillationDistance.ToString(),
+                Properties.Settings.Default.X_negativeCleaningOscillationDistance.ToString(),
+                Properties.Settings.Default.cleaningOscillationSpeed.ToString(),
+                Properties.Settings.Default.Z_positiveCleaningOscillationDistance.ToString(),
+                Properties.Settings.Default.Z_negativeCleaningOscillationDistance.ToString(),
+                Properties.Settings.Default.dryingFanDuration.ToString(),
+                Properties.Settings.Default.dryingFanIntensity.ToString()
+               
+
+
         };
             SaveFileDialog file = new SaveFileDialog();
             file.OverwritePrompt = false;
@@ -631,7 +750,16 @@ namespace PrinterTestForms
                 Zzero3.Value = Convert.ToDecimal(line.ReadLine());
                 Zzero4.Value = Convert.ToDecimal(line.ReadLine());
                 X_PullOutPosition.Value = Convert.ToDecimal(line.ReadLine());
-
+                SprayIntensity.Value = Convert.ToDecimal(line.ReadLine());
+                CleaningIntensity.Value = Convert.ToDecimal(line.ReadLine());
+                CleaningOscillations.Value = Convert.ToDecimal(line.ReadLine());
+                CleaningDistPositive.Value = Convert.ToDecimal(line.ReadLine());
+                cleaningDistNeg.Value = Convert.ToDecimal(line.ReadLine());
+                FeedDuringOsc.Value = Convert.ToDecimal(line.ReadLine());
+                positiveBedCleaningDistance.Value = Convert.ToDecimal(line.ReadLine());
+                negativeBedCleaningDistance.Value = Convert.ToDecimal(line.ReadLine());
+                dryingFanDuration.Value = Convert.ToDecimal(line.ReadLine());
+                dryingFanIntensity.Value = Convert.ToDecimal(line.ReadLine());
 
             }
         }

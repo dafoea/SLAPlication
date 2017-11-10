@@ -115,6 +115,36 @@ G1 X14</value>
             <setting name="X_pullOutPosition" serializeAs="String">
                 <value>10</value>
             </setting>
+            <setting name="pumpIntensitySpraying" serializeAs="String">
+                <value>100</value>
+            </setting>
+            <setting name="pumpIntensityCleaning" serializeAs="String">
+                <value>100</value>
+            </setting>
+            <setting name="numberOfCleaningOscillations" serializeAs="String">
+                <value>20</value>
+            </setting>
+            <setting name="cleaningOscillationSpeed" serializeAs="String">
+                <value>800</value>
+            </setting>
+            <setting name="X_positiveCleaningOscillationDistance" serializeAs="String">
+                <value>50</value>
+            </setting>
+            <setting name="X_negativeCleaningOscillationDistance" serializeAs="String">
+                <value>50</value>
+            </setting>
+            <setting name="Z_positiveCleaningOscillationDistance" serializeAs="String">
+                <value>50</value>
+            </setting>
+            <setting name="Z_negativeCleaningOscillationDistance" serializeAs="String">
+                <value>50</value>
+            </setting>
+            <setting name="dryingFanDuration" serializeAs="String">
+                <value>30</value>
+            </setting>
+            <setting name="dryingFanIntensity" serializeAs="String">
+                <value>100</value>
+            </setting>
         </PrinterTestForms.Properties.Settings>
     </userSettings>
 </configuration>

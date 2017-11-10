@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="SLAPlication.exe" version="2.0.0.11" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="SLAPlication.exe" version="2.0.0.18" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
     <assemblyIdentity name="SLAPlication" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
@@ -42,24 +42,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SLAPlication.exe" size="128488">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SLAPlication.exe" size="141800">
       <assemblyIdentity name="SLAPlication" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>X39P97PlYTVtNv6a0UGGvTyvw/sLOWkUiFeR4oDA6Oc=</dsig:DigestValue>
+        <dsig:DigestValue>s9/uF2mPo8ko0x8Ah70NANidsSxVjo6ZPVrGiT3LiWg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="SLAPlication.exe.config" size="5306">
+  <file name="SLAPlication.exe.config" size="6697">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>PSPJ11MeAUWaDU868vAxGoPhwe40gHVf0nZ5HufDrz4=</dsig:DigestValue>
+      <dsig:DigestValue>OFVJ+C4p8ULOci+1ppc0M93/dzU6nk9u2zd/kSQ0hoY=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

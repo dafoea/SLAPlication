@@ -68,7 +68,7 @@ namespace PrinterTestForms
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull4 }
         };
         public int baud = Properties.Settings.Default.printerBaudRate;
-        public Tuple<axis, double> Z_heightToRaiseBed = new Tuple<axis, double>(axis.z, -1*Properties.Settings.Default.Z_heightToRaiseBed);
+        public Tuple<axis, double> Z_heightToRaiseBed = new Tuple<axis, double>(axis.z, -1 * Properties.Settings.Default.Z_heightToRaiseBed);
         private material _currentMaterial = material.m1;
         private material _nextMaterial = material.m1;
         List<material> _activeMaterials = new List<material>();
@@ -100,7 +100,7 @@ namespace PrinterTestForms
             string[] lines = Properties.Settings.Default.ShearProcess.Split('\n');
             List<string> lineList = new List<string>();
 
-            foreach(string line in lines)
+            foreach (string line in lines)
             {
                 lineList.Add(line);
             }
@@ -126,7 +126,7 @@ namespace PrinterTestForms
             n.WindowState = FormWindowState.Maximized;
             n.fitPictureToFrame();
 
-            
+
 
             //Format the listboxes and preview images within the material image display tabs;
             mat1list.Bounds = tabPage1.Bounds;
@@ -162,8 +162,8 @@ namespace PrinterTestForms
                 }
                 catch { MessageBox.Show("Unable to communicate through default COM port. Please try again or select a new port form the list."); }
             }
-            
-             statusText.Text = "Arduino not connected.";
+
+            statusText.Text = "Arduino not connected.";
         }
 
 
@@ -219,7 +219,7 @@ namespace PrinterTestForms
                 while (commandsToSend.Count > 0)
                 {
                     string command = commandsToSend.Dequeue();
-                    
+
                     serialBox.AppendText("<<TX>> " + command + System.Environment.NewLine);
                     while (!sendMessage(command)) ;
                 }
@@ -248,7 +248,7 @@ namespace PrinterTestForms
         // ---------------------------Printer Operations------------------------------------------
         private void PRINT()
         {
-            
+
             home(axis.z);
             home(axis.x);
             home(axis.y);
@@ -296,10 +296,13 @@ namespace PrinterTestForms
                 {
                     if (_currentLayer != 0)
                     {
-                        putAwayMaterial();
+                        changeToMaterial(_nextMaterial);
                     }
-                    queueMaterial(_nextMaterial);
-                    takeOutMaterial(_nextMaterial);
+                    else
+                    {
+                        queueMaterial(_nextMaterial);
+                        takeOutMaterial(_nextMaterial);
+                    }
                 }
                 _currentMaterial = _nextMaterial;
                 t.Join(); //wait until the current thread of commands have finished.
@@ -371,7 +374,7 @@ namespace PrinterTestForms
 
             while (!_readyToProject) ;
             statusText.Text = "Projecting...";
-            double duration = (_currentLayer > _initialLayers-1) ? cureTime : _intitialCureTime;
+            double duration = (_currentLayer > _initialLayers - 1) ? cureTime : _intitialCureTime;
 
             n.changePicture(_fileNames[(int)_currentMaterial][(int)_currentLayer]);
             Thread.Sleep(Convert.ToInt32(Math.Round(duration * 1000)));
@@ -399,7 +402,9 @@ namespace PrinterTestForms
             {
                 setAbsoluteCoordinates();
                 putAwayMaterial();
+                Spray();
                 queueMaterial(mat);
+                Clean();
                 takeOutMaterial(mat);
             }
 
@@ -480,9 +485,78 @@ namespace PrinterTestForms
         /// <summary>
         /// Performs a cleaning operation on the part to prepare it for material change
         /// </summary>
-        private void clean()
+        /// 
+        private void Clean()
         {
-            //Insert G-code to clean material
+            double x_positive = Properties.Settings.Default.X_positiveCleaningOscillationDistance;
+            double x_negative = Properties.Settings.Default.X_negativeCleaningOscillationDistance;
+            double z_positive = Properties.Settings.Default.Z_positiveCleaningOscillationDistance;
+            double z_negative = Properties.Settings.Default.Z_negativeCleaningOscillationDistance;
+            int feedRate = Properties.Settings.Default.cleaningOscillationSpeed;
+
+            setPumpIntensity(Properties.Settings.Default.pumpIntensityCleaning);
+
+            //part movement during spraying
+            setRelativeCoordinates();
+            move(feedRate, new Tuple<axis, double>(axis.x, x_positive), new Tuple<axis, double>(axis.z, z_positive)); //starting at xp zp
+            for (int i = 0; i < Properties.Settings.Default.numberOfCleaningOscillations / 2; i++)
+            {
+
+                //positive cycle
+                move(feedRate, new Tuple<axis, double>(axis.x, (-1 * x_positive - x_negative))); // move to xn zp
+                move(feedRate, new Tuple<axis, double>(axis.x, (x_positive + x_negative)), new Tuple<axis, double>(axis.z, (-1 * z_positive - z_negative))); //cross to xp zn
+                move(feedRate, new Tuple<axis, double>(axis.x, (-1 * x_positive - x_negative))); // move to xn zn
+                move(feedRate, new Tuple<axis, double>(axis.x, (x_positive + x_negative)), new Tuple<axis, double>(axis.z, (z_positive + z_negative))); //cross to xp zp
+
+                //negative cycle
+                move(feedRate, new Tuple<axis, double>(axis.x, (-1 * x_positive - x_negative)), new Tuple<axis, double>(axis.z, (-1 * z_positive - z_negative))); //cross to xn zn
+                move(feedRate, new Tuple<axis, double>(axis.x, (x_positive + x_negative))); // move to xp zn
+                move(feedRate, new Tuple<axis, double>(axis.x, (-1 * x_positive - x_negative)), new Tuple<axis, double>(axis.z, (z_positive + z_negative))); //cross to xn zp
+                move(feedRate, new Tuple<axis, double>(axis.x, (x_positive + x_negative))); // move to xp zp
+
+            }
+            move(feedRate, new Tuple<axis, double>(axis.x, -1 * x_positive), new Tuple<axis, double>(axis.z, -1 * z_positive)); //removing starting move to xp zp
+            setAbsoluteCoordinates();
+            setPumpIntensity(0);
+
+            //Drying
+            setFanIntensity(Properties.Settings.Default.dryingFanIntensity);
+            sendDelay(Properties.Settings.Default.dryingFanDuration * 1000);
+            setFanIntensity(0);
+
+
+        }
+
+        private void Spray()
+        {
+            setPumpIntensity(Properties.Settings.Default.pumpIntensitySpraying);
+        }
+
+        private void sendDelay(int delayms)
+        {
+            string message = "G4 P";
+            message += delayms.ToString();
+            commands.Enqueue(message);
+        }
+
+        private void setPumpIntensity(int intensity)
+        {
+            commands.Enqueue("M400");
+            string message = "M140 S";
+            intensity = (int)((double)intensity / 100.0 * 255);
+            message += (intensity + 25).ToString();
+            commands.Enqueue(message);
+
+        }
+
+        private void setFanIntensity(int intensity)
+        {
+            commands.Enqueue("M400");
+            string message = "M104 S";
+            intensity = (int)((double)intensity / 100.0 * 255);
+            message += (intensity + 25).ToString();
+            commands.Enqueue(message);
+
         }
 
         private void move(params Tuple<axis, double>[] movements)
@@ -506,6 +580,17 @@ namespace PrinterTestForms
                 }
                 message += move.Item1.ToString().ToUpper() + move.Item2.ToString() + " F" + feed.ToString() + " ";
             }
+            commands.Enqueue(message);
+        }
+
+        private void move(int feed, params Tuple<axis, double>[] movements)
+        {
+            string message = "G1 ";
+            foreach (Tuple<axis, double> move in movements)
+            {
+                message += move.Item1.ToString().ToUpper() + move.Item2.ToString() + " ";
+            }
+            message += "F" + feed.ToString();
             commands.Enqueue(message);
         }
 
@@ -633,7 +718,7 @@ namespace PrinterTestForms
                 if (d.ShowDialog() == DialogResult.OK)
                 {
                     _materialDirectories[(int)mat] = d.SelectedPath;
-                    _layersRemainingForMaterial[(int)mat] = Directory.GetFiles(d.SelectedPath,@"*.png").Length;
+                    _layersRemainingForMaterial[(int)mat] = Directory.GetFiles(d.SelectedPath, @"*.png").Length;
                     List<string> temp = new List<string>(Directory.GetFiles(d.SelectedPath, @"*.png"));
                     _fileNames.RemoveAt((int)mat);
                     _fileNames.Insert((int)mat, temp);
@@ -813,7 +898,7 @@ namespace PrinterTestForms
                 _readyToReceive = false;
                 serialPort1.WriteLine(msg);
                 success = true;
-               
+
             }
             return success;
         }
@@ -856,7 +941,7 @@ namespace PrinterTestForms
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull3 },
             { axis.y, Properties.Settings.Default.Y_towerPositionsHookPull4 }
         };
-            Z_heightToRaiseBed = new Tuple<axis, double>(axis.z, -1*Properties.Settings.Default.Z_heightToRaiseBed);
+            Z_heightToRaiseBed = new Tuple<axis, double>(axis.z, -1 * Properties.Settings.Default.Z_heightToRaiseBed);
             _layerHeight = Properties.Settings.Default.Z_layerHeight;
             _cureTime1 = Properties.Settings.Default.cureTime1;
             _cureTime2 = Properties.Settings.Default.cureTime2;
@@ -941,7 +1026,7 @@ namespace PrinterTestForms
         private void towerUPbutton_Click(object sender, EventArgs e)
         {
             setRelativeCoordinates();
-            move(new Tuple<axis, double>(axis.y, -1*(double)towerDist.Value));
+            move(new Tuple<axis, double>(axis.y, -1 * (double)towerDist.Value));
             Thread t = new Thread(() => processCommands());
             t.Start();
             t.Join();
@@ -959,7 +1044,7 @@ namespace PrinterTestForms
         private void bedUPbutton_Click(object sender, EventArgs e)
         {
             setRelativeCoordinates();
-            move(new Tuple<axis, double>(axis.z, -1*(double)bedDist.Value));
+            move(new Tuple<axis, double>(axis.z, -1 * (double)bedDist.Value));
             Thread t = new Thread(() => processCommands());
             t.Start();
             t.Join();
@@ -986,7 +1071,7 @@ namespace PrinterTestForms
         private void vatRIGHTbutton_Click(object sender, EventArgs e)
         {
             setRelativeCoordinates();
-            move(new Tuple<axis, double>(axis.x, -1*(double)vatDist.Value));
+            move(new Tuple<axis, double>(axis.x, -1 * (double)vatDist.Value));
             Thread t = new Thread(() => processCommands());
             t.Start();
             t.Join();
@@ -998,6 +1083,12 @@ namespace PrinterTestForms
             Thread t = new Thread(() => processCommands());
             t.Start();
             t.Join();
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            serialPort1.Close();
+            Environment.Exit(Environment.ExitCode);
         }
     }
     public static class TupleListExtensions
