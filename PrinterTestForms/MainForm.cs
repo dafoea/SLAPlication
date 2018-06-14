@@ -311,6 +311,7 @@ namespace PrinterTestForms
 
                 while (_thisLayerHasMaterial[(int)_currentMaterial] || _thisLayerHasMaterial[(int)_nextMaterial])
                 {
+                    setFanIntensity(0);
                     moveZtoPrintPosition(_currentLayer, _currentMaterial);
                     askToProject();
                     t = new Thread(() => processCommands());
@@ -320,7 +321,7 @@ namespace PrinterTestForms
                     t2.Start();
                     t2.Join();
                     Shear();
-                    statusText.Text = "Done Projecting";
+                    statusText.Text = "Done Projecting (layer " + _currentLayer + "/" + _totalNumberOfLayers + ")";
                     findNextMaterial();
 
                     //check if this layer has any more materials to print. if so, change to that material.
@@ -373,7 +374,7 @@ namespace PrinterTestForms
             }
 
             while (!_readyToProject) ;
-            statusText.Text = "Projecting...";
+            statusText.Text = "Projecting (layer " + _currentLayer + "/" + _totalNumberOfLayers + ")...";
             double duration = (_currentLayer > _initialLayers - 1) ? cureTime : _intitialCureTime;
 
             n.changePicture(_fileNames[(int)_currentMaterial][(int)_currentLayer]);
@@ -498,31 +499,44 @@ namespace PrinterTestForms
 
             //part movement during spraying
             setRelativeCoordinates();
-            move(feedRate, new Tuple<axis, double>(axis.x, x_positive), new Tuple<axis, double>(axis.z, z_positive)); //starting at xp zp
-            for (int i = 0; i < Properties.Settings.Default.numberOfCleaningOscillations / 2; i++)
+
+            if (Properties.Settings.Default.numberOfCleaningOscillations > 1)
             {
+                move(feedRate, new Tuple<axis, double>(axis.x, x_positive), new Tuple<axis, double>(axis.z, z_positive)); //starting at xp zp
+                for (int i = 0; i < Properties.Settings.Default.numberOfCleaningOscillations / 2; i++)
+                {
 
-                //positive cycle
-                move(feedRate, new Tuple<axis, double>(axis.x, (-1 * x_positive - x_negative))); // move to xn zp
-                move(feedRate, new Tuple<axis, double>(axis.x, (x_positive + x_negative)), new Tuple<axis, double>(axis.z, (-1 * z_positive - z_negative))); //cross to xp zn
-                move(feedRate, new Tuple<axis, double>(axis.x, (-1 * x_positive - x_negative))); // move to xn zn
-                move(feedRate, new Tuple<axis, double>(axis.x, (x_positive + x_negative)), new Tuple<axis, double>(axis.z, (z_positive + z_negative))); //cross to xp zp
+                    //positive cycle
+                    move(feedRate, new Tuple<axis, double>(axis.x, (-1 * x_positive - x_negative))); // move to xn zp
+                    move(feedRate, new Tuple<axis, double>(axis.x, (x_positive + x_negative)), new Tuple<axis, double>(axis.z, (-1 * z_positive - z_negative))); //cross to xp zn
+                    move(feedRate, new Tuple<axis, double>(axis.x, (-1 * x_positive - x_negative))); // move to xn zn
+                    move(feedRate, new Tuple<axis, double>(axis.x, (x_positive + x_negative)), new Tuple<axis, double>(axis.z, (z_positive + z_negative))); //cross to xp zp
 
-                //negative cycle
-                move(feedRate, new Tuple<axis, double>(axis.x, (-1 * x_positive - x_negative)), new Tuple<axis, double>(axis.z, (-1 * z_positive - z_negative))); //cross to xn zn
-                move(feedRate, new Tuple<axis, double>(axis.x, (x_positive + x_negative))); // move to xp zn
-                move(feedRate, new Tuple<axis, double>(axis.x, (-1 * x_positive - x_negative)), new Tuple<axis, double>(axis.z, (z_positive + z_negative))); //cross to xn zp
-                move(feedRate, new Tuple<axis, double>(axis.x, (x_positive + x_negative))); // move to xp zp
+                    //negative cycle
+                    move(feedRate, new Tuple<axis, double>(axis.x, (-1 * x_positive - x_negative)), new Tuple<axis, double>(axis.z, (-1 * z_positive - z_negative))); //cross to xn zn
+                    move(feedRate, new Tuple<axis, double>(axis.x, (x_positive + x_negative))); // move to xp zn
+                    move(feedRate, new Tuple<axis, double>(axis.x, (-1 * x_positive - x_negative)), new Tuple<axis, double>(axis.z, (z_positive + z_negative))); //cross to xn zp
+                    move(feedRate, new Tuple<axis, double>(axis.x, (x_positive + x_negative))); // move to xp zp
 
+                }
+                move(feedRate, new Tuple<axis, double>(axis.x, -1 * x_positive), new Tuple<axis, double>(axis.z, -1 * z_positive)); //removing starting move to xp zp
             }
-            move(feedRate, new Tuple<axis, double>(axis.x, -1 * x_positive), new Tuple<axis, double>(axis.z, -1 * z_positive)); //removing starting move to xp zp
+            else
+            {
+                move(feedRate, new Tuple<axis, double>(axis.x, x_positive));
+                move(feedRate, new Tuple<axis, double>(axis.x, -1 * x_positive - x_negative));
+                move(feedRate, new Tuple<axis, double>(axis.x, x_negative));
+            }
             setAbsoluteCoordinates();
             setPumpIntensity(0);
 
             //Drying
             setFanIntensity(Properties.Settings.Default.dryingFanIntensity);
+            setRelativeCoordinates();
+            move(feedRate, new Tuple<axis, double>(axis.z, -1 * Properties.Settings.Default.Z_heightToRaiseWhileDrying));
+            setAbsoluteCoordinates();
             sendDelay(Properties.Settings.Default.dryingFanDuration * 1000);
-            setFanIntensity(0);
+            //setFanIntensity(0);
 
 
         }
@@ -542,7 +556,7 @@ namespace PrinterTestForms
         private void setPumpIntensity(int intensity)
         {
             commands.Enqueue("M400");
-            string message = "M140 S";
+            string message = "M104 S";
             intensity = (int)((double)intensity / 100.0 * 255);
             message += (intensity + 25).ToString();
             commands.Enqueue(message);
@@ -552,9 +566,9 @@ namespace PrinterTestForms
         private void setFanIntensity(int intensity)
         {
             commands.Enqueue("M400");
-            string message = "M104 S";
+            string message = "M106 S";
             intensity = (int)((double)intensity / 100.0 * 255);
-            message += (intensity + 25).ToString();
+            message += intensity.ToString();
             commands.Enqueue(message);
 
         }
@@ -620,11 +634,18 @@ namespace PrinterTestForms
         //-------------------------------GUI Methods ----------------------------------------
         private void PreviewBar_Scroll(object sender, ScrollEventArgs e)
         {
-            layerText.Text = (PreviewBar.Value + 1).ToString();
-            foreach (material mat in _activeMaterials)
+            try
             {
-                if (_finalLayerForMaterial[(int)mat] > PreviewBar.Value) updatePreviewImage(mat, PreviewBar.Value);
-                else updatePreviewImage(mat);
+                layerText.Text = (PreviewBar.Value + 1).ToString();
+                foreach (material mat in _activeMaterials)
+                {
+                    if (_finalLayerForMaterial[(int)mat] > PreviewBar.Value) updatePreviewImage(mat, PreviewBar.Value);
+                    else updatePreviewImage(mat);
+                }
+            }
+            catch
+            {
+
             }
         }
         /// <summary>
@@ -634,25 +655,28 @@ namespace PrinterTestForms
         /// <param name="fileNumber">the file number of the material to preview</param>
         private void updatePreviewImage(material mat, int fileNumber = -1)
         {
-            PictureBox pic = new PictureBox();
-            switch (mat)
+            try
             {
-                case material.m1:
-                    pic = previewPic1;
-                    break;
-                case material.m2:
-                    pic = previewPic2;
-                    break;
-                case material.m3:
-                    pic = previewPic3;
-                    break;
-                case material.m4:
-                    pic = previewPic4;
-                    break;
+                PictureBox pic = new PictureBox();
+                switch (mat)
+                {
+                    case material.m1:
+                        pic = previewPic1;
+                        break;
+                    case material.m2:
+                        pic = previewPic2;
+                        break;
+                    case material.m3:
+                        pic = previewPic3;
+                        break;
+                    case material.m4:
+                        pic = previewPic4;
+                        break;
+                }
+                if (fileNumber == -1) pic.Image = null;
+                else pic.Image = Image.FromFile(_fileNames[(int)mat].ElementAt(fileNumber));
             }
-            if (fileNumber == -1) pic.Image = null;
-            else pic.Image = Image.FromFile(_fileNames[(int)mat].ElementAt(fileNumber));
-
+            catch { }
         }
 
 
@@ -724,18 +748,19 @@ namespace PrinterTestForms
                     _fileNames.Insert((int)mat, temp);
                 }
                 list.Items.Clear();
+                int finalFile = 0;
                 foreach (string item in Directory.GetFiles(d.SelectedPath, @"*.png").Select(Path.GetFileName))
                 {
                     list.Items.Add(item);
+                    finalFile++;
                 }
                 filesTab.Controls.Add(list);
                 list.Size = filesTab.Size;
                 filesTab.Text = "Material " + ((int)mat + 1).ToString();
                 previewTab.Text = filesTab.Text;
                 tabControl1.SelectedTab = filesTab;
-                string finalFile = _fileNames[(int)mat].Last();
-                finalFile = finalFile.Substring(finalFile.Length - 8, 4);
-                _finalLayerForMaterial[(int)mat] = Convert.ToInt32(finalFile);
+             
+                _finalLayerForMaterial[(int)mat] = finalFile;
                 updatePreviewImage(mat, PreviewBar.Value);
                 _activeMaterials.Add(mat);
             }
@@ -978,6 +1003,7 @@ namespace PrinterTestForms
         private void button1_Click(object sender, EventArgs e)
         {
             if (serialPort1.IsOpen) serialPort1.WriteLine("M112");
+
         }
 
         /// <summary>
@@ -1089,6 +1115,12 @@ namespace PrinterTestForms
         {
             serialPort1.Close();
             Environment.Exit(Environment.ExitCode);
+        }
+
+        private void png_button_Click(object sender, EventArgs e)
+        {
+            black_png_form f = new black_png_form();
+            f.Show();
         }
     }
     public static class TupleListExtensions

@@ -550,5 +550,17 @@ namespace PrinterTestForms.Properties {
                 this["dryingFanIntensity"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public double Z_heightToRaiseWhileDrying {
+            get {
+                return ((double)(this["Z_heightToRaiseWhileDrying"]));
+            }
+            set {
+                this["Z_heightToRaiseWhileDrying"] = value;
+            }
+        }
     }
 }

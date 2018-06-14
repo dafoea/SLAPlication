@@ -153,6 +153,11 @@
             this.label53 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.dryingFanIntensity = new System.Windows.Forms.NumericUpDown();
+            this.label57 = new System.Windows.Forms.Label();
+            this.bedRaiseDuringDry = new System.Windows.Forms.NumericUpDown();
+            this.label58 = new System.Windows.Forms.Label();
+            this.testPumpChangeButton = new System.Windows.Forms.Button();
+            this.testPumpOscillateButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.X_PutAwayPosition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Z_HeightToRaiseBed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Y_TowerPositionHookPull4)).BeginInit();
@@ -195,6 +200,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.negativeBedCleaningDistance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dryingFanDuration)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dryingFanIntensity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bedRaiseDuringDry)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -1666,7 +1672,7 @@
             // label48
             // 
             this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(928, 460);
+            this.label48.Location = new System.Drawing.Point(928, 491);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(247, 20);
             this.label48.TabIndex = 116;
@@ -1674,7 +1680,7 @@
             // 
             // cleaningDuration
             // 
-            this.cleaningDuration.Location = new System.Drawing.Point(1188, 457);
+            this.cleaningDuration.Location = new System.Drawing.Point(1188, 488);
             this.cleaningDuration.Name = "cleaningDuration";
             this.cleaningDuration.ReadOnly = true;
             this.cleaningDuration.Size = new System.Drawing.Size(68, 26);
@@ -1683,7 +1689,7 @@
             // label49
             // 
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(1262, 460);
+            this.label49.Location = new System.Drawing.Point(1262, 491);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(69, 20);
             this.label49.TabIndex = 118;
@@ -1692,7 +1698,7 @@
             // label50
             // 
             this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(928, 518);
+            this.label50.Location = new System.Drawing.Point(928, 549);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(151, 20);
             this.label50.TabIndex = 119;
@@ -1700,7 +1706,7 @@
             // 
             // dryingFanDuration
             // 
-            this.dryingFanDuration.Location = new System.Drawing.Point(1125, 515);
+            this.dryingFanDuration.Location = new System.Drawing.Point(1125, 546);
             this.dryingFanDuration.Maximum = new decimal(new int[] {
             500,
             0,
@@ -1750,7 +1756,7 @@
             // label53
             // 
             this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(1211, 517);
+            this.label53.Location = new System.Drawing.Point(1211, 548);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(69, 20);
             this.label53.TabIndex = 126;
@@ -1759,7 +1765,7 @@
             // label56
             // 
             this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(928, 550);
+            this.label56.Location = new System.Drawing.Point(928, 581);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(178, 20);
             this.label56.TabIndex = 127;
@@ -1767,7 +1773,7 @@
             // 
             // dryingFanIntensity
             // 
-            this.dryingFanIntensity.Location = new System.Drawing.Point(1125, 551);
+            this.dryingFanIntensity.Location = new System.Drawing.Point(1125, 582);
             this.dryingFanIntensity.Maximum = new decimal(new int[] {
             500,
             0,
@@ -1778,11 +1784,73 @@
             this.dryingFanIntensity.TabIndex = 128;
             this.dryingFanIntensity.ValueChanged += new System.EventHandler(this.dryingFanIntensity_ValueChanged);
             // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(928, 439);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(252, 20);
+            this.label57.TabIndex = 129;
+            this.label57.Text = "Height to Raise Bed During Drying";
+            // 
+            // bedRaiseDuringDry
+            // 
+            this.bedRaiseDuringDry.Cursor = System.Windows.Forms.Cursors.Default;
+            this.bedRaiseDuringDry.DecimalPlaces = 2;
+            this.bedRaiseDuringDry.Location = new System.Drawing.Point(1294, 439);
+            this.bedRaiseDuringDry.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.bedRaiseDuringDry.Name = "bedRaiseDuringDry";
+            this.bedRaiseDuringDry.Size = new System.Drawing.Size(76, 26);
+            this.bedRaiseDuringDry.TabIndex = 130;
+            this.bedRaiseDuringDry.ValueChanged += new System.EventHandler(this.bedRaiseDuringDry_ValueChanged);
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(1376, 441);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(35, 20);
+            this.label58.TabIndex = 131;
+            this.label58.Text = "mm";
+            // 
+            // testPumpChangeButton
+            // 
+            this.testPumpChangeButton.AutoSize = true;
+            this.testPumpChangeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.testPumpChangeButton.Location = new System.Drawing.Point(1376, 179);
+            this.testPumpChangeButton.Name = "testPumpChangeButton";
+            this.testPumpChangeButton.Size = new System.Drawing.Size(58, 27);
+            this.testPumpChangeButton.TabIndex = 132;
+            this.testPumpChangeButton.Text = "Test";
+            this.testPumpChangeButton.UseVisualStyleBackColor = true;
+            this.testPumpChangeButton.Click += new System.EventHandler(this.testPumpChangeButton_Click);
+            // 
+            // testPumpOscillateButton
+            // 
+            this.testPumpOscillateButton.AutoSize = true;
+            this.testPumpOscillateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.testPumpOscillateButton.Location = new System.Drawing.Point(1376, 211);
+            this.testPumpOscillateButton.Name = "testPumpOscillateButton";
+            this.testPumpOscillateButton.Size = new System.Drawing.Size(58, 27);
+            this.testPumpOscillateButton.TabIndex = 133;
+            this.testPumpOscillateButton.Text = "Test";
+            this.testPumpOscillateButton.UseVisualStyleBackColor = true;
+            this.testPumpOscillateButton.Click += new System.EventHandler(this.testPumpOscillateButton_Click);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1418, 726);
+            this.ClientSize = new System.Drawing.Size(1458, 726);
+            this.Controls.Add(this.testPumpOscillateButton);
+            this.Controls.Add(this.testPumpChangeButton);
+            this.Controls.Add(this.label58);
+            this.Controls.Add(this.bedRaiseDuringDry);
+            this.Controls.Add(this.label57);
             this.Controls.Add(this.dryingFanIntensity);
             this.Controls.Add(this.label56);
             this.Controls.Add(this.label53);
@@ -1955,6 +2023,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.negativeBedCleaningDistance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dryingFanDuration)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dryingFanIntensity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bedRaiseDuringDry)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2087,5 +2156,10 @@
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.Label label56;
         private System.Windows.Forms.NumericUpDown dryingFanIntensity;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.NumericUpDown bedRaiseDuringDry;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.Button testPumpChangeButton;
+        private System.Windows.Forms.Button testPumpOscillateButton;
     }
 }

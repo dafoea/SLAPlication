@@ -15,6 +15,8 @@ namespace PrinterTestForms
     public partial class SettingsForm : Form
     {
         SerialPort port;
+        bool testingPumpOscillations = false;
+        bool testingPumpChange = false;
 
         /// <summary>
         /// Passes the serial port handler to the settings window so the test buttons will work
@@ -75,6 +77,7 @@ namespace PrinterTestForms
             negativeBedCleaningDistance.Value = (decimal)Properties.Settings.Default.Z_negativeCleaningOscillationDistance;
             dryingFanDuration.Value = (decimal)Properties.Settings.Default.dryingFanDuration;
             dryingFanIntensity.Value = (decimal)Properties.Settings.Default.dryingFanIntensity;
+            bedRaiseDuringDry.Value = (decimal)Properties.Settings.Default.Z_heightToRaiseWhileDrying;
             
             updateCleaningTime();
 
@@ -326,10 +329,10 @@ namespace PrinterTestForms
 
         private void CleaningOscillations_ValueChanged(object sender, EventArgs e)
         {
-            if (CleaningOscillations.Value < 2)
+            if (CleaningOscillations.Value < 1)
             {
-                MessageBox.Show("Error: Number of oscillations must be at least 2");
-                CleaningOscillations.Value = 2m;
+                MessageBox.Show("Error: Number of oscillations must be at least 1");
+                CleaningOscillations.Value = 1m;
             }
             Properties.Settings.Default.numberOfCleaningOscillations = (int)CleaningOscillations.Value;
             CleaningOscillations.Value = (decimal)((int)CleaningOscillations.Value);
@@ -389,6 +392,12 @@ namespace PrinterTestForms
         {
             Properties.Settings.Default.dryingFanIntensity = (int)dryingFanIntensity.Value;
             dryingFanIntensity.Value = (int)dryingFanIntensity.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void bedRaiseDuringDry_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Z_heightToRaiseWhileDrying = (double)bedRaiseDuringDry.Value;
             Properties.Settings.Default.Save();
         }
 
@@ -691,7 +700,9 @@ namespace PrinterTestForms
                 Properties.Settings.Default.Z_positiveCleaningOscillationDistance.ToString(),
                 Properties.Settings.Default.Z_negativeCleaningOscillationDistance.ToString(),
                 Properties.Settings.Default.dryingFanDuration.ToString(),
-                Properties.Settings.Default.dryingFanIntensity.ToString()
+                Properties.Settings.Default.dryingFanIntensity.ToString(),
+                Properties.Settings.Default.Z_heightToRaiseWhileDrying.ToString()
+                
                
 
 
@@ -760,10 +771,47 @@ namespace PrinterTestForms
                 negativeBedCleaningDistance.Value = Convert.ToDecimal(line.ReadLine());
                 dryingFanDuration.Value = Convert.ToDecimal(line.ReadLine());
                 dryingFanIntensity.Value = Convert.ToDecimal(line.ReadLine());
+                bedRaiseDuringDry.Value = Convert.ToDecimal(line.ReadLine());
 
             }
         }
 
+        private void testPumpChangeButton_Click(object sender, EventArgs e)
+        {
+            if(!testingPumpChange || testingPumpOscillations)
+            {
+                testingPumpChange = true;
+                testingPumpOscillations = false;
+                string message = "M104 S";
+                int intensity = (int)((double)SprayIntensity.Value / 100.0 * 255);
+                message += (intensity + 25).ToString();
+                port.WriteLine(message);
+            }
+            else
+            {
+                port.WriteLine("M104 S0");
+                testingPumpChange = false;
+                testingPumpOscillations = false;
+            }
+        }
 
+        private void testPumpOscillateButton_Click(object sender, EventArgs e)
+        {
+            if (testingPumpChange || !testingPumpOscillations)
+            {
+                testingPumpChange = false;
+                testingPumpOscillations = true;
+                string message = "M104 S";
+                int intensity = (int)((double)CleaningIntensity.Value / 100.0 * 255);
+                message += (intensity + 25).ToString();
+                port.WriteLine(message);
+            }
+            else
+            {
+                port.WriteLine("M104 S0");
+                testingPumpChange = false;
+                testingPumpOscillations = false;
+            }
+        }
     }
 }

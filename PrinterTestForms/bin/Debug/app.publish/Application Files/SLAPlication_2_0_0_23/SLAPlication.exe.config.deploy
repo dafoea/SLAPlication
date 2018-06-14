@@ -145,6 +145,9 @@ G1 X14</value>
             <setting name="dryingFanIntensity" serializeAs="String">
                 <value>100</value>
             </setting>
+            <setting name="Z_heightToRaiseWhileDrying" serializeAs="String">
+                <value>30</value>
+            </setting>
         </PrinterTestForms.Properties.Settings>
     </userSettings>
 </configuration>

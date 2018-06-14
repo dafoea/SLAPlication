@@ -137,5 +137,8 @@ G1 X14</Value>
     <Setting Name="dryingFanIntensity" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
+    <Setting Name="Z_heightToRaiseWhileDrying" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">30</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

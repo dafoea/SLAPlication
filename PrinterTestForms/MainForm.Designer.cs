@@ -84,6 +84,7 @@
             this.bedDist = new System.Windows.Forms.NumericUpDown();
             this.vatDist = new System.Windows.Forms.NumericUpDown();
             this.homeALLbutton = new System.Windows.Forms.Button();
+            this.png_button = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -690,11 +691,22 @@
             this.homeALLbutton.UseVisualStyleBackColor = true;
             this.homeALLbutton.Click += new System.EventHandler(this.homeALLbutton_Click);
             // 
+            // png_button
+            // 
+            this.png_button.Location = new System.Drawing.Point(12, 107);
+            this.png_button.Name = "png_button";
+            this.png_button.Size = new System.Drawing.Size(179, 35);
+            this.png_button.TabIndex = 57;
+            this.png_button.Text = "Black .png generator";
+            this.png_button.UseVisualStyleBackColor = true;
+            this.png_button.Click += new System.EventHandler(this.png_button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1396, 794);
+            this.Controls.Add(this.png_button);
             this.Controls.Add(this.homeALLbutton);
             this.Controls.Add(this.vatDist);
             this.Controls.Add(this.bedDist);
@@ -815,6 +827,7 @@
         private System.Windows.Forms.NumericUpDown bedDist;
         private System.Windows.Forms.NumericUpDown vatDist;
         private System.Windows.Forms.Button homeALLbutton;
+        private System.Windows.Forms.Button png_button;
     }
 }
 

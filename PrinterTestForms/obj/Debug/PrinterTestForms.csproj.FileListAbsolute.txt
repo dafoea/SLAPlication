@@ -14,3 +14,5 @@ C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTes
 C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Debug\SLAPlication.application
 C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Debug\SLAPlication.exe
 C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Debug\SLAPlication.pdb
+C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Debug\PrinterTestForms.black_png_form.resources
+C:\Users\a_daf\documents\visual studio 2017\Projects\PrinterTestForms\PrinterTestForms\obj\Debug\PrinterTestForms.csproj.CoreCompileInputs.cache
